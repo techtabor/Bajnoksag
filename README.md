@@ -1,2 +1,0 @@
-# Bajnoksag
- Bajnokságszervező androidra

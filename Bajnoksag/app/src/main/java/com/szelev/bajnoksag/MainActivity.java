@@ -1,15 +1,7 @@
 package com.szelev.bajnoksag;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -35,7 +27,8 @@ public class MainActivity extends AppCompatActivity{
                 activity = new CsapatHozzaAdas(this);
                 break;
             case 1:
-                
+                setContentView(R.layout.activity_csoportmerkozesek);
+                activity = new Kormerkozesek(this);
                 break;
             default:
                 activity = null;

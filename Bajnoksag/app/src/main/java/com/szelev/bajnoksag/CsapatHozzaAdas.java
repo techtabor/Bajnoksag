@@ -43,18 +43,18 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     private void initTable() {
         TableRow tbr = new TableRow(mainAct);
-        TextView t1v = new TextView(mainAct);
+        /*TextView t1v = new TextView(mainAct);
         t1v.setText("  Csapat ID  ");
         t1v.setTextColor(Color.BLACK);
         t1v.setGravity(Gravity.CENTER);
-        tbr.addView(t1v);
+        tbr.addView(t1v);*/
         TextView t2v = new TextView(mainAct);
-        t2v.setText("      Csapatnév      ");
+        t2v.setText("     Csapatnév     ");
         t2v.setTextColor(Color.BLACK);
         t2v.setGravity(Gravity.CENTER);
         tbr.addView(t2v);
         TextView t3v = new TextView(mainAct);
-        t3v.setText("   Csapatsúly   ");
+        t3v.setText("     Csapatsúly     ");
         t3v.setTextColor(Color.BLACK);
         t3v.setGravity(Gravity.CENTER);
         tbr.addView(t3v);
@@ -64,18 +64,18 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             Csapat c = MainActivity.csapatok.get(i);
 
             tbr = new TableRow(mainAct);
-            t1v = new TextView(mainAct);
+            /*t1v = new TextView(mainAct);
             t1v.setText(Integer.toString(c.getID()));
             t1v.setTextColor(Color.BLACK);
             t1v.setGravity(Gravity.CENTER);
-            tbr.addView(t1v);
+            tbr.addView(t1v);*/
             t2v = new TextView(mainAct);
-            t2v.setText(c.getNev());
+            t2v.setText(" " + c.getNev() + " ");
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
             t3v = new TextView(mainAct);
-            t3v.setText(Integer.toString(c.getSuly()));
+            t3v.setText(" " + Integer.toString(c.getSuly()) + " ");
             t3v.setTextColor(Color.BLACK);
             t3v.setGravity(Gravity.CENTER);
             tbr.addView(t3v);
@@ -96,18 +96,18 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             MainActivity.csapatok.add(c);
 
             TableRow tbr = new TableRow(mainAct);
-            TextView t1v = new TextView(mainAct);
+            /*TextView t1v = new TextView(mainAct);
             t1v.setText(Integer.toString(c.getID()));
             t1v.setTextColor(Color.BLACK);
             t1v.setGravity(Gravity.CENTER);
-            tbr.addView(t1v);
+            tbr.addView(t1v);*/
             TextView t2v = new TextView(mainAct);
-            t2v.setText(c.getNev());
+            t2v.setText(" " + c.getNev() + " ");
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
             TextView t3v = new TextView(mainAct);
-            t3v.setText(Integer.toString(c.getSuly()));
+            t3v.setText(" " + Integer.toString(c.getSuly()) + " ");
             t3v.setTextColor(Color.BLACK);
             t3v.setGravity(Gravity.CENTER);
             tbr.addView(t3v);

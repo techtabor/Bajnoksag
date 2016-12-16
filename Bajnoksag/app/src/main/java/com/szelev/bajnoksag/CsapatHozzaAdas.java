@@ -114,8 +114,8 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             csapatTabla.addView(tbr);
         } else {
             MainActivity.activity_number = 1;
+            Kormerkozesek.initEredmenyek();
             mainAct.create();
-
         }
 
     }

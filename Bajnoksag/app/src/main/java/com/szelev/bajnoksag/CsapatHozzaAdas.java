@@ -25,6 +25,9 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     private MainActivity        mainAct;
 
+    private int defaultTextColor = Color.BLACK;
+    private int defaultGravity = Gravity.CENTER;
+
     public CsapatHozzaAdas(MainActivity mainAct)
     {
         this.mainAct = mainAct;
@@ -43,11 +46,6 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     private void initTable() {
         TableRow tbr = new TableRow(mainAct);
-        /*TextView t1v = new TextView(mainAct);
-        t1v.setText("  Csapat ID  ");
-        t1v.setTextColor(Color.BLACK);
-        t1v.setGravity(Gravity.CENTER);
-        tbr.addView(t1v);*/
         TextView t2v = new TextView(mainAct);
         t2v.setText("     Csapatnév     ");
         t2v.setTextColor(Color.BLACK);
@@ -64,11 +62,6 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             Csapat c = MainActivity.csapatok.get(i);
 
             tbr = new TableRow(mainAct);
-            /*t1v = new TextView(mainAct);
-            t1v.setText(Integer.toString(c.getID()));
-            t1v.setTextColor(Color.BLACK);
-            t1v.setGravity(Gravity.CENTER);
-            tbr.addView(t1v);*/
             t2v = new TextView(mainAct);
             t2v.setText(" " + c.getNev() + " ");
             t2v.setTextColor(Color.BLACK);
@@ -95,22 +88,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             csapatNevText.setText("");
             MainActivity.csapatok.add(c);
 
-            TableRow tbr = new TableRow(mainAct);
-            /*TextView t1v = new TextView(mainAct);
-            t1v.setText(Integer.toString(c.getID()));
-            t1v.setTextColor(Color.BLACK);
-            t1v.setGravity(Gravity.CENTER);
-            tbr.addView(t1v);*/
-            TextView t2v = new TextView(mainAct);
-            t2v.setText(" " + c.getNev() + " ");
-            t2v.setTextColor(Color.BLACK);
-            t2v.setGravity(Gravity.CENTER);
-            tbr.addView(t2v);
-            TextView t3v = new TextView(mainAct);
-            t3v.setText(" " + Integer.toString(c.getSuly()) + " ");
-            t3v.setTextColor(Color.BLACK);
-            t3v.setGravity(Gravity.CENTER);
-            tbr.addView(t3v);
+            TableRow tbr = createRowWithTwoCell(c.getNev(), Integer.toString(c.getSuly()));
             csapatTabla.addView(tbr);
         } else {
             MainActivity.activity_number = 1;
@@ -120,4 +98,19 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     }
 
-}
+    private TableRow createRowWithTwoCell(String firstCell, String secondCell) {
+        TableRow result = new TableRow(mainAct);
+        TextView firstTextView = new TextView(mainAct);
+        firstTextView.setText(" " + firstCell + " ");
+        firstTextView.setTextColor(defaultTextColor);
+        firstTextView.setGravity(defaultGravity);
+        result.addView(firstTextView);
+        TextView secondTextView = new TextView(mainAct);
+        secondTextView.setText(" " + secondCell + " ");
+        secondTextView.setTextColor(defaultTextColor);
+        secondTextView.setGravity(defaultGravity);
+        result.addView(secondTextView);
+        return result;
+    }
+
+    }

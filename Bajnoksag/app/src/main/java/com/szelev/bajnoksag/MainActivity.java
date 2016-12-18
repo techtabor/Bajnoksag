@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity{
                 setContentView(R.layout.activity_csoportmerkozesek);
                 activity = new Kormerkozesek(this);
                 break;
+            case 2:
+                setContentView(R.layout.activity_kiertekel);
+                activity = new Kiertekel(this);
+                break;
             default:
                 activity = null;
         }

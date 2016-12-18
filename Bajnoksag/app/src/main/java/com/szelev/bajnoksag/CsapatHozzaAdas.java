@@ -51,8 +51,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
         for(int i=0; i<MainActivity.csapatok.size(); i++) {
             Csapat c = MainActivity.csapatok.get(i);
 
-            String teamWeight = Integer.toString(c.getSuly());
-            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + teamWeight + " ");
+            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
         }
     }
@@ -64,13 +63,12 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
             c.setID(MainActivity.csapatok.size());
             c.setNev(csapatNevText.getText().toString());
-            c.setSuly(Integer.parseInt(csapatSulyText.getText().toString()));
+            c.setSuly(csapatSulyText.getText().toString());
 
             csapatNevText.setText("");
             MainActivity.csapatok.add(c);
 
-            String teamWeight = Integer.toString(c.getSuly());
-            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + teamWeight + " ");
+            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
         } else {
             MainActivity.activity_number = 1;

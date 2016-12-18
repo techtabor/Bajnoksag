@@ -69,8 +69,9 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             csapatNevText.setText("");
             MainActivity.csapatok.add(c);
 
-            TableRow tbr = createRowWithTwoCell(c.getNev(), Integer.toString(c.getSuly()));
-            csapatTabla.addView(tbr);
+            String teamWeight = Integer.toString(c.getSuly());
+            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + teamWeight + " ");
+            csapatTabla.addView(row);
         } else {
             MainActivity.activity_number = 1;
             Kormerkozesek.initEredmenyek();
@@ -81,16 +82,19 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     private TableRow createRowWithTwoCell(String firstCell, String secondCell) {
         TableRow result = new TableRow(mainAct);
-        TextView firstTextView = new TextView(mainAct);
-        firstTextView.setText(" " + firstCell + " ");
-        firstTextView.setTextColor(defaultTextColor);
-        firstTextView.setGravity(defaultGravity);
+        TextView firstTextView = createTextView(firstCell);
         result.addView(firstTextView);
-        TextView secondTextView = new TextView(mainAct);
-        secondTextView.setText(" " + secondCell + " ");
-        secondTextView.setTextColor(defaultTextColor);
-        secondTextView.setGravity(defaultGravity);
+        TextView secondTextView = createTextView(secondCell);
         result.addView(secondTextView);
         return result;
     }
+
+    private TextView createTextView(String text) {
+        TextView textView = new TextView(mainAct);
+        textView.setText(text);
+        textView.setTextColor(defaultTextColor);
+        textView.setGravity(defaultGravity);
+        return textView;
     }
+
+}

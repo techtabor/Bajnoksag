@@ -1,0 +1,1 @@
+Különbözö sportversenyek szervezését segít applikáció

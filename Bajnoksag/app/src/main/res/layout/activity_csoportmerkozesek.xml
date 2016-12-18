@@ -15,31 +15,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
-        android:layout_alignBottom="@+id/scrollView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-    </Spinner>
-
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_alignBottom="@+id/scrollView1"
+        android:layout_below="@+id/scrollView1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
     </Spinner>
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scrollView2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonUjCsapat"
+        android:layout_below="@+id/button3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <HorizontalScrollView
-            android:id="@+id/hscrll1"
+            android:id="@+id/hscrll2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -59,7 +49,54 @@
 
         </HorizontalScrollView>
 
-
     </ScrollView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/spinner1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editText" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </Spinner>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_below="@+id/spinner2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editText2" />
+
+    <Button
+        android:text="MENT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button" />
+
+    <Button
+        android:text="TOVÁBB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

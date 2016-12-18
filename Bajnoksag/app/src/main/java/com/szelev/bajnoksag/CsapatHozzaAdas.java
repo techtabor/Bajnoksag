@@ -45,34 +45,15 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initTable() {
-        TableRow tbr = new TableRow(mainAct);
-        TextView t2v = new TextView(mainAct);
-        t2v.setText("     Csapatnév     ");
-        t2v.setTextColor(Color.BLACK);
-        t2v.setGravity(Gravity.CENTER);
-        tbr.addView(t2v);
-        TextView t3v = new TextView(mainAct);
-        t3v.setText("     Csapatsúly     ");
-        t3v.setTextColor(Color.BLACK);
-        t3v.setGravity(Gravity.CENTER);
-        tbr.addView(t3v);
-        csapatTabla.addView(tbr);
+        TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
+        csapatTabla.addView(header);
 
         for(int i=0; i<MainActivity.csapatok.size(); i++) {
             Csapat c = MainActivity.csapatok.get(i);
 
-            tbr = new TableRow(mainAct);
-            t2v = new TextView(mainAct);
-            t2v.setText(" " + c.getNev() + " ");
-            t2v.setTextColor(Color.BLACK);
-            t2v.setGravity(Gravity.CENTER);
-            tbr.addView(t2v);
-            t3v = new TextView(mainAct);
-            t3v.setText(" " + Integer.toString(c.getSuly()) + " ");
-            t3v.setTextColor(Color.BLACK);
-            t3v.setGravity(Gravity.CENTER);
-            tbr.addView(t3v);
-            csapatTabla.addView(tbr);
+            String teamWeight = Integer.toString(c.getSuly());
+            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + teamWeight + " ");
+            csapatTabla.addView(row);
         }
     }
 
@@ -112,5 +93,4 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
         result.addView(secondTextView);
         return result;
     }
-
     }

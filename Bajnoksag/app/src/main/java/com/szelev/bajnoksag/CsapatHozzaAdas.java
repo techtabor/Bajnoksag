@@ -72,7 +72,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             csapatSulyText.setText("0");
         } else {
             MainActivity.activity_number = 1;
-            Kormerkozesek.initEredmenyek();
+            Kormerkozesek.initEredmenyek();             // ha majd kesobb hozza lehet utolag adni csapatot, akkor ezt mashogy kell megvalositani.
             mainAct.create();
         }
 

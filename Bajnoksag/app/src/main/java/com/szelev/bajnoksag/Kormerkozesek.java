@@ -28,6 +28,7 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
     private Button          tovabb;
     private TextView        er1, er2;
 
+    //TODO (szgabbor) Ez miért statikus?
     public static ArrayList<ArrayList<Eredmeny>> eredmenyek;
     public Kormerkozesek(MainActivity mainAct)
     {
@@ -43,10 +44,11 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
 
         mentes.setOnClickListener(this);
         tovabb.setOnClickListener(this);
-
+        //TODO (szgabbor): Jó, ha a konstruktorban nincs semmi.
         initT();
     }
 
+    //TODO (szgabbor): Mi ez a nagy T?
     private void refreshT()
     {
         merkozesTabla.removeAllViews();
@@ -57,6 +59,7 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
         tr.addView(tv);
         for(int i=0; i<MainActivity.csapatok.size(); i++)
         {
+            //TODO (szgabbor): Ez itt kódismétlés.
             tv = new TextView(mainAct);
             tv.setText(" " + MainActivity.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);

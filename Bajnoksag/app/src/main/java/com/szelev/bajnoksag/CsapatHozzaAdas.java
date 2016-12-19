@@ -86,6 +86,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
         mainAct.create();
     }
 
+    //TODO (szgabbor): Ezt máshol is használhatod, érdemes lehet új osztályba kiszervezni.
     private TableRow createRowWithTwoCell(String firstCell, String secondCell) {
         TableRow result = new TableRow(mainAct);
         TextView firstTextView = createTextView(firstCell);

@@ -25,6 +25,7 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
     private MainActivity    mainAct;
     private Spinner         csapatok1, csapatok2;
     private Button          mentes;
+    private Button          tovabb;
     private TextView        er1, er2;
 
     public static ArrayList<ArrayList<Eredmeny>> eredmenyek;
@@ -38,8 +39,10 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
         mentes          = (Button)      (mainAct.findViewById(R.id.button));
         er1             = (TextView)    (mainAct.findViewById(R.id.editText));
         er2             = (TextView)    (mainAct.findViewById(R.id.editText2));
+        tovabb          = (Button)      (mainAct.findViewById(R.id.button3));
 
         mentes.setOnClickListener(this);
+        tovabb.setOnClickListener(this);
 
         initT();
     }
@@ -153,6 +156,7 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
             er2.setText("0");
         } else {
             MainActivity.activity_number = 2;
+            Kiertekel.sorrendKiszamol();
             mainAct.create();
         }
     }

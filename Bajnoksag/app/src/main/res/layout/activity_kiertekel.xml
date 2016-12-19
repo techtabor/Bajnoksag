@@ -10,13 +10,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.szelev.bajnoksag.MainActivity">
 
+    <Button
+        android:text="VISSZA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/button4" />
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <!--android:layout_below="@+id/buttonUjCsapat"
-        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button4">
+        <!--android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"-->
 
         <HorizontalScrollView

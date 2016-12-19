@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         create();
     }
 
@@ -40,5 +39,4 @@ public class MainActivity extends AppCompatActivity{
                 activity = null;
         }
     }
-
 }

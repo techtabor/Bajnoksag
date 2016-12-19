@@ -27,8 +27,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
     private int defaultTextColor = Color.BLACK;
     private int defaultGravity = Gravity.CENTER;
 
-    public CsapatHozzaAdas(MainActivity mainAct)
-    {
+    public CsapatHozzaAdas(MainActivity mainAct) {
         this.mainAct = mainAct;
 
         ujCsapatBut     = (Button)      (mainAct.findViewById(R.id.buttonUjCsapat));
@@ -47,7 +46,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
     private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-        for(int i = 0; i<MainActivity.csapatok.size(); i++) {
+        for(int i = 0; i < MainActivity.csapatok.size(); i++) {
             Csapat c = MainActivity.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
@@ -64,11 +63,13 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
             c.setNev(csapatNevText.getText().toString());
             c.setSuly(csapatSulyText.getText().toString());
 
-            csapatNevText.setText("");
             MainActivity.csapatok.add(c);
-
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
+
             csapatTabla.addView(row);
+
+            csapatNevText.setText("");
+            csapatSulyText.setText("0");
         } else {
             MainActivity.activity_number = 1;
             Kormerkozesek.initEredmenyek();

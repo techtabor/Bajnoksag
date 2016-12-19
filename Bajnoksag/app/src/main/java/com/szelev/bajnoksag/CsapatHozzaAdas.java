@@ -56,26 +56,34 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        if(mainAct.findViewById(R.id.buttonUjCsapat).equals(v)) {
-            Csapat c = new Csapat();
-
-            c.setID(MainActivity.csapatok.size());
-            c.setNev(csapatNevText.getText().toString());
-            c.setSuly(csapatSulyText.getText().toString());
-
-            MainActivity.csapatok.add(c);
-            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
-
-            csapatTabla.addView(row);
-
-            csapatNevText.setText("");
-            csapatSulyText.setText("0");
-        } else {
-            MainActivity.activity_number = 1;
-            Kormerkozesek.initEredmenyek();             // ha majd kesobb hozza lehet utolag adni csapatot, akkor ezt mashogy kell megvalositani.
-            mainAct.create();
+        if(v.equals(mainAct.findViewById(R.id.buttonUjCsapat))) {
+            actionOnUjCsapatButton();
         }
+        if(v.equals(mainAct.findViewById(R.id.button2))) {
+            actionOnTovabbButton();
+        }
+    }
 
+    private void actionOnUjCsapatButton() {
+        Csapat c = new Csapat();
+
+        c.setID(MainActivity.csapatok.size());
+        c.setNev(csapatNevText.getText().toString());
+        c.setSuly(csapatSulyText.getText().toString());
+
+        MainActivity.csapatok.add(c);
+        TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
+
+        csapatTabla.addView(row);
+
+        csapatNevText.setText("");
+        csapatSulyText.setText("0");
+    }
+
+    private void actionOnTovabbButton() {
+        MainActivity.activity_number = 1;
+        Kormerkozesek.initEredmenyek();             // ha majd kesobb hozza lehet utolag adni csapatot, akkor ezt mashogy kell megvalositani.
+        mainAct.create();
     }
 
     private TableRow createRowWithTwoCell(String firstCell, String secondCell) {
@@ -94,5 +102,4 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
         textView.setGravity(defaultGravity);
         return textView;
     }
-
 }

@@ -1,7 +1,6 @@
 package com.szelev.bajnoksag;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -37,18 +36,18 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
         csapatNevText   = (EditText)    (mainAct.findViewById(R.id.editTextCsapatNev));
         csapatSulyText  = (EditText)    (mainAct.findViewById(R.id.editTextCsapatSuly));
         csapatTabla     = (TableLayout) (mainAct.findViewById(R.id.table_main));
+    }
 
-        initTable();
-
+    public void init() {
+        createTable();
         ujCsapatBut.setOnClickListener(this);
         tovabbBut.setOnClickListener(this);
     }
 
-    private void initTable() {
+    private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-
-        for(int i=0; i<MainActivity.csapatok.size(); i++) {
+        for(int i = 0; i<MainActivity.csapatok.size(); i++) {
             Csapat c = MainActivity.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");

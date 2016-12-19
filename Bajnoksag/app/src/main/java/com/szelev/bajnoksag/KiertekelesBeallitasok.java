@@ -8,10 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 
 public class KiertekelesBeallitasok extends AppCompatActivity{
 
-    public static int gyozelemPont  = 3;
-    public static int dontetlenPont = 1;
-    public static int veresegPont   = 0;
-
+    public static int gyozelemPont          = 3;
+    public static int dontetlenPont         = 1;
+    public static int veresegPont           = 0;
+    public static int nemVoltMegMeccsPont   = 0;
 
 
 }

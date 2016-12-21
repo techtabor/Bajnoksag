@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag;
+package com.szelev.bajnoksag.AppCompatActivities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,7 +20,7 @@ import java.util.Comparator;
  * Created by Levente on 2016.12.18..
  */
 
-public class Kiertekel extends AppCompatActivity{
+public class KiertekelACA extends AppCompatActivity{
 
     private TableLayout                 ertekeloTabla;
     public  static ArrayList<Integer>   sorrend;
@@ -58,7 +60,7 @@ public class Kiertekel extends AppCompatActivity{
         tbr.addView(t2v);
         ertekeloTabla.addView(tbr);
 
-        for(int i=0; i<Kiertekel.sorrend.size(); i++)
+        for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
         {
             tbr = new TableRow(this);
             t1v = new TextView(this);
@@ -67,7 +69,7 @@ public class Kiertekel extends AppCompatActivity{
             t1v.setGravity(Gravity.CENTER);
             tbr.addView(t1v);
             t2v = new TextView(this);
-            t2v.setText(CsapatHozzaAdas.csapatok.get(Kiertekel.sorrend.get(i)).getNev());
+            t2v.setText(CsapatHozzaAdasACA.csapatok.get(KiertekelACA.sorrend.get(i)).getNev());
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
@@ -81,9 +83,9 @@ public class Kiertekel extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
             sorrend.add(i);
-        sorbarakPontszam(0, CsapatHozzaAdas.csapatok.size()-1);
+        sorbarakPontszam(0, CsapatHozzaAdasACA.csapatok.size()-1);
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)
@@ -108,18 +110,18 @@ public class Kiertekel extends AppCompatActivity{
                 if(i!=j)
                 {
                     //TODO (szgabbor): Ez itt kódismétlés
-                    if(Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()>Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
+                    if(KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()> KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+KiertekelesBeallitasok.gyozelemPont);
-                    } else if (Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()<Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.gyozelemPont);
+                    } else if (KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()< KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+KiertekelesBeallitasok.veresegPont);
-                    } else if (Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs())
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.veresegPont);
+                    } else if (KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+KiertekelesBeallitasok.dontetlenPont);
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.dontetlenPont);
                     } else
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+KiertekelesBeallitasok.nemVoltMegMeccsPont);
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.nemVoltMegMeccsPont);
                     }
                 }
             }
@@ -136,7 +138,7 @@ public class Kiertekel extends AppCompatActivity{
 
         for(int i=0; i<pontszamok.size(); i++)
         {
-            Kiertekel.sorrend.set(kezdet+i, pontszamok.get(i).get(0));
+            KiertekelACA.sorrend.set(kezdet+i, pontszamok.get(i).get(0));
         }
 
         int azonoskezdet = 0;
@@ -180,9 +182,9 @@ public class Kiertekel extends AppCompatActivity{
             {
                 if(eredmenyk.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
+                    if (KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getElso()-Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getMasodik());
+                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+ KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getElso()- KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getMasodik());
                     }
                 }
             }
@@ -199,7 +201,7 @@ public class Kiertekel extends AppCompatActivity{
 
         for(int i=0; i<eredmenyk.size(); i++)
         {
-            Kiertekel.sorrend.set(kezdet+i, eredmenyk.get(i).get(0));
+            KiertekelACA.sorrend.set(kezdet+i, eredmenyk.get(i).get(0));
         }
 
 
@@ -243,9 +245,9 @@ public class Kiertekel extends AppCompatActivity{
             {
                 if(szerzettp.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
+                    if (KormerkozesekACA.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).getElso());
+                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+ KormerkozesekACA.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).getElso());
                     }
                 }
             }
@@ -262,7 +264,7 @@ public class Kiertekel extends AppCompatActivity{
 
         for(int i=0; i<szerzettp.size(); i++)
         {
-            Kiertekel.sorrend.set(kezdet+i, szerzettp.get(i).get(0));
+            KiertekelACA.sorrend.set(kezdet+i, szerzettp.get(i).get(0));
         }
 
 
@@ -285,7 +287,7 @@ public class Kiertekel extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        Intent intent = new Intent(this, Kormerkozesek.class);
+        Intent intent = new Intent(this, KormerkozesekACA.class);
 
         startActivity(intent);
     }
@@ -293,7 +295,7 @@ public class Kiertekel extends AppCompatActivity{
     //onClick event
     public void actionOnTovabbButton(View v)
     {
-        Intent intent = new Intent(this, KiertekelesBeallitasok.class);
+        Intent intent = new Intent(this, KiertekelesBeallitasokACA.class);
 
         startActivity(intent);
     }

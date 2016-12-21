@@ -6,8 +6,8 @@ package com.szelev.bajnoksag;
 
 public class Eredmeny {
 
-    int elso, masodik;
-    boolean voltMeccs;
+    private int     elso, masodik;
+    private boolean voltMeccs;
 
     public Eredmeny(int elso, int masodik)
     {

@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag;
+package com.szelev.bajnoksag.AppCompatActivities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,9 +11,12 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.Csapat;
+import com.szelev.bajnoksag.R;
+
 import java.util.ArrayList;
 
-public class CsapatHozzaAdas extends AppCompatActivity{
+public class CsapatHozzaAdasACA extends AppCompatActivity{
 
     //TODO (szgabbor): Ez miért statikus?
     public static ArrayList<Csapat> csapatok = new ArrayList<>();
@@ -48,8 +51,8 @@ public class CsapatHozzaAdas extends AppCompatActivity{
     private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-        for(int i = 0; i < CsapatHozzaAdas.csapatok.size(); i++) {
-            Csapat c = CsapatHozzaAdas.csapatok.get(i);
+        for(int i = 0; i < CsapatHozzaAdasACA.csapatok.size(); i++) {
+            Csapat c = CsapatHozzaAdasACA.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
@@ -60,11 +63,11 @@ public class CsapatHozzaAdas extends AppCompatActivity{
     public void actionOnUjCsapatButton(View v) {
         Csapat c = new Csapat();
 
-        c.setID(CsapatHozzaAdas.csapatok.size());
+        c.setID(CsapatHozzaAdasACA.csapatok.size());
         c.setNev(csapatNevText.getText().toString());
         c.setSuly(csapatSulyText.getText().toString());
 
-        CsapatHozzaAdas.csapatok.add(c);
+        CsapatHozzaAdasACA.csapatok.add(c);
         TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
 
         csapatTabla.addView(row);
@@ -75,7 +78,7 @@ public class CsapatHozzaAdas extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        Intent intent = new Intent(this, Modvalaszto.class);
+        Intent intent = new Intent(this, ModvalasztoACA.class);
 
         startActivity(intent);
     }

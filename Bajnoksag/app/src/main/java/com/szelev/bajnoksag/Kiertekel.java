@@ -3,6 +3,8 @@ package com.szelev.bajnoksag;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -16,10 +18,12 @@ import java.util.Comparator;
  * Created by Levente on 2016.12.18..
  */
 
-public class Kiertekel extends AppCompatActivity {
+public class Kiertekel extends AppCompatActivity implements View.OnClickListener{
 
     private MainActivity                mainAct;
     private TableLayout                 ertekeloTabla;
+    private Button                      vissza;
+    private Button                      beallitasok;
     public  static ArrayList<Integer>   sorrend;
 
 
@@ -28,6 +32,11 @@ public class Kiertekel extends AppCompatActivity {
         this.mainAct = mainAct;
 
         ertekeloTabla   = (TableLayout) (mainAct.findViewById(R.id.table_main));
+        vissza          = (Button)      (mainAct.findViewById(R.id.button4));
+        beallitasok     = (Button)      (mainAct.findViewById(R.id.button5));
+
+        vissza.setOnClickListener(this);
+        beallitasok.setOnClickListener(this);
 
         kiirErtekeles();
     }
@@ -267,6 +276,22 @@ public class Kiertekel extends AppCompatActivity {
 
         if(azonoskezdet != 0 && azonoskezdet != szerzettp.size()-1) {
             sorbarakPontszam(kezdet + azonoskezdet, kezdet + szerzettp.size() - 1);
+        }
+
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if(mainAct.findViewById(R.id.button4).equals(v))
+        {
+            MainActivity.activity_number = 1;
+            mainAct.create();
+        }
+        else
+        {
+            MainActivity.activity_number = 3;
+            mainAct.create();
         }
 
     }

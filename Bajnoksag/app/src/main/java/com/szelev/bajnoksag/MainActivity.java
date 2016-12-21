@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity{
                 setContentView(R.layout.activity_kiertekel);
                 activity = new Kiertekel(this);
                 break;
+            case 3:
+                setContentView(R.layout.activity_kiertekelesbeallitasok);
+                activity = new KiertekelesBeallitasok(this);
+                break;
             default:
                 activity = null;
         }

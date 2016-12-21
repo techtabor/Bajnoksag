@@ -1,6 +1,8 @@
 package com.szelev.bajnoksag;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -9,7 +11,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,25 +19,23 @@ import java.util.Comparator;
  * Created by Levente on 2016.12.18..
  */
 
-public class Kiertekel extends AppCompatActivity implements View.OnClickListener{
+public class Kiertekel extends AppCompatActivity{
 
-    private MainActivity                mainAct;
     private TableLayout                 ertekeloTabla;
-    private Button                      vissza;
-    private Button                      beallitasok;
     public  static ArrayList<Integer>   sorrend;
 
-
-    public Kiertekel(MainActivity mainAct)
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
     {
-        this.mainAct = mainAct;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_kiertekel);
 
-        ertekeloTabla   = (TableLayout) (mainAct.findViewById(R.id.table_main));
-        vissza          = (Button)      (mainAct.findViewById(R.id.button4));
-        beallitasok     = (Button)      (mainAct.findViewById(R.id.button5));
+        init();
+    }
 
-        vissza.setOnClickListener(this);
-        beallitasok.setOnClickListener(this);
+    public void init()
+    {
+        ertekeloTabla   = (TableLayout) (findViewById(R.id.table_main));
 
         //TODO (szgabbor): Jó, ha a konstruktorban nem történik semmi.
         kiirErtekeles();
@@ -45,13 +44,13 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
     private void kiirErtekeles()
     {
         //TODO (szgabbor): Ez itt kódismétlés
-        TableRow tbr = new TableRow(mainAct);
-        TextView t1v = new TextView(mainAct);
+        TableRow tbr = new TableRow(this);
+        TextView t1v = new TextView(this);
         t1v.setText("     Helyezés     ");
         t1v.setTextColor(Color.BLACK);
         t1v.setGravity(Gravity.CENTER);
         tbr.addView(t1v);
-        TextView t2v = new TextView(mainAct);
+        TextView t2v = new TextView(this);
         t2v.setText("     Csapatnév     ");
         t2v.setTextColor(Color.BLACK);
         t2v.setGravity(Gravity.CENTER);
@@ -60,14 +59,14 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
 
         for(int i=0; i<Kiertekel.sorrend.size(); i++)
         {
-            tbr = new TableRow(mainAct);
-            t1v = new TextView(mainAct);
+            tbr = new TableRow(this);
+            t1v = new TextView(this);
             t1v.setText(Integer.toString(i+1));
             t1v.setTextColor(Color.BLACK);
             t1v.setGravity(Gravity.CENTER);
             tbr.addView(t1v);
-            t2v = new TextView(mainAct);
-            t2v.setText(MainActivity.csapatok.get(Kiertekel.sorrend.get(i)).getNev());
+            t2v = new TextView(this);
+            t2v.setText(CsapatHozzaadas.csapatok.get(Kiertekel.sorrend.get(i)).getNev());
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
@@ -81,9 +80,9 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i=0; i<MainActivity.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
             sorrend.add(i);
-        sorbarakPontszam(0, MainActivity.csapatok.size()-1);
+        sorbarakPontszam(0, CsapatHozzaadas.csapatok.size()-1);
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)
@@ -282,19 +281,20 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    @Override
-    public void onClick(View v)
+    //onClick event
+    public void actionOnVisszaButton(View v)
     {
-        if(mainAct.findViewById(R.id.button4).equals(v))
-        {
-            MainActivity.activity_number = 1;
-            mainAct.create();
-        }
-        else
-        {
-            MainActivity.activity_number = 3;
-            mainAct.create();
-        }
+        Intent intent = new Intent(this, Kormerkozesek.class);
 
+        startActivity(intent);
     }
+
+    //onClick event
+    public void actionOnTovabbButton(View v)
+    {
+        Intent intent = new Intent(this, KiertekelesBeallitasok.class);
+
+        startActivity(intent);
+    }
+
 }

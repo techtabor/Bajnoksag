@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.szelev.bajnoksag.MainActivity">
+    tools:context="com.szelev.bajnoksag.CsapatHozzaadas">
 
     <Spinner
         android:id="@+id/spinner1"
@@ -88,7 +88,8 @@
         android:layout_below="@+id/spinner2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:onClick="actionOnMentesButton"/>
 
     <Button
         android:text="TOVÁBB"
@@ -97,6 +98,7 @@
         android:id="@+id/button3"
         android:layout_below="@+id/editText2"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="actionOnTovabbButton"/>
 
 </RelativeLayout>

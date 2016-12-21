@@ -1,7 +1,8 @@
 package com.szelev.bajnoksag;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.opengl.EGLExt;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -19,33 +20,32 @@ import java.util.List;
  * Created by Levente on 2016.12.06..
  */
 
-public class Kormerkozesek extends AppCompatActivity implements View.OnClickListener{
+public class Kormerkozesek extends AppCompatActivity{
 
     private TableLayout     merkozesTabla;
-    private MainActivity    mainAct;
     private Spinner         csapatok1, csapatok2;
-    private Button          mentes;
-    private Button          tovabb;
     private TextView        er1, er2;
 
     //TODO (szgabbor) Ez miért statikus?
     public static ArrayList<ArrayList<Eredmeny>> eredmenyek;
-    public Kormerkozesek(MainActivity mainAct)
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
     {
-        this.mainAct = mainAct;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_kormerkozesek);
 
-        merkozesTabla   = (TableLayout) (mainAct.findViewById(R.id.table_main));
-        csapatok1       = (Spinner)     (mainAct.findViewById(R.id.spinner1));
-        csapatok2       = (Spinner)     (mainAct.findViewById(R.id.spinner2));
-        mentes          = (Button)      (mainAct.findViewById(R.id.button));
-        er1             = (TextView)    (mainAct.findViewById(R.id.editText));
-        er2             = (TextView)    (mainAct.findViewById(R.id.editText2));
-        tovabb          = (Button)      (mainAct.findViewById(R.id.button3));
+        init();
+    }
 
+    public void init()
+    {
+        merkozesTabla   = (TableLayout) (findViewById(R.id.table_main));
+        csapatok1       = (Spinner)     (findViewById(R.id.spinner1));
+        csapatok2       = (Spinner)     (findViewById(R.id.spinner2));
+        er1             = (TextView)    (findViewById(R.id.editText));
+        er2             = (TextView)    (findViewById(R.id.editText2));
 
-        mentes.setOnClickListener(this);
-        tovabb.setOnClickListener(this);
-        //TODO (szgabbor): Jó, ha a konstruktorban nincs semmi.
         initT();
     }
 
@@ -54,33 +54,33 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
     {
         merkozesTabla.removeAllViews();
 
-        TableRow tr = new TableRow(mainAct);
-        TextView tv = new TextView(mainAct);
+        TableRow tr = new TableRow(this);
+        TextView tv = new TextView(this);
         tv.setText("");
         tr.addView(tv);
-        for(int i=0; i<MainActivity.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
         {
             //TODO (szgabbor): Ez itt kódismétlés.
-            tv = new TextView(mainAct);
-            tv.setText(" " + MainActivity.csapatok.get(i).getNev() + " ");
+            tv = new TextView(this);
+            tv.setText(" " + CsapatHozzaadas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
         }
         merkozesTabla.addView(tr);
 
-        for(int i=0; i<MainActivity.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
         {
-            tr = new TableRow(mainAct);
-            tv = new TextView(mainAct);
-            tv.setText(" " + MainActivity.csapatok.get(i).getNev() + " ");
+            tr = new TableRow(this);
+            tv = new TextView(this);
+            tv.setText(" " + CsapatHozzaadas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
 
-            for(int j=0; j<MainActivity.csapatok.size(); j++)
+            for(int j = 0; j< CsapatHozzaadas.csapatok.size(); j++)
             {
-                tv = new TextView(mainAct);
+                tv = new TextView(this);
                 if(eredmenyek.get(i).get(j).voltMeccs)
                 {
                     tv.setText(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ");
@@ -110,11 +110,11 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i=0; i<MainActivity.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
         {
-            list.add(MainActivity.csapatok.get(i).getNev());
+            list.add(CsapatHozzaadas.csapatok.get(i).getNev());
         }
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(mainAct, android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         csapatok1.setAdapter(dataAdapter);
         csapatok2.setAdapter(dataAdapter);
@@ -123,10 +123,10 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
     public static void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        for(int i=0; i<MainActivity.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
         {
             ArrayList<Eredmeny> al = new ArrayList<>();
-            for(int j=0; j<MainActivity.csapatok.size(); j++)
+            for(int j = 0; j< CsapatHozzaadas.csapatok.size(); j++)
             {
                 Eredmeny e = new Eredmeny();
                 al.add(e);
@@ -135,33 +135,35 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    //onClick action
+    public void actionOnMentesButton(View v)
+    {
+        int i, j;
 
-    @Override
-    public void onClick(View v) {
-        if(mainAct.findViewById(R.id.button).equals(v))
+        i = (int) csapatok1.getSelectedItemId()-1;
+        j = (int) csapatok2.getSelectedItemId()-1;
+
+        csapatok1.setSelection(0);
+        csapatok2.setSelection(0);
+
+        if(i!=j && i!=-1 && j!=-1)
         {
-            int i, j;
-
-            i = (int) csapatok1.getSelectedItemId()-1;
-            j = (int) csapatok2.getSelectedItemId()-1;
-
-            csapatok1.setSelection(0);
-            csapatok2.setSelection(0);
-
-            if(i!=j && i!=-1 && j!=-1)
-            {
-                eredmenyek.get(i).get(j).setEredmeny(Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
-                eredmenyek.get(j).get(i).setEredmeny(Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
-            }
-
-            refreshT();
-
-            er1.setText("0");
-            er2.setText("0");
-        } else {
-            MainActivity.activity_number = 2;
-            Kiertekel.sorrendKiszamol();
-            mainAct.create();
+            eredmenyek.get(i).get(j).setEredmeny(Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
+            eredmenyek.get(j).get(i).setEredmeny(Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
         }
+
+        refreshT();
+
+        er1.setText("0");
+        er2.setText("0");
     }
+
+    //onClick action
+    public void actionOnTovabbButton(View v)
+    {
+        Intent intent = new Intent(this, Kiertekel.class);
+
+        startActivity(intent);
+    }
+
 }

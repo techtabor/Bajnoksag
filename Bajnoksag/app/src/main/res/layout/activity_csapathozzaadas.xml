@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.szelev.bajnoksag.MainActivity">
+    tools:context="com.szelev.bajnoksag.CsapatHozzaadas">
 
     <TextView
         android:text="Csapat neve:"
@@ -91,7 +91,8 @@
         android:id="@+id/button2"
         android:layout_below="@+id/editTextCsapatSuly"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="actionOnTovabbButton"/>
 
     <Button
         android:text="ÚJ CSAPAT"
@@ -99,6 +100,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/buttonUjCsapat"
         android:layout_below="@+id/editTextCsapatSuly"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="actionOnUjCsapatButton"/>
 
 </RelativeLayout>

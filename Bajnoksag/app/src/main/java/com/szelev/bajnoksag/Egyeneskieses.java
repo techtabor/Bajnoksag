@@ -1,5 +1,6 @@
 package com.szelev.bajnoksag;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -8,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 
 public class Egyeneskieses extends AppCompatActivity{
 
-    private MainActivity mainAct;
-
-    public Egyeneskieses(MainActivity mainAct)
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
     {
-        this.mainAct = mainAct;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_egyeneskieses);
     }
 
 }

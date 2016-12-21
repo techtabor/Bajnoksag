@@ -138,9 +138,135 @@ public class Kiertekel extends AppCompatActivity {
             }
         }
 
-        if(azonoskezdet != 0)
+        if(azonoskezdet != 0 && azonoskezdet != pontszamok.size()-1) {
+            sorbarakPontszam(kezdet + azonoskezdet, kezdet + pontszamok.size() - 1);
+        } else if(azonoskezdet == 0)
         {
-            sorbarakPontszam(kezdet + azonoskezdet, kezdet + pontszamok.size()-1);
+            sorbarakEredmenykulonbseg(kezdet, veg);
+        }
+
+
+    }
+
+    private static void sorbarakEredmenykulonbseg(int kezdet, int veg)
+    {
+        // eredmenykulonbsegeket tarolo arrayList inicializalasa
+
+        ArrayList<ArrayList<Integer>> eredmenyk = new ArrayList<>();   // (veg-kezdet+1)x2-es arrayList, az elso elem az index, a masodik a pontszam
+        for(int i=0; i<veg-kezdet+1; i++)
+        {
+            ArrayList<Integer> al = new ArrayList<>();
+            al.add(sorrend.get(kezdet+i));
+            al.add(0);
+            eredmenyk.add(al);
+        }
+
+        // eredmenykulonbsegek kiszamitasa
+
+        for(int i=0; i<eredmenyk.size(); i++)
+        {
+            for(int j=0; j<eredmenyk.size(); j++)
+            {
+                if(i!=j)
+                {
+                    if (Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).voltMeccs())
+                    {
+                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).getElso()-Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).getMasodik());
+                    }
+                }
+            }
+        }
+
+        // eredmenykulsonbsegek szerinti rendezés
+
+        Collections.sort(eredmenyk, new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
+                return (o1.get(1).compareTo(o2.get(1)))*(-1);
+            }
+        });
+
+        for(int i=0; i<eredmenyk.size(); i++)
+        {
+            Kiertekel.sorrend.set(kezdet+i, eredmenyk.get(i).get(0));
+        }
+
+
+        int azonoskezdet = 0;
+        for(int i=1; i<eredmenyk.size(); i++) {
+            if (eredmenyk.get(azonoskezdet).get(1) != eredmenyk.get(i).get(1)) {
+                if (azonoskezdet != i - 1) {
+                    sorbarakPontszam(kezdet + azonoskezdet, kezdet + i - 1);
+                }
+                azonoskezdet = i;
+            }
+        }
+
+        if(azonoskezdet != 0 && azonoskezdet != eredmenyk.size()-1) {
+            sorbarakPontszam(kezdet + azonoskezdet, kezdet + eredmenyk.size() - 1);
+        } else if(azonoskezdet == 0)
+        {
+            sorbarakSzerzettPontok(kezdet, veg);
+        }
+
+    }
+
+    private static void sorbarakSzerzettPontok(int kezdet, int veg)
+    {
+        // szerzett pontokat tarolo arrayList inicializalasa
+
+        ArrayList<ArrayList<Integer>> szerzettp = new ArrayList<>();   // (veg-kezdet+1)x2-es arrayList, az elso elem az index, a masodik a pontszam
+        for(int i=0; i<veg-kezdet+1; i++)
+        {
+            ArrayList<Integer> al = new ArrayList<>();
+            al.add(sorrend.get(kezdet+i));
+            al.add(0);
+            szerzettp.add(al);
+        }
+
+        // eredmenykulonbsegek kiszamitasa
+
+        for(int i=0; i<szerzettp.size(); i++)
+        {
+            for(int j=0; j<szerzettp.size(); j++)
+            {
+                if(i!=j)
+                {
+                    if (Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(szerzettp.get(j).get(0)).voltMeccs())
+                    {
+                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(szerzettp.get(j).get(0)).getElso());
+                    }
+                }
+            }
+        }
+
+        // eredmenykulsonbsegek szerinti rendezés
+
+        Collections.sort(szerzettp, new Comparator<ArrayList<Integer>>() {
+            @Override
+            public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
+                return (o1.get(1).compareTo(o2.get(1)))*(-1);
+            }
+        });
+
+        for(int i=0; i<szerzettp.size(); i++)
+        {
+            Kiertekel.sorrend.set(kezdet+i, szerzettp.get(i).get(0));
+        }
+
+
+        int azonoskezdet = 0;
+        for(int i=1; i<szerzettp.size(); i++) {
+            if (szerzettp.get(azonoskezdet).get(1) != szerzettp.get(i).get(1)) {
+                if (azonoskezdet != i - 1) {
+                    sorbarakPontszam(kezdet + azonoskezdet, kezdet + i - 1);
+                }
+                azonoskezdet = i;
+            }
+        }
+
+        if(azonoskezdet != 0 && azonoskezdet != szerzettp.size()-1) {
+            sorbarakPontszam(kezdet + azonoskezdet, kezdet + szerzettp.size() - 1);
         }
 
     }

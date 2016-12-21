@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -58,27 +57,27 @@ public class Kormerkozesek extends AppCompatActivity{
         TextView tv = new TextView(this);
         tv.setText("");
         tr.addView(tv);
-        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
         {
             //TODO (szgabbor): Ez itt kódismétlés.
             tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaadas.csapatok.get(i).getNev() + " ");
+            tv.setText(" " + CsapatHozzaAdas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
         }
         merkozesTabla.addView(tr);
 
-        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
         {
             tr = new TableRow(this);
             tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaadas.csapatok.get(i).getNev() + " ");
+            tv.setText(" " + CsapatHozzaAdas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
 
-            for(int j = 0; j< CsapatHozzaadas.csapatok.size(); j++)
+            for(int j = 0; j< CsapatHozzaAdas.csapatok.size(); j++)
             {
                 tv = new TextView(this);
                 if(eredmenyek.get(i).get(j).voltMeccs)
@@ -110,9 +109,9 @@ public class Kormerkozesek extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
         {
-            list.add(CsapatHozzaadas.csapatok.get(i).getNev());
+            list.add(CsapatHozzaAdas.csapatok.get(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,10 +122,10 @@ public class Kormerkozesek extends AppCompatActivity{
     public static void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
         {
             ArrayList<Eredmeny> al = new ArrayList<>();
-            for(int j = 0; j< CsapatHozzaadas.csapatok.size(); j++)
+            for(int j = 0; j< CsapatHozzaAdas.csapatok.size(); j++)
             {
                 Eredmeny e = new Eredmeny();
                 al.add(e);

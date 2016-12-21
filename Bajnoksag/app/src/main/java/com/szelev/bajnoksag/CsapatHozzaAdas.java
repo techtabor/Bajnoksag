@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CsapatHozzaadas extends AppCompatActivity{
+public class CsapatHozzaAdas extends AppCompatActivity{
 
     //TODO (szgabbor): Ez miért statikus?
     public static ArrayList<Csapat> csapatok = new ArrayList<>();
@@ -49,8 +48,8 @@ public class CsapatHozzaadas extends AppCompatActivity{
     private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-        for(int i = 0; i < CsapatHozzaadas.csapatok.size(); i++) {
-            Csapat c = CsapatHozzaadas.csapatok.get(i);
+        for(int i = 0; i < CsapatHozzaAdas.csapatok.size(); i++) {
+            Csapat c = CsapatHozzaAdas.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
@@ -61,11 +60,11 @@ public class CsapatHozzaadas extends AppCompatActivity{
     private void actionOnUjCsapatButton(View v) {
         Csapat c = new Csapat();
 
-        c.setID(CsapatHozzaadas.csapatok.size());
+        c.setID(CsapatHozzaAdas.csapatok.size());
         c.setNev(csapatNevText.getText().toString());
         c.setSuly(csapatSulyText.getText().toString());
 
-        CsapatHozzaadas.csapatok.add(c);
+        CsapatHozzaAdas.csapatok.add(c);
         TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
 
         csapatTabla.addView(row);

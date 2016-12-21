@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -66,7 +65,7 @@ public class Kiertekel extends AppCompatActivity{
             t1v.setGravity(Gravity.CENTER);
             tbr.addView(t1v);
             t2v = new TextView(this);
-            t2v.setText(CsapatHozzaadas.csapatok.get(Kiertekel.sorrend.get(i)).getNev());
+            t2v.setText(CsapatHozzaAdas.csapatok.get(Kiertekel.sorrend.get(i)).getNev());
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
@@ -80,9 +79,9 @@ public class Kiertekel extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< CsapatHozzaadas.csapatok.size(); i++)
+        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
             sorrend.add(i);
-        sorbarakPontszam(0, CsapatHozzaadas.csapatok.size()-1);
+        sorbarakPontszam(0, CsapatHozzaAdas.csapatok.size()-1);
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)

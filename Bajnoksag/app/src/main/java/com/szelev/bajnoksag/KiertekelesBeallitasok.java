@@ -9,6 +9,7 @@ import android.widget.TextView;
  * Created by Levente on 2016.12.19..
  */
 
+//TODO (szgabbor): Mire való itt az extends?
 public class KiertekelesBeallitasok extends AppCompatActivity implements View.OnClickListener{
 
     private MainActivity    mainAct;
@@ -16,6 +17,8 @@ public class KiertekelesBeallitasok extends AppCompatActivity implements View.On
     private Button          beallit;
     private Button          vissza;
 
+    //TODO (szgabbor): Később ez konfigurálható lesz, azért szervezted ki?
+    // (Igazából ráér akkor is ez a kiszervezés)
     public static int gyozelemPont          = 3;
     public static int dontetlenPont         = 1;
     public static int veresegPont           = 0;

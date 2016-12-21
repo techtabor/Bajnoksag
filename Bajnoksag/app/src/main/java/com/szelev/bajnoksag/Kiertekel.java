@@ -38,11 +38,13 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
         vissza.setOnClickListener(this);
         beallitasok.setOnClickListener(this);
 
+        //TODO (szgabbor): Jó, ha a konstruktorban nem történik semmi.
         kiirErtekeles();
     }
 
     private void kiirErtekeles()
     {
+        //TODO (szgabbor): Ez itt kódismétlés
         TableRow tbr = new TableRow(mainAct);
         TextView t1v = new TextView(mainAct);
         t1v.setText("     Helyezés     ");
@@ -105,6 +107,7 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
             {
                 if(i!=j)
                 {
+                    //TODO (szgabbor): Ez itt kódismétlés
                     if(Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()>Kormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
                     {
                         pontszamok.get(i).set(1,pontszamok.get(i).get(1)+KiertekelesBeallitasok.gyozelemPont);
@@ -123,7 +126,7 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
         }
 
         // pontszámok szerinti rendezés
-
+        //TODO (szgabbor): Ez itt elég bonyolultnak tűnik nekem.
         Collections.sort(pontszamok, new Comparator<ArrayList<Integer>>() {
             @Override
             public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {
@@ -135,7 +138,6 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
         {
             Kiertekel.sorrend.set(kezdet+i, pontszamok.get(i).get(0));
         }
-
 
         int azonoskezdet = 0;
         for(int i=1; i<pontszamok.size(); i++) {

@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     //TODO (szgabbor): Ez miért statikus?
     public static ArrayList<Csapat> csapatok = new ArrayList<>();

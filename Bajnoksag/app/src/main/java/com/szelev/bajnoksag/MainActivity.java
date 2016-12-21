@@ -1,5 +1,6 @@
 package com.szelev.bajnoksag;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -90,8 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void actionOnTovabbButton() {
-        MainActivity.activity_number = 4;
-        create();
+        Intent intent = new Intent(this, Modvalaszto.class);
+        Intent intent1 = new Intent();
+
+        startActivity(intent);
     }
 
     //TODO (szgabbor): Ezt máshol is használhatod, érdemes lehet új osztályba kiszervezni.
@@ -144,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case 4:
                 setContentView(R.layout.activity_modvalaszto);
-                activity = new Modvalaszto(this);
+                activity = new Modvalaszto();
                 break;
             case 5:
                 setContentView(R.layout.activity_egyeneskieses);

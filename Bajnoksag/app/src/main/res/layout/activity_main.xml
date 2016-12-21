@@ -85,14 +85,6 @@
     </ScrollView>
 
     <Button
-        android:text="ÚJ CSAPAT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonUjCsapat"
-        android:layout_below="@+id/editTextCsapatSuly"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="TOVÁBB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,5 +92,13 @@
         android:layout_below="@+id/editTextCsapatSuly"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="ÚJ CSAPAT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonUjCsapat"
+        android:layout_below="@+id/editTextCsapatSuly"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

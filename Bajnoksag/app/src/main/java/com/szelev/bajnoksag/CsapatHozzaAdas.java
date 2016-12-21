@@ -81,8 +81,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
     }
 
     private void actionOnTovabbButton() {
-        MainActivity.activity_number = 1;
-        Kormerkozesek.initEredmenyek();             // ha majd kesobb hozza lehet utolag adni csapatot, akkor ezt mashogy kell megvalositani.
+        MainActivity.activity_number = 4;
         mainAct.create();
     }
 

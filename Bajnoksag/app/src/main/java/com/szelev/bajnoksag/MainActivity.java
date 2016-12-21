@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity{
                 setContentView(R.layout.activity_kiertekelesbeallitasok);
                 activity = new KiertekelesBeallitasok(this);
                 break;
+            case 4:
+                setContentView(R.layout.activity_modvalaszto);
+                activity = new Modvalaszto(this);
+                break;
+            case 5:
+                setContentView(R.layout.activity_egyeneskieses);
+                activity = new Egyeneskieses(this);
+                break;
             default:
                 activity = null;
         }

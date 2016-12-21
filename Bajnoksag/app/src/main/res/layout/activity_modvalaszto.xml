@@ -7,13 +7,13 @@
         android:text="Körmérkőzés"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button8"/>
-        <!--android:onClick="actionOnKorButton"/-->
+        android:id="@+id/button8"
+        android:onClick="actionOnKorButton"/>
 
     <Button
         android:text="Egyeneskiesés"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button9"/>
-        <!--android:onClick="actionOnEgyenesButton"/-->
+        android:id="@+id/button9"
+        android:onClick="actionOnEgyenesButton"/>
 </LinearLayout>

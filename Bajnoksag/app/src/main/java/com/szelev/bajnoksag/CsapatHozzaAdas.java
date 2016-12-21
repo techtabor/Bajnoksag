@@ -57,7 +57,7 @@ public class CsapatHozzaAdas extends AppCompatActivity{
     }
 
     //onClik event
-    private void actionOnUjCsapatButton(View v) {
+    public void actionOnUjCsapatButton(View v) {
         Csapat c = new Csapat();
 
         c.setID(CsapatHozzaAdas.csapatok.size());
@@ -74,7 +74,7 @@ public class CsapatHozzaAdas extends AppCompatActivity{
     }
 
     //onClick event
-    private void actionOnTovabbButton(View v) {
+    public void actionOnTovabbButton(View v) {
         Intent intent = new Intent(this, Modvalaszto.class);
 
         startActivity(intent);

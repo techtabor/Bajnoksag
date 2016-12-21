@@ -21,6 +21,8 @@ import java.util.List;
 
 public class Kormerkozesek extends AppCompatActivity{
 
+    private static boolean  voltEEredmenyInit = false;
+
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
@@ -31,6 +33,12 @@ public class Kormerkozesek extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        if(!voltEEredmenyInit)
+        {
+            voltEEredmenyInit = true;
+            initEredmenyek();
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kormerkozesek);
 
@@ -49,6 +57,7 @@ public class Kormerkozesek extends AppCompatActivity{
     }
 
     //TODO (szgabbor): Mi ez a nagy T?
+    //(szlev): Tabla
     private void refreshT()
     {
         merkozesTabla.removeAllViews();
@@ -68,7 +77,7 @@ public class Kormerkozesek extends AppCompatActivity{
         }
         merkozesTabla.addView(tr);
 
-        for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)
+        for(int i = 0; i<CsapatHozzaAdas.csapatok.size(); i++)
         {
             tr = new TableRow(this);
             tv = new TextView(this);
@@ -77,7 +86,7 @@ public class Kormerkozesek extends AppCompatActivity{
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
 
-            for(int j = 0; j< CsapatHozzaAdas.csapatok.size(); j++)
+            for(int j = 0; j<CsapatHozzaAdas.csapatok.size(); j++)
             {
                 tv = new TextView(this);
                 if(eredmenyek.get(i).get(j).voltMeccs)
@@ -119,7 +128,7 @@ public class Kormerkozesek extends AppCompatActivity{
         csapatok2.setAdapter(dataAdapter);
     }
 
-    public static void initEredmenyek()
+    private static void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
         for(int i = 0; i< CsapatHozzaAdas.csapatok.size(); i++)

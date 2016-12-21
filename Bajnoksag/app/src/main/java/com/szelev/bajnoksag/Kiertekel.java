@@ -174,13 +174,13 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
 
         for(int i=0; i<eredmenyk.size(); i++)
         {
-            for(int j=0; j<eredmenyk.size(); j++)
+            for(int j=0; j<sorrend.size(); j++)
             {
-                if(i!=j)
+                if(eredmenyk.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).voltMeccs())
+                    if (Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).getElso()-Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(eredmenyk.get(j).get(0)).getMasodik());
+                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getElso()-Kormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getMasodik());
                     }
                 }
             }
@@ -237,13 +237,13 @@ public class Kiertekel extends AppCompatActivity implements View.OnClickListener
 
         for(int i=0; i<szerzettp.size(); i++)
         {
-            for(int j=0; j<szerzettp.size(); j++)
+            for(int j=0; j<sorrend.size(); j++)
             {
-                if(i!=j)
+                if(szerzettp.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(szerzettp.get(j).get(0)).voltMeccs())
+                    if (Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(szerzettp.get(j).get(0)).getElso());
+                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+Kormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).getElso());
                     }
                 }
             }

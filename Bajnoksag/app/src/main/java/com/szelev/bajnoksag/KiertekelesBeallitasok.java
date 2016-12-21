@@ -33,7 +33,7 @@ public class KiertekelesBeallitasok extends AppCompatActivity implements View.On
         tv1.setText(Integer.toString(KiertekelesBeallitasok.gyozelemPont));
         tv2.setText(Integer.toString(KiertekelesBeallitasok.dontetlenPont));
         tv3.setText(Integer.toString(KiertekelesBeallitasok.veresegPont));
-        tv3.setText(Integer.toString(KiertekelesBeallitasok.nemVoltMegMeccsPont));
+        tv4.setText(Integer.toString(KiertekelesBeallitasok.nemVoltMegMeccsPont));
 
         beallit = (Button) (mainAct.findViewById(R.id.button6));
         vissza  = (Button) (mainAct.findViewById(R.id.button7));
@@ -56,6 +56,7 @@ public class KiertekelesBeallitasok extends AppCompatActivity implements View.On
         else
         {
             MainActivity.activity_number = 2;
+            Kiertekel.sorrendKiszamol();
             mainAct.create();
         }
     }

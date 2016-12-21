@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.ACAs;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,7 +20,7 @@ import java.util.Comparator;
  * Created by Levente on 2016.12.18..
  */
 
-public class KiertekelACA extends AppCompatActivity{
+public class ACAKiertekel extends AppCompatActivity{
 
     private TableLayout                 ertekeloTabla;
     public  static ArrayList<Integer>   sorrend;
@@ -60,7 +60,7 @@ public class KiertekelACA extends AppCompatActivity{
         tbr.addView(t2v);
         ertekeloTabla.addView(tbr);
 
-        for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
+        for(int i = 0; i< ACAKiertekel.sorrend.size(); i++)
         {
             tbr = new TableRow(this);
             t1v = new TextView(this);
@@ -69,7 +69,7 @@ public class KiertekelACA extends AppCompatActivity{
             t1v.setGravity(Gravity.CENTER);
             tbr.addView(t1v);
             t2v = new TextView(this);
-            t2v.setText(CsapatHozzaAdasACA.csapatok.get(KiertekelACA.sorrend.get(i)).getNev());
+            t2v.setText(ACACsapatHozzaadas.csapatok.get(ACAKiertekel.sorrend.get(i)).getNev());
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
@@ -83,9 +83,9 @@ public class KiertekelACA extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
+        for(int i = 0; i< ACACsapatHozzaadas.csapatok.size(); i++)
             sorrend.add(i);
-        sorbarakPontszam(0, CsapatHozzaAdasACA.csapatok.size()-1);
+        sorbarakPontszam(0, ACACsapatHozzaadas.csapatok.size()-1);
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)
@@ -110,18 +110,18 @@ public class KiertekelACA extends AppCompatActivity{
                 if(i!=j)
                 {
                     //TODO (szgabbor): Ez itt kódismétlés
-                    if(KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()> KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
+                    if(ACAKormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()> ACAKormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.gyozelemPont);
-                    } else if (KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()< KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ ACAKiertekelesBeallitasok.gyozelemPont);
+                    } else if (ACAKormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()< ACAKormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.veresegPont);
-                    } else if (KormerkozesekACA.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs())
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ ACAKiertekelesBeallitasok.veresegPont);
+                    } else if (ACAKormerkozesek.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs())
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.dontetlenPont);
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ ACAKiertekelesBeallitasok.dontetlenPont);
                     } else
                     {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.nemVoltMegMeccsPont);
+                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ ACAKiertekelesBeallitasok.nemVoltMegMeccsPont);
                     }
                 }
             }
@@ -138,7 +138,7 @@ public class KiertekelACA extends AppCompatActivity{
 
         for(int i=0; i<pontszamok.size(); i++)
         {
-            KiertekelACA.sorrend.set(kezdet+i, pontszamok.get(i).get(0));
+            ACAKiertekel.sorrend.set(kezdet+i, pontszamok.get(i).get(0));
         }
 
         int azonoskezdet = 0;
@@ -182,9 +182,9 @@ public class KiertekelACA extends AppCompatActivity{
             {
                 if(eredmenyk.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
+                    if (ACAKormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+ KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getElso()- KormerkozesekACA.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getMasodik());
+                        eredmenyk.get(i).set(1,eredmenyk.get(i).get(1)+ ACAKormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getElso()- ACAKormerkozesek.eredmenyek.get(eredmenyk.get(i).get(0)).get(sorrend.get(j)).getMasodik());
                     }
                 }
             }
@@ -201,7 +201,7 @@ public class KiertekelACA extends AppCompatActivity{
 
         for(int i=0; i<eredmenyk.size(); i++)
         {
-            KiertekelACA.sorrend.set(kezdet+i, eredmenyk.get(i).get(0));
+            ACAKiertekel.sorrend.set(kezdet+i, eredmenyk.get(i).get(0));
         }
 
 
@@ -245,9 +245,9 @@ public class KiertekelACA extends AppCompatActivity{
             {
                 if(szerzettp.get(i).get(0)!=sorrend.get(j))
                 {
-                    if (KormerkozesekACA.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
+                    if (ACAKormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).voltMeccs())
                     {
-                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+ KormerkozesekACA.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).getElso());
+                        szerzettp.get(i).set(1,szerzettp.get(i).get(1)+ ACAKormerkozesek.eredmenyek.get(szerzettp.get(i).get(0)).get(sorrend.get(j)).getElso());
                     }
                 }
             }
@@ -264,7 +264,7 @@ public class KiertekelACA extends AppCompatActivity{
 
         for(int i=0; i<szerzettp.size(); i++)
         {
-            KiertekelACA.sorrend.set(kezdet+i, szerzettp.get(i).get(0));
+            ACAKiertekel.sorrend.set(kezdet+i, szerzettp.get(i).get(0));
         }
 
 
@@ -287,7 +287,7 @@ public class KiertekelACA extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        Intent intent = new Intent(this, KormerkozesekACA.class);
+        Intent intent = new Intent(this, ACAKormerkozesek.class);
 
         startActivity(intent);
     }
@@ -295,7 +295,7 @@ public class KiertekelACA extends AppCompatActivity{
     //onClick event
     public void actionOnTovabbButton(View v)
     {
-        Intent intent = new Intent(this, KiertekelesBeallitasokACA.class);
+        Intent intent = new Intent(this, ACAKiertekelesBeallitasok.class);
 
         startActivity(intent);
     }

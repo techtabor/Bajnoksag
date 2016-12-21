@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.ACAs;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,18 +16,16 @@ import com.szelev.bajnoksag.R;
 
 import java.util.ArrayList;
 
-public class CsapatHozzaAdasACA extends AppCompatActivity{
+public class ACACsapatHozzaadas extends AppCompatActivity{
 
-    //TODO (szgabbor): Ez miért statikus?
     public static ArrayList<Csapat> csapatok = new ArrayList<>();
-    private AppCompatActivity       activity;
 
     private EditText            csapatNevText;
     private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
 
-    private int defaultTextColor = Color.BLACK;
-    private int defaultGravity = Gravity.CENTER;
+    private int defaultTextColor    = Color.BLACK;
+    private int defaultGravity      = Gravity.CENTER;
 
 
     @Override
@@ -51,8 +49,8 @@ public class CsapatHozzaAdasACA extends AppCompatActivity{
     private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-        for(int i = 0; i < CsapatHozzaAdasACA.csapatok.size(); i++) {
-            Csapat c = CsapatHozzaAdasACA.csapatok.get(i);
+        for(int i = 0; i < ACACsapatHozzaadas.csapatok.size(); i++) {
+            Csapat c = ACACsapatHozzaadas.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
@@ -63,11 +61,11 @@ public class CsapatHozzaAdasACA extends AppCompatActivity{
     public void actionOnUjCsapatButton(View v) {
         Csapat c = new Csapat();
 
-        c.setID(CsapatHozzaAdasACA.csapatok.size());
+        c.setID(ACACsapatHozzaadas.csapatok.size());
         c.setNev(csapatNevText.getText().toString());
         c.setSuly(csapatSulyText.getText().toString());
 
-        CsapatHozzaAdasACA.csapatok.add(c);
+        ACACsapatHozzaadas.csapatok.add(c);
         TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
 
         csapatTabla.addView(row);
@@ -78,7 +76,7 @@ public class CsapatHozzaAdasACA extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        Intent intent = new Intent(this, ModvalasztoACA.class);
+        Intent intent = new Intent(this, ACAModvalaszto.class);
 
         startActivity(intent);
     }

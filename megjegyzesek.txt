@@ -1,0 +1,9 @@
+ne legyen kódismétlés
+konstruktosban ne legyen semmi
+külön onClick
+tovább-ra közvetletlenül laplépés
+designn material
+továbblépésre drag
+static-ot kiszedni
+logika - felület
+csapat - pont -... -> egybe

@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.szelev.bajnoksag.AppCompatActivities.CsapatHozzaAdasACA">
+    tools:context="com.szelev.bajnoksag.ACAs.ACACsapatHozzaadas">
 
     <Button
         android:text="VISSZA"

@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.ACAs;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Levente on 2016.12.06..
  */
 
-public class KormerkozesekACA extends AppCompatActivity{
+public class ACAKormerkozesek extends AppCompatActivity{
 
     private static boolean  voltEEredmenyInit = false;
 
@@ -69,27 +69,27 @@ public class KormerkozesekACA extends AppCompatActivity{
         TextView tv = new TextView(this);
         tv.setText("");
         tr.addView(tv);
-        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
+        for(int i = 0; i< ACACsapatHozzaadas.csapatok.size(); i++)
         {
             //TODO (szgabbor): Ez itt kódismétlés.
             tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaAdasACA.csapatok.get(i).getNev() + " ");
+            tv.setText(" " + ACACsapatHozzaadas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
         }
         merkozesTabla.addView(tr);
 
-        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
+        for(int i = 0; i< ACACsapatHozzaadas.csapatok.size(); i++)
         {
             tr = new TableRow(this);
             tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaAdasACA.csapatok.get(i).getNev() + " ");
+            tv.setText(" " + ACACsapatHozzaadas.csapatok.get(i).getNev() + " ");
             tv.setTextColor(Color.BLACK);
             tv.setGravity(Gravity.CENTER);
             tr.addView(tv);
 
-            for(int j = 0; j< CsapatHozzaAdasACA.csapatok.size(); j++)
+            for(int j = 0; j< ACACsapatHozzaadas.csapatok.size(); j++)
             {
                 tv = new TextView(this);
                 if(eredmenyek.get(i).get(j).voltMeccs())
@@ -121,9 +121,9 @@ public class KormerkozesekACA extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
+        for(int i = 0; i< ACACsapatHozzaadas.csapatok.size(); i++)
         {
-            list.add(CsapatHozzaAdasACA.csapatok.get(i).getNev());
+            list.add(ACACsapatHozzaadas.csapatok.get(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -134,10 +134,10 @@ public class KormerkozesekACA extends AppCompatActivity{
     private static void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        for(int i = 0; i< CsapatHozzaAdasACA.csapatok.size(); i++)
+        for(int i = 0; i< ACACsapatHozzaadas.csapatok.size(); i++)
         {
             ArrayList<Eredmeny> al = new ArrayList<>();
-            for(int j = 0; j< CsapatHozzaAdasACA.csapatok.size(); j++)
+            for(int j = 0; j< ACACsapatHozzaadas.csapatok.size(); j++)
             {
                 Eredmeny e = new Eredmeny();
                 al.add(e);
@@ -172,7 +172,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     //onClick action
     public void actionOnTovabbButton(View v)
     {
-        Intent intent = new Intent(this, KiertekelACA.class);
+        Intent intent = new Intent(this, ACAKiertekel.class);
 
         startActivity(intent);
     }

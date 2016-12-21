@@ -91,8 +91,8 @@
         android:id="@+id/button2"
         android:layout_below="@+id/editTextCsapatSuly"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="actionOnTovabbButton"/>
+        android:layout_alignParentEnd="true"/>
+        <!--android:onClick="actionOnTovabbButton"/-->
 
     <Button
         android:text="ÚJ CSAPAT"
@@ -101,6 +101,6 @@
         android:id="@+id/buttonUjCsapat"
         android:layout_below="@+id/editTextCsapatSuly"
         android:layout_centerHorizontal="true"
-        android:onClick="actionOnUjCsapatButton"/>
+        <!--android:onClick="actionOnUjCsapatButton"/-->
 
 </RelativeLayout>

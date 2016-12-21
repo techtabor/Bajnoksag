@@ -36,7 +36,7 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceBundle)
     {
         super.onCreate(savedInstanceBundle);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_csapathozzaadas);
     }
 
     public void init() {

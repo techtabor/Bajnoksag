@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_csapathozzaadas);
         create();
     }
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         switch (activity_number) {
             case 0:
                 CsapatHozzaAdas act = new CsapatHozzaAdas(this);
-                
+                setContentView(R.layout.activity_csapathozzaadas);
                 act.init();
                 activity = act;
                 break;

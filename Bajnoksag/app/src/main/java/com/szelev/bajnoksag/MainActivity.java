@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity{
         System.out.println(activity_number);
         switch (activity_number) {
             case 0:
-                setContentView(R.layout.activity_main);
                 CsapatHozzaAdas act = new CsapatHozzaAdas(this);
+                
                 act.init();
                 activity = act;
                 break;

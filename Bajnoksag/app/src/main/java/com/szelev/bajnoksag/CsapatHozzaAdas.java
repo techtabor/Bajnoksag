@@ -1,6 +1,7 @@
 package com.szelev.bajnoksag;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -29,15 +30,24 @@ public class CsapatHozzaAdas extends AppCompatActivity implements View.OnClickLi
 
     public CsapatHozzaAdas(MainActivity mainAct) {
         this.mainAct = mainAct;
+    }
 
-        ujCsapatBut     = (Button)      (mainAct.findViewById(R.id.buttonUjCsapat));
-        tovabbBut       = (Button)      (mainAct.findViewById(R.id.button2));
-        csapatNevText   = (EditText)    (mainAct.findViewById(R.id.editTextCsapatNev));
-        csapatSulyText  = (EditText)    (mainAct.findViewById(R.id.editTextCsapatSuly));
-        csapatTabla     = (TableLayout) (mainAct.findViewById(R.id.table_main));
+    @Override
+    protected void onCreate(Bundle savedInstanceBundle)
+    {
+        super.onCreate(savedInstanceBundle);
+        setContentView(R.layout.activity_main);
     }
 
     public void init() {
+
+        ujCsapatBut     = (Button)      (findViewById(R.id.buttonUjCsapat));
+        tovabbBut       = (Button)      (findViewById(R.id.button2));
+        csapatNevText   = (EditText)    (findViewById(R.id.editTextCsapatNev));
+        csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
+        csapatTabla     = (TableLayout) (findViewById(R.id.table_main));
+
+
         createTable();
         ujCsapatBut.setOnClickListener(this);
         tovabbBut.setOnClickListener(this);

@@ -41,6 +41,7 @@ public class Kormerkozesek extends AppCompatActivity implements View.OnClickList
         er2             = (TextView)    (mainAct.findViewById(R.id.editText2));
         tovabb          = (Button)      (mainAct.findViewById(R.id.button3));
 
+
         mentes.setOnClickListener(this);
         tovabb.setOnClickListener(this);
 

@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.ACAs;
+package com.szelev.bajnoksag.AppCompatActivities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,7 +16,7 @@ import com.szelev.bajnoksag.R;
 
 import java.util.ArrayList;
 
-public class ACACsapatHozzaadas extends AppCompatActivity{
+public class CsapatHozzaadasACA extends AppCompatActivity{
 
     public static ArrayList<Csapat> csapatok = new ArrayList<>();
 
@@ -49,8 +49,8 @@ public class ACACsapatHozzaadas extends AppCompatActivity{
     private void createTable() {
         TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
         csapatTabla.addView(header);
-        for(int i = 0; i < ACACsapatHozzaadas.csapatok.size(); i++) {
-            Csapat c = ACACsapatHozzaadas.csapatok.get(i);
+        for(int i = 0; i < CsapatHozzaadasACA.csapatok.size(); i++) {
+            Csapat c = CsapatHozzaadasACA.csapatok.get(i);
 
             TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
             csapatTabla.addView(row);
@@ -61,11 +61,11 @@ public class ACACsapatHozzaadas extends AppCompatActivity{
     public void actionOnUjCsapatButton(View v) {
         Csapat c = new Csapat();
 
-        c.setID(ACACsapatHozzaadas.csapatok.size());
+        c.setID(CsapatHozzaadasACA.csapatok.size());
         c.setNev(csapatNevText.getText().toString());
         c.setSuly(csapatSulyText.getText().toString());
 
-        ACACsapatHozzaadas.csapatok.add(c);
+        CsapatHozzaadasACA.csapatok.add(c);
         TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
 
         csapatTabla.addView(row);
@@ -76,7 +76,7 @@ public class ACACsapatHozzaadas extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        Intent intent = new Intent(this, ACAModvalaszto.class);
+        Intent intent = new Intent(this, ModvalasztoACA.class);
 
         startActivity(intent);
     }

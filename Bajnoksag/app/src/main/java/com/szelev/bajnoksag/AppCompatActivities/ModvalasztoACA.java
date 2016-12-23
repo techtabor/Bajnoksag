@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.ACAs;
+package com.szelev.bajnoksag.AppCompatActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import com.szelev.bajnoksag.R;
  * Created by Levente on 2016.12.21..
  */
 
-public class ACAModvalaszto extends AppCompatActivity{
+public class ModvalasztoACA extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,7 +23,7 @@ public class ACAModvalaszto extends AppCompatActivity{
     //onClick event
     public void actionOnKorButton(View v)
     {
-        Intent intent = new Intent(this, ACAKormerkozesek.class);
+        Intent intent = new Intent(this, KormerkozesekACA.class);
 
         startActivity(intent);
     }
@@ -31,7 +31,7 @@ public class ACAModvalaszto extends AppCompatActivity{
     //onClick event
     public void actionOnEgyenesButton(View v)
     {
-        Intent intent = new Intent(this, ACAEgyeneskieses.class);
+        Intent intent = new Intent(this, EgyeneskiesesACA.class);
 
         startActivity(intent);
     }

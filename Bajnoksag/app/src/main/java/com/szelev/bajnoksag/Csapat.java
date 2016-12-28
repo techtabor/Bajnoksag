@@ -42,10 +42,6 @@ public class Csapat {
         this.suly   = suly;
     }
 
-    public void setSuly(String suly) {
-        this.suly = Integer.parseInt(suly);
-    }
-
     public int getSuly() {
         return suly;
     }

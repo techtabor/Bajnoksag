@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.Utilities;
 
 /**
  * Created by Levente on 2016.12.21..
@@ -23,17 +24,13 @@ public class ModvalasztoACA extends AppCompatActivity{
     //onClick event
     public void actionOnKorButton(View v)
     {
-        Intent intent = new Intent(this, KormerkozesekACA.class);
-
-        startActivity(intent);
+        Utilities.startNewActivity(KormerkozesekACA.class, this);
     }
 
     //onClick event
     public void actionOnEgyenesButton(View v)
     {
-        Intent intent = new Intent(this, EgyeneskiesesACA.class);
-
-        startActivity(intent);
+        Utilities.startNewActivity(EgyeneskiesesACA.class, this);
     }
 
 }

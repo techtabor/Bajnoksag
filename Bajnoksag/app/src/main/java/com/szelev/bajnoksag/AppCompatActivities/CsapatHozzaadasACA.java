@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.szelev.bajnoksag.Csapat;
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
 
@@ -23,10 +24,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     private EditText            csapatNevText;
     private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
-
-    private int defaultTextColor    = Color.BLACK;
-    private int defaultGravity      = Gravity.CENTER;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,26 +44,22 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     }
 
     private void createTable() {
-        TableRow header = createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ");
+        TableRow header = Utilities.createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ", this);
         csapatTabla.addView(header);
         for(int i = 0; i < CsapatHozzaadasACA.csapatok.size(); i++) {
             Csapat c = CsapatHozzaadasACA.csapatok.get(i);
 
-            TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
+            TableRow row = Utilities.createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ", this);
             csapatTabla.addView(row);
         }
     }
 
     //onClik event
     public void actionOnUjCsapatButton(View v) {
-        Csapat c = new Csapat();
-
-        c.setID(CsapatHozzaadasACA.csapatok.size());
-        c.setNev(csapatNevText.getText().toString());
-        c.setSuly(csapatSulyText.getText().toString());
+        Csapat c = new Csapat(CsapatHozzaadasACA.csapatok.size(), csapatNevText.getText().toString(), Integer.parseInt(csapatSulyText.getText().toString()));
 
         CsapatHozzaadasACA.csapatok.add(c);
-        TableRow row = createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ");
+        TableRow row = Utilities.createRowWithTwoCell(" " + c.getNev() + " ", " " + c.getSuly() + " ", this);
 
         csapatTabla.addView(row);
 
@@ -76,26 +69,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        Intent intent = new Intent(this, ModvalasztoACA.class);
-
-        startActivity(intent);
-    }
-
-    //TODO (szgabbor): Ezt máshol is használhatod, érdemes lehet új osztályba kiszervezni.
-    private TableRow createRowWithTwoCell(String firstCell, String secondCell) {
-        TableRow result = new TableRow(this);
-        TextView firstTextView = createTextView(firstCell);
-        result.addView(firstTextView);
-        TextView secondTextView = createTextView(secondCell);
-        result.addView(secondTextView);
-        return result;
-    }
-
-    private TextView createTextView(String text) {
-        TextView textView = new TextView(this);
-        textView.setText(text);
-        textView.setTextColor(defaultTextColor);
-        textView.setGravity(defaultGravity);
-        return textView;
+        Utilities.startNewActivity(ModvalasztoACA.class, this);
     }
 }

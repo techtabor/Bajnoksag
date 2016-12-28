@@ -11,6 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -287,17 +288,13 @@ public class KiertekelACA extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        Intent intent = new Intent(this, KormerkozesekACA.class);
-
-        startActivity(intent);
+        Utilities.startNewActivity(KormerkozesekACA.class, this);
     }
 
     //onClick event
     public void actionOnTovabbButton(View v)
     {
-        Intent intent = new Intent(this, KiertekelesBeallitasokACA.class);
-
-        startActivity(intent);
+        Utilities.startNewActivity(KiertekelesBeallitasokACA.class, this);
     }
 
 }

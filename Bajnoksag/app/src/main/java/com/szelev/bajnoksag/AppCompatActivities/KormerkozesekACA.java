@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.szelev.bajnoksag.Eredmeny;
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,16 +67,14 @@ public class KormerkozesekACA extends AppCompatActivity{
         merkozesTabla.removeAllViews();
 
         TableRow tr = new TableRow(this);
-        TextView tv = new TextView(this);
-        tv.setText("");
+        TextView tv;
+
+        tv = Utilities.createTextView("", this);
         tr.addView(tv);
+
         for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
         {
-            //TODO (szgabbor): Ez itt kódismétlés.
-            tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ");
-            tv.setTextColor(Color.BLACK);
-            tv.setGravity(Gravity.CENTER);
+            tv = Utilities.createTextView(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ", this);
             tr.addView(tv);
         }
         merkozesTabla.addView(tr);
@@ -83,32 +82,24 @@ public class KormerkozesekACA extends AppCompatActivity{
         for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
         {
             tr = new TableRow(this);
-            tv = new TextView(this);
-            tv.setText(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ");
-            tv.setTextColor(Color.BLACK);
-            tv.setGravity(Gravity.CENTER);
+            tv = Utilities.createTextView(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ", this);
             tr.addView(tv);
 
             for(int j = 0; j< CsapatHozzaadasACA.csapatok.size(); j++)
             {
-                tv = new TextView(this);
                 if(eredmenyek.get(i).get(j).voltMeccs())
                 {
-                    tv.setText(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ");
+                    tv = Utilities.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", this);
                 }
                 else
                 {
-                    tv.setText(" - ");
+                    tv = Utilities.createTextView(" - ", this);
                 }
-                tv.setTextColor(Color.BLACK);
-                tv.setGravity(Gravity.CENTER);
                 tr.addView(tv);
             }
 
             merkozesTabla.addView(tr);
         }
-
-
     }
 
     private void initT()
@@ -172,9 +163,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     //onClick action
     public void actionOnTovabbButton(View v)
     {
-        Intent intent = new Intent(this, KiertekelACA.class);
-
-        startActivity(intent);
+        Utilities.startNewActivity(KiertekelACA.class, this);
     }
 
 }

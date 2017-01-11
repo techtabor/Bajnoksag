@@ -4,19 +4,19 @@ package com.szelev.bajnoksag;
  * Created by Levente on 2016.12.16..
  */
 
-public class Eredmeny {
+public class MerkozesEredmeny {
 
     private int     elso, masodik;
     private boolean voltMeccs;
 
-    public Eredmeny(int elso, int masodik)
+    public MerkozesEredmeny(int elso, int masodik)
     {
         this.elso       = elso;
         this.masodik    = masodik;
         voltMeccs       = true;
     }
 
-    public Eredmeny()
+    public MerkozesEredmeny()
     {
         voltMeccs = false;
     }

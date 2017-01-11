@@ -7,11 +7,16 @@ import android.view.Gravity;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Levente on 2016.12.28..
  */
 
 public class Utilities {
+
+    public static ArrayList<Csapat> csapatok = new ArrayList<>();
+
 
     public static int defaultTextColor  = Color.BLACK;
     public static int defaultGravity    = Gravity.CENTER;

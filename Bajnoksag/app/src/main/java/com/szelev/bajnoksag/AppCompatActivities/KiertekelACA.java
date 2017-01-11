@@ -70,7 +70,7 @@ public class KiertekelACA extends AppCompatActivity{
             t1v.setGravity(Gravity.CENTER);
             tbr.addView(t1v);
             t2v = new TextView(this);
-            t2v.setText(CsapatHozzaadasACA.csapatok.get(KiertekelACA.sorrend.get(i)).getNev());
+            t2v.setText(Utilities.csapatok.get(KiertekelACA.sorrend.get(i)).getNev());
             t2v.setTextColor(Color.BLACK);
             t2v.setGravity(Gravity.CENTER);
             tbr.addView(t2v);
@@ -84,9 +84,9 @@ public class KiertekelACA extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
+        for(int i = 0; i< Utilities.csapatok.size(); i++)
             sorrend.add(i);
-        sorbarakPontszam(0, CsapatHozzaadasACA.csapatok.size()-1);
+        sorbarakPontszam(0, Utilities.csapatok.size()-1);
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)

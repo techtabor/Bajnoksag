@@ -1,10 +1,7 @@
 package com.szelev.bajnoksag.AppCompatActivities;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -12,7 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.szelev.bajnoksag.Eredmeny;
+import com.szelev.bajnoksag.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
 
@@ -32,7 +29,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     private TextView        er1, er2;
 
     //TODO (szgabbor) Ez miért statikus?
-    public static ArrayList<ArrayList<Eredmeny>> eredmenyek;
+    public static ArrayList<ArrayList<MerkozesEredmeny>> eredmenyek;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -72,20 +69,20 @@ public class KormerkozesekACA extends AppCompatActivity{
         tv = Utilities.createTextView("", this);
         tr.addView(tv);
 
-        for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
+        for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
-            tv = Utilities.createTextView(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ", this);
+            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", this);
             tr.addView(tv);
         }
         merkozesTabla.addView(tr);
 
-        for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
+        for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
             tr = new TableRow(this);
-            tv = Utilities.createTextView(" " + CsapatHozzaadasACA.csapatok.get(i).getNev() + " ", this);
+            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", this);
             tr.addView(tv);
 
-            for(int j = 0; j< CsapatHozzaadasACA.csapatok.size(); j++)
+            for(int j = 0; j< Utilities.csapatok.size(); j++)
             {
                 if(eredmenyek.get(i).get(j).voltMeccs())
                 {
@@ -112,9 +109,9 @@ public class KormerkozesekACA extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
+        for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
-            list.add(CsapatHozzaadasACA.csapatok.get(i).getNev());
+            list.add(Utilities.csapatok.get(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,12 +122,12 @@ public class KormerkozesekACA extends AppCompatActivity{
     private static void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        for(int i = 0; i< CsapatHozzaadasACA.csapatok.size(); i++)
+        for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
-            ArrayList<Eredmeny> al = new ArrayList<>();
-            for(int j = 0; j< CsapatHozzaadasACA.csapatok.size(); j++)
+            ArrayList<MerkozesEredmeny> al = new ArrayList<>();
+            for(int j = 0; j< Utilities.csapatok.size(); j++)
             {
-                Eredmeny e = new Eredmeny();
+                MerkozesEredmeny e = new MerkozesEredmeny();
                 al.add(e);
             }
             eredmenyek.add(al);

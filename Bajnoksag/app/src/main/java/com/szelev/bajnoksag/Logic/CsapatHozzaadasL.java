@@ -12,27 +12,32 @@ import com.szelev.bajnoksag.Utilities;
 
 public class CsapatHozzaadasL {
 
-    private static Csapat lastCsapat;
+    private Csapat lastCsapat;
 
-    public static void addCsapat(int ID, String nev, int suly)
+    public CsapatHozzaadasL()
+    {
+
+    }
+
+    public void addCsapat(int ID, String nev, int suly)
     {
         Csapat c = new Csapat(ID, nev, suly);
         Utilities.csapatok.add(c);
 
-        CsapatHozzaadasL.lastCsapat = c;
+        lastCsapat = c;
     }
 
-    public static void addCsapat(String nev, int suly)
+    public void addCsapat(String nev, int suly)
     {
-        CsapatHozzaadasL.addCsapat(Utilities.csapatok.size(), nev, suly);
+        addCsapat(Utilities.csapatok.size(), nev, suly);
     }
 
-    public static TableRow getLastCsapatRow(AppCompatActivity act)
+    public TableRow getLastCsapatRow(AppCompatActivity act)
     {
-        return Utilities.createRowWithTwoCell(" " + CsapatHozzaadasL.lastCsapat.getNev() + " ", " " + CsapatHozzaadasL.lastCsapat.getSuly() + " ", act);
+        return Utilities.createRowWithTwoCell(" " + lastCsapat.getNev() + " ", " " + lastCsapat.getSuly() + " ", act);
     }
 
-    public static TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
+    public TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
     {
         return Utilities.createRowWithTwoCell(" " + Utilities.csapatok.get(index).getNev() + " ", " " + Utilities.csapatok.get(index).getSuly() + " ", act);
     }

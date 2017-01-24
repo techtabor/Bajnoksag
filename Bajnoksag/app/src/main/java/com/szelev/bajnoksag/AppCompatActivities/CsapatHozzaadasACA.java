@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class CsapatHozzaadasACA extends AppCompatActivity{
 
+    private static CsapatHozzaadasL logika;
+    private static boolean          vanLogika = false;
+
     private EditText            csapatNevText;
     private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
@@ -29,6 +32,11 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     }
 
     public void init() {
+        if(!vanLogika)
+        {
+            logika = new CsapatHozzaadasL();
+            vanLogika = true;
+        }
 
         csapatNevText   = (EditText)    (findViewById(R.id.editTextCsapatNev));
         csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
@@ -42,7 +50,7 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
         TableRow header = Utilities.createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ", this);
         csapatTabla.addView(header);
         for(int i = 0; i < Utilities.csapatok.size(); i++) {
-            csapatTabla.addView(CsapatHozzaadasL.getCsapatRowByIndex(i, this));
+            csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
     }
 
@@ -54,9 +62,9 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClik event
     public void actionOnUjCsapatButton(View v) {
-        CsapatHozzaadasL.addCsapat(csapatNevText.getText().toString(), Integer.parseInt(csapatSulyText.getText().toString()));
+        logika.addCsapat(csapatNevText.getText().toString(), Integer.parseInt(csapatSulyText.getText().toString()));
 
-        csapatTabla.addView(CsapatHozzaadasL.getLastCsapatRow(this));
+        csapatTabla.addView(logika.getLastCsapatRow(this));
         resetInput();
     }
 

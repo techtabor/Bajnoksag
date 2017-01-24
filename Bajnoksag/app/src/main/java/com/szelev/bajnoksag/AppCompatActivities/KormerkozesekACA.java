@@ -9,6 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.Logic.KormerkozesekL;
 import com.szelev.bajnoksag.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
@@ -22,24 +23,16 @@ import java.util.List;
 
 public class KormerkozesekACA extends AppCompatActivity{
 
-    private static boolean  voltEEredmenyInit = false;
+    public  static KormerkozesekL   logika;
+    private static boolean          vanLogika = false;
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
 
-    //TODO (szgabbor) Ez miért statikus?
-    public static ArrayList<ArrayList<MerkozesEredmeny>> eredmenyek;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        if(!voltEEredmenyInit)
-        {
-            voltEEredmenyInit = true;
-            initEredmenyek();
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kormerkozesek);
 
@@ -48,6 +41,12 @@ public class KormerkozesekACA extends AppCompatActivity{
 
     public void init()
     {
+        if(!vanLogika)
+        {
+            logika = new KormerkozesekL();
+            vanLogika = true;
+        }
+
         merkozesTabla   = (TableLayout) (findViewById(R.id.table_main));
         csapatok1       = (Spinner)     (findViewById(R.id.spinner1));
         csapatok2       = (Spinner)     (findViewById(R.id.spinner2));
@@ -63,40 +62,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     {
         merkozesTabla.removeAllViews();
 
-        TableRow tr = new TableRow(this);
-        TextView tv;
-
-        tv = Utilities.createTextView("", this);
-        tr.addView(tv);
-
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
-        {
-            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", this);
-            tr.addView(tv);
-        }
-        merkozesTabla.addView(tr);
-
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
-        {
-            tr = new TableRow(this);
-            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", this);
-            tr.addView(tv);
-
-            for(int j = 0; j< Utilities.csapatok.size(); j++)
-            {
-                if(eredmenyek.get(i).get(j).voltMeccs())
-                {
-                    tv = Utilities.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", this);
-                }
-                else
-                {
-                    tv = Utilities.createTextView(" - ", this);
-                }
-                tr.addView(tv);
-            }
-
-            merkozesTabla.addView(tr);
-        }
+        logika.tablaRajzol(merkozesTabla, this);
     }
 
     private void initT()
@@ -119,21 +85,6 @@ public class KormerkozesekACA extends AppCompatActivity{
         csapatok2.setAdapter(dataAdapter);
     }
 
-    private static void initEredmenyek()
-    {
-        eredmenyek = new ArrayList<>();
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
-        {
-            ArrayList<MerkozesEredmeny> al = new ArrayList<>();
-            for(int j = 0; j< Utilities.csapatok.size(); j++)
-            {
-                MerkozesEredmeny e = new MerkozesEredmeny();
-                al.add(e);
-            }
-            eredmenyek.add(al);
-        }
-    }
-
     //onClick action
     public void actionOnMentesButton(View v)
     {
@@ -145,10 +96,12 @@ public class KormerkozesekACA extends AppCompatActivity{
         csapatok1.setSelection(0);
         csapatok2.setSelection(0);
 
+
+
         if(i!=j && i!=-1 && j!=-1)
         {
-            eredmenyek.get(i).get(j).setEredmeny(Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
-            eredmenyek.get(j).get(i).setEredmeny(Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
+            logika.setEredmeny(i, j, Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
+            logika.setEredmeny(i, j, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
         }
 
         refreshT();

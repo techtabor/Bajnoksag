@@ -101,7 +101,7 @@ public class KormerkozesekACA extends AppCompatActivity{
         if(i!=j && i!=-1 && j!=-1)
         {
             logika.setEredmeny(i, j, Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
-            logika.setEredmeny(i, j, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
+            logika.setEredmeny(j, i, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
         }
 
         refreshT();

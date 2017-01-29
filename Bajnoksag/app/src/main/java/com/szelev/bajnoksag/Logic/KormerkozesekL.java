@@ -25,6 +25,7 @@ public class KormerkozesekL {
 
     private void initEredmenyek()
     {
+        eredmenyek = new ArrayList<>();
         int N = Utilities.csapatok.size();
         for(int i=0; i<N; i++)
         {

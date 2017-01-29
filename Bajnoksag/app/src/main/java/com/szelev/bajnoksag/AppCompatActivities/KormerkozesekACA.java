@@ -6,11 +6,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.Logic.KormerkozesekL;
-import com.szelev.bajnoksag.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
 

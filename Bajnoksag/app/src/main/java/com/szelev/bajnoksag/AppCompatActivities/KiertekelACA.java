@@ -1,16 +1,10 @@
 package com.szelev.bajnoksag.AppCompatActivities;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
-import com.szelev.bajnoksag.Logic.KormerkozesekL;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
 
@@ -48,34 +42,11 @@ public class KiertekelACA extends AppCompatActivity{
 
     private void kiirErtekeles()
     {
-        //TODO (szgabbor): Ez itt kódismétlés
-        TableRow tbr = new TableRow(this);
-        TextView t1v = new TextView(this);
-        t1v.setText("     Helyezés     ");
-        t1v.setTextColor(Color.BLACK);
-        t1v.setGravity(Gravity.CENTER);
-        tbr.addView(t1v);
-        TextView t2v = new TextView(this);
-        t2v.setText("     Csapatnév     ");
-        t2v.setTextColor(Color.BLACK);
-        t2v.setGravity(Gravity.CENTER);
-        tbr.addView(t2v);
-        ertekeloTabla.addView(tbr);
+        ertekeloTabla.addView(Utilities.createRowWithTwoCell("     Helyezés     ", "     Csapatnév     ", this));
 
         for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
         {
-            tbr = new TableRow(this);
-            t1v = new TextView(this);
-            t1v.setText(Integer.toString(i+1));
-            t1v.setTextColor(Color.BLACK);
-            t1v.setGravity(Gravity.CENTER);
-            tbr.addView(t1v);
-            t2v = new TextView(this);
-            t2v.setText(Utilities.csapatok.get(KiertekelACA.sorrend.get(i)).getNev());
-            t2v.setTextColor(Color.BLACK);
-            t2v.setGravity(Gravity.CENTER);
-            tbr.addView(t2v);
-            ertekeloTabla.addView(tbr);
+            ertekeloTabla.addView(Utilities.createRowWithTwoCell(Integer.toString(i+1), Utilities.csapatok.get(KiertekelACA.sorrend.get(i)).getNev(), this));
         }
     }
 
@@ -88,6 +59,17 @@ public class KiertekelACA extends AppCompatActivity{
         for(int i = 0; i< Utilities.csapatok.size(); i++)
             sorrend.add(i);
         sorbarakPontszam(0, Utilities.csapatok.size()-1);
+    }
+
+    private static int getPontszam(int egyik, int masik, boolean voltMeccs)
+    {
+        if(!voltMeccs)
+            return KiertekelesBeallitasokACA.nemVoltMegMeccsPont;
+        if(egyik > masik)
+            return KiertekelesBeallitasokACA.gyozelemPont;
+        if(egyik < masik)
+            return KiertekelesBeallitasokACA.veresegPont;
+        return KiertekelesBeallitasokACA.dontetlenPont;
     }
 
     private static void sorbarakPontszam(int kezdet, int veg)
@@ -111,26 +93,14 @@ public class KiertekelACA extends AppCompatActivity{
             {
                 if(i!=j)
                 {
-                    //TODO (szgabbor): Ez itt kódismétlés
-                    if(KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()> KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
-                    {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.gyozelemPont);
-                    } else if (KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso()< KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik())
-                    {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.veresegPont);
-                    } else if (KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs())
-                    {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.dontetlenPont);
-                    } else
-                    {
-                        pontszamok.get(i).set(1,pontszamok.get(i).get(1)+ KiertekelesBeallitasokACA.nemVoltMegMeccsPont);
-                    }
+                    pontszamok.get(i).set(1, pontszamok.get(i).get(1) + getPontszam(KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getElso(), KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).getMasodik(), KormerkozesekACA.logika.eredmenyek.get(pontszamok.get(i).get(0)).get(pontszamok.get(j).get(0)).voltMeccs()));
                 }
             }
         }
 
         // pontszámok szerinti rendezés
         //TODO (szgabbor): Ez itt elég bonyolultnak tűnik nekem.
+        //(szelev): ez olyan, mint C++-ban az algorithm könyvtár sort-ja
         Collections.sort(pontszamok, new Comparator<ArrayList<Integer>>() {
             @Override
             public int compare(ArrayList<Integer> o1, ArrayList<Integer> o2) {

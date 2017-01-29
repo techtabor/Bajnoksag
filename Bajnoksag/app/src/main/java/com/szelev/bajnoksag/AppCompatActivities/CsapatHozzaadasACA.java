@@ -7,12 +7,9 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import com.szelev.bajnoksag.Csapat;
 import com.szelev.bajnoksag.Logic.CsapatHozzaadasL;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
-
-import java.util.ArrayList;
 
 public class CsapatHozzaadasACA extends AppCompatActivity{
 

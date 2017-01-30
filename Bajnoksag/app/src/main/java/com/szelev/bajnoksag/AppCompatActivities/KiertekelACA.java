@@ -1,10 +1,13 @@
 package com.szelev.bajnoksag.AppCompatActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.media.MediaMetadataCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
 
+import com.szelev.bajnoksag.CsapatTul;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
 
@@ -16,10 +19,11 @@ import java.util.Comparator;
  * Created by Levente on 2016.12.18..
  */
 
+
 public class KiertekelACA extends AppCompatActivity{
 
     private TableLayout                 ertekeloTabla;
-    public  static ArrayList<Integer>   sorrend;
+    public  static ArrayList<CsapatTul>   sorrend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,7 +49,7 @@ public class KiertekelACA extends AppCompatActivity{
 
         for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
         {
-            ertekeloTabla.addView(Utilities.createRowWithTwoCell(Integer.toString(i+1), Utilities.csapatok.get(KiertekelACA.sorrend.get(i)).getNev(), this));
+            ertekeloTabla.addView(Utilities.createRowWithTwoCell(Integer.toString(i+1), Utilities.csapatok.get(KiertekelACA.sorrend.get(i).ID).getNev(), this));
         }
     }
 
@@ -56,8 +60,49 @@ public class KiertekelACA extends AppCompatActivity{
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
         for(int i = 0; i< Utilities.csapatok.size(); i++)
-            sorrend.add(i);
-        sorbarakPontszam(0, Utilities.csapatok.size()-1);
+        {
+            CsapatTul ct = new CsapatTul();
+            ct.ID = i;
+            sorrend.add(ct);
+        }
+        //sorbarakPontszam(0, Utilities.csapatok.size()-1);
+
+        for(int i=0; i<Utilities.csapatok.size(); i++)
+        {
+            for(int j=0; j<Utilities.csapatok.size(); j++)
+            {
+                if(i!=j)
+                {
+                    sorrend.get(i).pontszam += getPontszam(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs());
+                    sorrend.get(i).pontkul  += KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()-KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik();
+                    if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()>KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik())
+                        sorrend.get(i).gyozelemszam++;
+                    if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs())
+                        sorrend.get(i).jatszottMeccsek++;
+                }
+            }
+        }
+
+        Collections.sort(sorrend, new Comparator<CsapatTul>() {
+            @Override
+            public int compare(CsapatTul o1, CsapatTul o2) {
+                if(((Integer)(o1.pontszam*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontszam*o1.jatszottMeccsek)) != 0)
+                {
+                    return (((Integer)(o1.pontszam*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontszam*o1.jatszottMeccsek)))*(-1);
+                }
+                if(((Integer)(o1.pontkul*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontkul*o1.jatszottMeccsek)) != 0)
+                {
+                    return (((Integer)(o1.pontkul*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontkul*o1.jatszottMeccsek)))*(-1);
+                }
+                if(((Integer)(o1.gyozelemszam*o2.jatszottMeccsek)).compareTo((Integer)(o2.gyozelemszam*o1.jatszottMeccsek)) != 0)
+                {
+                    return (((Integer)(o1.gyozelemszam*o2.jatszottMeccsek)).compareTo((Integer)(o2.gyozelemszam*o1.jatszottMeccsek)))*(-1);
+                }
+                return 0;
+            }
+        });
+
+
     }
 
     private static int getPontszam(int egyik, int masik, boolean voltMeccs)
@@ -70,7 +115,7 @@ public class KiertekelACA extends AppCompatActivity{
             return KiertekelesBeallitasokACA.veresegPont;
         return KiertekelesBeallitasokACA.dontetlenPont;
     }
-
+/*
     private static void sorbarakPontszam(int kezdet, int veg)
     {
         // pontszamokat tarolo arrayList inicializalasa
@@ -254,7 +299,7 @@ public class KiertekelACA extends AppCompatActivity{
         }
 
     }
-
+*/
     //onClick event
     public void actionOnVisszaButton(View v)
     {

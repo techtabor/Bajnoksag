@@ -1,10 +1,7 @@
 package com.szelev.bajnoksag.AppCompatActivities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.TableLayout;
 
 import com.szelev.bajnoksag.Logic.EgyeneskiesesL;
@@ -16,17 +13,11 @@ import com.szelev.bajnoksag.R;
 
 public class EgyeneskiesesACA extends AppCompatActivity{
 
-    private EgyeneskiesesL   logika;
-    //private static boolean          vanLogika = false;
+    private static EgyeneskiesesL   logika;
+    private static boolean          vanLogika = false;
 
     private TableLayout merkozesTabla;
     private TableLayout tovabbjutokTabla;
-
-    public EgyeneskiesesACA()
-    {
-        logika = new EgyeneskiesesL();
-        initLogika();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,21 +28,15 @@ public class EgyeneskiesesACA extends AppCompatActivity{
         init();
     }
 
-    private void initLogika()
-    {
-        logika.init();
-        logika.general();
-    }
-
     public void init()
     {
-        /*if(!vanLogika)
+        if(!vanLogika)
         {
             logika = new EgyeneskiesesL();
             logika.init();
             logika.general();
             vanLogika = true;
-        }*/
+        }
 
         merkozesTabla       = (TableLayout) (findViewById(R.id.table_main));
         tovabbjutokTabla    = (TableLayout) (findViewById(R.id.table_main2));

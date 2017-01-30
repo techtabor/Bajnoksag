@@ -74,14 +74,16 @@ public class EgyeneskiesesL {
     private void merkozesKirajzol(TableLayout tabl, final AppCompatActivity aca)
     {
         if(merkozesek.size()>0) {
-            tabl.addView(Utilities.createRowWithOneCell("Még le nem játszott mérkőzések:", aca));
+            tabl.addView(Utilities.createRowWithThreeCell(" ", "Még le nem játszott mérkőzések:", " ", aca));
             for (int i = 0; i < merkozesek.size(); i++) {
                 TextView tv1 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs1, aca, merkozesek.get(i).index);
-                TextView tv2 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
+                TextView tv2 = Utilities.createTextView("", aca);
+                TextView tv3 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
 
                 TableRow tr = new TableRow(aca);
                 tr.addView(tv1);
                 tr.addView(tv2);
+                tr.addView(tv3);
 
                 tabl.addView(tr);
             }
@@ -125,7 +127,7 @@ public class EgyeneskiesesL {
 
     private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, final AppCompatActivity aca, final int merkozesIndex)
     {
-        TextView tv = Utilities.createTextView(cs.getNev(), aca);
+        TextView tv = Utilities.createTextView("    " + cs.getNev() + "    ", aca);
         tv.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

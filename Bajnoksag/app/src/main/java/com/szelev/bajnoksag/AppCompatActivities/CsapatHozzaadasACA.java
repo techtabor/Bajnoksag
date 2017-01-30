@@ -39,7 +39,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
         csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
         csapatTabla     = (TableLayout) (findViewById(R.id.table_main));
 
-
         createTable();
     }
 

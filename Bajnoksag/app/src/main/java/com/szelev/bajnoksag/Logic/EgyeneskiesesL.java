@@ -21,6 +21,7 @@ public class EgyeneskiesesL {
 
     private ArrayList<Csapat> csapatok;
     private ArrayList<Merkozes> merkozesek;
+    private TableLayout merkTabl, tovabbTabl;
 
     public EgyeneskiesesL()
     {
@@ -59,6 +60,9 @@ public class EgyeneskiesesL {
 
     public void refreshKiiras(TableLayout tl1, TableLayout tl2, AppCompatActivity aca)
     {
+        merkTabl = tl1;
+        tovabbTabl = tl2;
+
         tl1.removeAllViews();
         tl2.removeAllViews();
 
@@ -90,10 +94,11 @@ public class EgyeneskiesesL {
             if(merkozesek.get(i).index == merkozesIndex)
                 index = i;
         }
+        System.out.println(index);
         merkozesek.remove(index);
     }
 
-    private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, AppCompatActivity aca, final int merkozesIndex)
+    private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, final AppCompatActivity aca, final int merkozesIndex)
     {
         TextView tv = Utilities.createTextView(cs.getNev(), aca);
         tv.setOnClickListener(
@@ -102,6 +107,7 @@ public class EgyeneskiesesL {
                     public void onClick(View v) {
                         removeMerkozesByIndex(merkozesIndex);
                         csapatok.add(cs);
+                        refreshKiiras(merkTabl, tovabbTabl, aca);
                     }
                 }
         );

@@ -13,15 +13,11 @@ import com.szelev.bajnoksag.Utilities;
 
 public class CsapatHozzaadasACA extends AppCompatActivity{
 
-    private CsapatHozzaadasL logika;
+    private CsapatHozzaadasL logika = new CsapatHozzaadasL();;
 
     private EditText            csapatNevText;
     //private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
-
-    public CsapatHozzaadasACA() {
-        logika = new CsapatHozzaadasL();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

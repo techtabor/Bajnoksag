@@ -28,6 +28,14 @@ public class KormerkozesekACA extends AppCompatActivity{
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
 
+    public KormerkozesekACA() {
+        if(!vanLogika)
+        {
+            logika = new KormerkozesekL();
+            vanLogika = true;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

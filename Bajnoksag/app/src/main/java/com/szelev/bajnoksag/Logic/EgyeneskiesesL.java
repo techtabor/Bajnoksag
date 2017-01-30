@@ -70,6 +70,8 @@ public class EgyeneskiesesL {
 
     private Merkozes getAndRemoveMerkozesByIndex(int merkozesIndex)
     {
+
+
         return null;
     }
 

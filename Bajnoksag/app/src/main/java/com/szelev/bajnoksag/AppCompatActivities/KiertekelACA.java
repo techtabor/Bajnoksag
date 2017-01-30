@@ -36,7 +36,6 @@ public class KiertekelACA extends AppCompatActivity{
     {
         ertekeloTabla   = (TableLayout) (findViewById(R.id.table_main));
 
-        //TODO (szgabbor): Jó, ha a konstruktorban nem történik semmi.
         kiirErtekeles();
     }
 

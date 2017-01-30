@@ -21,12 +21,15 @@ import java.util.List;
 
 public class KormerkozesekACA extends AppCompatActivity{
 
-    public  static KormerkozesekL   logika;
-    private static boolean          vanLogika = false;
+    public static KormerkozesekL   logika;
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
+
+    public KormerkozesekACA() {
+        logika = new KormerkozesekL();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,33 +42,27 @@ public class KormerkozesekACA extends AppCompatActivity{
 
     public void init()
     {
-        if(!vanLogika)
-        {
-            logika = new KormerkozesekL();
-            vanLogika = true;
-        }
-
         merkozesTabla   = (TableLayout) (findViewById(R.id.table_main));
         csapatok1       = (Spinner)     (findViewById(R.id.spinner1));
         csapatok2       = (Spinner)     (findViewById(R.id.spinner2));
         er1             = (TextView)    (findViewById(R.id.editText));
         er2             = (TextView)    (findViewById(R.id.editText2));
 
-        initT();
+        initTable();
     }
 
     //TODO (szgabbor): Mi ez a nagy T?
     //(szlev): Tabla
-    private void refreshT()
+    private void refreshTable()
     {
         merkozesTabla.removeAllViews();
 
         logika.tablaRajzol(merkozesTabla, this);
     }
 
-    private void initT()
+    private void initTable()
     {
-        refreshT();
+        refreshTable();
 
         er1.setText("0");
         er2.setText("0");
@@ -102,7 +99,7 @@ public class KormerkozesekACA extends AppCompatActivity{
             logika.setEredmeny(j, i, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
         }
 
-        refreshT();
+        refreshTable();
 
         er1.setText("0");
         er2.setText("0");

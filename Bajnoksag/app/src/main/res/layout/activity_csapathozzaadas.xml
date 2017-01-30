@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
+    <!--<TextView
         android:text="Csapat súlya:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/editTextCsapatSuly"
         android:text="0"
-        android:hint="A csapatokat rangsorolja a körmérkőzések beosztásához." />
+        android:hint="A csapatokat rangsorolja a körmérkőzések beosztásához." />-->
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:layout_below="@+id/editTextCsapatSuly"
+        android:layout_below="@+id/editTextCsapatNev"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="actionOnTovabbButton"/>
@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonUjCsapat"
-        android:layout_below="@+id/editTextCsapatSuly"
+        android:layout_below="@+id/editTextCsapatNev"
         android:layout_centerHorizontal="true"
         android:onClick="actionOnUjCsapatButton"/>
 

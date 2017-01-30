@@ -7,3 +7,5 @@ továbblépésre drag
 static-ot kiszedni
 logika - felület
 csapat - pont -... -> egybe
+kormerkozes eredmeny rogzites grafikusan (merkozesre bokes)
+csapatsulyok kesobbi beallitasa

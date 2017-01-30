@@ -72,6 +72,8 @@ public class KiertekelACA extends AppCompatActivity{
         return KiertekelesBeallitasokACA.dontetlenPont;
     }
 
+    // TODO (szelev): kiertekeles ujrairas
+
     private static void sorbarakPontszam(int kezdet, int veg)
     {
         // pontszamokat tarolo arrayList inicializalasa

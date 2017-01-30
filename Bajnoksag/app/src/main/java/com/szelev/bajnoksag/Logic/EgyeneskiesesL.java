@@ -60,7 +60,7 @@ public class EgyeneskiesesL {
         tabl.addView(Utilities.createRowWithOneCell("Még le nem játszott mérkőzések:", aca));
         for(int i=0; i<merkozesek.size(); i++)
         {
-            View v = Utilities.createRowWithTwoCell(" "+merkozesek.get(i).get(0).getNev()+" ", " "+merkozesek.get(i).get(1).getNev()+" ", aca)
+            View v = Utilities.createRowWithTwoCell(" "+merkozesek.get(i).get(0).getNev()+" ", " "+merkozesek.get(i).get(1).getNev()+" ", aca);
             tabl.addView(v);
         }
     }

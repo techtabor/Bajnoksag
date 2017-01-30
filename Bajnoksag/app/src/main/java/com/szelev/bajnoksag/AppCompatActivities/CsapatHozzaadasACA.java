@@ -13,12 +13,15 @@ import com.szelev.bajnoksag.Utilities;
 
 public class CsapatHozzaadasACA extends AppCompatActivity{
 
-    private static CsapatHozzaadasL logika;
-    private static boolean          vanLogika = false;
+    private CsapatHozzaadasL logika;
 
     private EditText            csapatNevText;
     //private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
+
+    public CsapatHozzaadasACA() {
+        logika = new CsapatHozzaadasL();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +32,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     }
 
     public void init() {
-        if(!vanLogika)
-        {
-            logika = new CsapatHozzaadasL();
-            vanLogika = true;
-        }
-
         csapatNevText   = (EditText)    (findViewById(R.id.editTextCsapatNev));
         //csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
         csapatTabla     = (TableLayout) (findViewById(R.id.table_main));

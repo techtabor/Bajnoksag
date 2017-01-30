@@ -17,11 +17,19 @@ public class Utilities {
 
     public static ArrayList<Csapat> csapatok = new ArrayList<>();
 
-
     public static int defaultTextColor  = Color.BLACK;
     public static int defaultGravity    = Gravity.CENTER;
 
-    public static TableRow createRowWithTwoCell(String firstCell, String secondCell, AppCompatActivity ACA) {
+    public static TableRow createRowWithOneCell(String cell, AppCompatActivity ACA)
+    {
+        TableRow result = new TableRow(ACA);
+        TextView tv = createTextView(cell, ACA);
+        result.addView(tv);
+        return result;
+    }
+
+    public static TableRow createRowWithTwoCell(String firstCell, String secondCell, AppCompatActivity ACA)
+    {
         TableRow result = new TableRow(ACA);
         TextView firstTextView = createTextView(firstCell, ACA);
         result.addView(firstTextView);

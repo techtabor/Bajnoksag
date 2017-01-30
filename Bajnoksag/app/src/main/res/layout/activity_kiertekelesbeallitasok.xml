@@ -106,4 +106,12 @@
         android:layout_alignStart="@+id/textView6"
         android:id="@+id/button7"
         android:onClick="actionOnVisszaButton"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignStart="@+id/button7"
+        android:id="@+id/textView7" />
 </RelativeLayout>

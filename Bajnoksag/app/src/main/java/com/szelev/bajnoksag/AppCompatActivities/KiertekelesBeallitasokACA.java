@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.Utilities;
@@ -50,12 +51,15 @@ public class KiertekelesBeallitasokACA extends AppCompatActivity{
         KiertekelesBeallitasokACA.dontetlenPont        = Integer.parseInt(tv2.getText().toString());
         KiertekelesBeallitasokACA.veresegPont          = Integer.parseInt(tv3.getText().toString());
         KiertekelesBeallitasokACA.nemVoltMegMeccsPont  = Integer.parseInt(tv4.getText().toString());
+
+        ((TextView) (findViewById(R.id.textView7))).setText("Módosítások elmentve!");
     }
 
     //onClick event
     public void actionOnVisszaButton(View v)
     {
         Utilities.startNewActivity(KiertekelACA.class, this);
+        ((TextView) (findViewById(R.id.textView7))).setText("");
     }
 
 }

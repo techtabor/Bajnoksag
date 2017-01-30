@@ -127,7 +127,7 @@ public class EgyeneskiesesL {
 
     private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, final AppCompatActivity aca, final int merkozesIndex)
     {
-        TextView tv = Utilities.createTextView("    " + cs.getNev() + "    ", aca);
+        TextView tv = Utilities.createTextView("      " + cs.getNev() + "      ", aca);
         tv.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

@@ -21,14 +21,19 @@ import java.util.List;
 
 public class KormerkozesekACA extends AppCompatActivity{
 
-    public static KormerkozesekL   logika;
+    public static KormerkozesekL    logika;
+    private static boolean          vanLogika = false;
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
 
     public KormerkozesekACA() {
-        logika = new KormerkozesekL();
+        if(!vanLogika)
+        {
+            logika = new KormerkozesekL();
+            vanLogika = true;
+        }
     }
 
     @Override

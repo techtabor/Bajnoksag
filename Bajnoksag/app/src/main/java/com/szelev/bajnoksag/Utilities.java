@@ -38,6 +38,18 @@ public class Utilities {
         return result;
     }
 
+    public static TableRow createRowWithThreeCell(String firstCell, String secondCell, String thirdCell, AppCompatActivity ACA)
+    {
+        TableRow result = new TableRow(ACA);
+        TextView firstTextView = createTextView(firstCell, ACA);
+        result.addView(firstTextView);
+        TextView secondTextView = createTextView(secondCell, ACA);
+        result.addView(secondTextView);
+        TextView thirdTextView = createTextView(thirdCell, ACA);
+        result.addView(thirdTextView);
+        return result;
+    }
+
     public static TextView createTextView(String text, AppCompatActivity ACA) {
         TextView textView = new TextView(ACA);
         textView.setText(text);

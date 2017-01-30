@@ -3,8 +3,10 @@ package com.szelev.bajnoksag.Logic;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.szelev.bajnoksag.Csapat;
+import com.szelev.bajnoksag.Merkozes;
 import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.Random;
 public class EgyeneskiesesL {
 
     private ArrayList<Csapat> csapatok;
-    private ArrayList<ArrayList<Csapat>> merkozesek;
+    private ArrayList<Merkozes> merkozesek;
 
     public EgyeneskiesesL()
     {
@@ -48,10 +50,9 @@ public class EgyeneskiesesL {
         int meret = csapatok.size();
         for(int i=0; i<meret/2; i++)
         {
-            ArrayList<Csapat> alc = new ArrayList<>();
-            alc.add(getRandomCsapatAndRemove());
-            alc.add(getRandomCsapatAndRemove());
-            merkozesek.add(alc);
+            Csapat cs1 = getRandomCsapatAndRemove();
+            Csapat cs2 = getRandomCsapatAndRemove();
+            merkozesek.add(new Merkozes(cs1, cs2, i));
         }
     }
 
@@ -60,9 +61,30 @@ public class EgyeneskiesesL {
         tabl.addView(Utilities.createRowWithOneCell("Még le nem játszott mérkőzések:", aca));
         for(int i=0; i<merkozesek.size(); i++)
         {
-            View v = Utilities.createRowWithTwoCell(" "+merkozesek.get(i).get(0).getNev()+" ", " "+merkozesek.get(i).get(1).getNev()+" ", aca);
+            View v = Utilities.createRowWithTwoCell(" "+merkozesek.get(i).cs1.getNev()+" ", " "+merkozesek.get(i).cs2.getNev()+" ", aca);
             tabl.addView(v);
         }
+    }
+
+    private Merkozes getAndRemoveMerkozesByIndex(int merkozesIndex)
+    {
+
+
+        return null;
+    }
+
+    private TextView createTextViewWithSpecificOnClickListener(String text, AppCompatActivity aca, int merkozesIndex)
+    {
+        TextView tv = Utilities.createTextView(text, aca);
+        tv.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                }
+        );
+        return tv;
     }
 
     public void tovabbjutokKirajzol(TableLayout tabl, AppCompatActivity aca)

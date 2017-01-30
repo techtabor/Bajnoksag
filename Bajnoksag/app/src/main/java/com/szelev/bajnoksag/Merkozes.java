@@ -7,7 +7,7 @@ package com.szelev.bajnoksag;
 public class Merkozes {
 
     public Csapat cs1, cs2;
-    int index;
+    public int index;
 
     public Merkozes(Csapat c1, Csapat c2, int ind)
     {

@@ -48,11 +48,7 @@ public class EgyeneskiesesACA extends AppCompatActivity{
 
     private void bajnoksagAllapotKiir()
     {
-        merkozesTabla.removeAllViews();
-        tovabbjutokTabla.removeAllViews();
-
-        logika.merkozesKirajzol(merkozesTabla, this);
-        logika.tovabbjutokKirajzol(tovabbjutokTabla, this);
+        logika.refreshKiiras(merkozesTabla, tovabbjutokTabla, this);
     }
 
 }

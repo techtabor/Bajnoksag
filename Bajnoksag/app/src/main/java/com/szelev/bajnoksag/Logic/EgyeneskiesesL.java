@@ -2,6 +2,7 @@ package com.szelev.bajnoksag.Logic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -66,24 +67,48 @@ public class EgyeneskiesesL {
         tl1.removeAllViews();
         tl2.removeAllViews();
 
-        merkozesKirajzol(tl1, aca);
         tovabbjutokKirajzol(tl2, aca);
+        merkozesKirajzol(tl1, aca);
     }
 
-    private void merkozesKirajzol(TableLayout tabl, AppCompatActivity aca)
+    private void merkozesKirajzol(TableLayout tabl, final AppCompatActivity aca)
     {
-        tabl.addView(Utilities.createRowWithOneCell("Még le nem játszott mérkőzések:", aca));
-        for(int i=0; i<merkozesek.size(); i++)
-        {
-            TextView tv1 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs1, aca, merkozesek.get(i).index);
-            TextView tv2 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
+        if(merkozesek.size()>0) {
+            tabl.addView(Utilities.createRowWithOneCell("Még le nem játszott mérkőzések:", aca));
+            for (int i = 0; i < merkozesek.size(); i++) {
+                TextView tv1 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs1, aca, merkozesek.get(i).index);
+                TextView tv2 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
 
-            TableRow tr = new TableRow(aca);
-            tr.addView(tv1);
-            tr.addView(tv2);
+                TableRow tr = new TableRow(aca);
+                tr.addView(tv1);
+                tr.addView(tv2);
 
-            tabl.addView(tr);
+                tabl.addView(tr);
+            }
+        } else if(csapatok.size() > 1){
+            Button b = new Button(aca);
+            b.setText("Következő forduló kisorsolása");
+            b.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            general();
+                            refreshKiiras(merkTabl, tovabbTabl, aca);
+                        }
+                    }
+            );
+            tabl.addView(b);
+        } else {
+            kiirGyoztes(aca);
         }
+    }
+
+    private void kiirGyoztes(AppCompatActivity aca)
+    {
+        merkTabl.removeAllViews();
+        tovabbTabl.removeAllViews();
+
+        tovabbTabl.addView(Utilities.createRowWithOneCell("A győztes csapat: "+csapatok.get(0).getNev(), aca));
     }
 
     private void removeMerkozesByIndex(int merkozesIndex)

@@ -121,7 +121,6 @@ public class EgyeneskiesesL {
             if(merkozesek.get(i).index == merkozesIndex)
                 index = i;
         }
-        System.out.println(index);
         merkozesek.remove(index);
     }
 

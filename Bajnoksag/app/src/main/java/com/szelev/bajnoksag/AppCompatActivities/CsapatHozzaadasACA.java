@@ -32,14 +32,15 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
         //csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
         csapatTabla     = (TableLayout) (findViewById(R.id.table_main));
 
-        createTable();
+        drawTable();
     }
 
-    private void createTable() {
-        TableRow header = Utilities.createRowWithOneCell("     Csapatnév     ", this);
+    private void drawTable() {
+        csapatTabla.removeAllViews();
+        TableRow header = Utilities.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
         //TableRow header = Utilities.createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ", this);
         csapatTabla.addView(header);
-        for(int i = 0; i < Utilities.csapatok.size(); i++) {
+        for(int i = 0; i < (Utilities.csapatok.size()+2)/3; i++) {
             csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
     }
@@ -53,8 +54,8 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     //onClik event
     public void actionOnUjCsapatButton(View v) {
         logika.addCsapat(csapatNevText.getText().toString()/*, Integer.parseInt(csapatSulyText.getText().toString())*/);
+        drawTable();
 
-        csapatTabla.addView(logika.getLastCsapatRow(this));
         resetInput();
     }
 

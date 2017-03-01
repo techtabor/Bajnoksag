@@ -75,6 +75,7 @@ public class KiertekelACA extends AppCompatActivity{
                 {
                     sorrend.get(i).pontszam += getPontszam(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs());
                     sorrend.get(i).pontkul  += KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()-KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik();
+                    sorrend.get(i).szerzettPont += KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso();
                     if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()>KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik())
                         sorrend.get(i).gyozelemszam++;
                     if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs())
@@ -93,6 +94,10 @@ public class KiertekelACA extends AppCompatActivity{
                 if(((Integer)(o1.pontkul*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontkul*o1.jatszottMeccsek)) != 0)
                 {
                     return (((Integer)(o1.pontkul*o2.jatszottMeccsek)).compareTo((Integer)(o2.pontkul*o1.jatszottMeccsek)))*(-1);
+                }
+                if(((Integer)(o1.szerzettPont*o2.jatszottMeccsek)).compareTo((Integer)(o2.szerzettPont*o1.jatszottMeccsek)) != 0)
+                {
+                    return (((Integer)(o1.szerzettPont*o2.jatszottMeccsek)).compareTo((Integer)(o2.szerzettPont*o1.jatszottMeccsek)))*(-1);
                 }
                 if(((Integer)(o1.gyozelemszam*o2.jatszottMeccsek)).compareTo((Integer)(o2.gyozelemszam*o1.jatszottMeccsek)) != 0)
                 {

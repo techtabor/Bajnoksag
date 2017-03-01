@@ -52,6 +52,16 @@
         android:text="0"
         android:hint="A csapatokat rangsorolja a körmérkőzések beosztásához." />-->
 
+    <TextView
+        android:id="@+id/line2"
+        style="?android:attr/listSeparatorTextViewStyle"
+        android:paddingTop="5dip"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/buttonUjCsapat"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"/>
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"

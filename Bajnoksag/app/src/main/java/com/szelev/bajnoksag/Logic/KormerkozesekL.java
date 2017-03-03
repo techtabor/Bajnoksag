@@ -51,6 +51,7 @@ public class KormerkozesekL {
     public void tablaRajzol(TableLayout tabl, final AppCompatActivity aca)
     {
         TableRow tr = new TableRow(aca);
+
         TextView tv;
 
         tv = Utilities.createTextView("", aca);
@@ -58,7 +59,7 @@ public class KormerkozesekL {
 
         for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
-            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", aca);
+            tv = Utilities.createTextView(" " + (i+1) + " ", aca);
             tr.addView(tv);
         }
         tabl.addView(tr);

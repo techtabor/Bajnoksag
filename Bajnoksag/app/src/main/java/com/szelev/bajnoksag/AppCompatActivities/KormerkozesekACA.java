@@ -110,6 +110,42 @@ public class KormerkozesekACA extends AppCompatActivity{
         er2.setText("0");
     }
 
+    //onClilck action
+    public void actionOnEredmeny1Button(View v)
+    {
+        er1.setText("1");
+        er2.setText("0");
+
+        actionOnMentesButton(v);
+    }
+
+    //onClilck action
+    public void actionOnEredmeny2Button(View v)
+    {
+        er1.setText("0");
+        er2.setText("1");
+
+        actionOnMentesButton(v);
+    }
+
+    //onClilck action
+    public void actionOnEredmeny3Button(View v)
+    {
+        er1.setText("1");
+        er2.setText("1");
+
+        actionOnMentesButton(v);
+    }
+
+    //onClilck action
+    public void actionOnEredmeny4Button(View v)
+    {
+        er1.setText("2");
+        er2.setText("2");
+
+        actionOnMentesButton(v);
+    }
+
     //onClick action
     public void actionOnTovabbButton(View v)
     {

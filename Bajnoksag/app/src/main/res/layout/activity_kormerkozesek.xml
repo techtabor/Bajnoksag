@@ -33,19 +33,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/RelativeLayout1"
-                android:layout_width="fill_parent"
-                android:layout_gravity="center"
-                android:layout_height="fill_parent" >
-
                 <TableLayout
                     android:id="@+id/table_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true" >
                 </TableLayout>
-            </RelativeLayout>
 
         </HorizontalScrollView>
 

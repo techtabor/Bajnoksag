@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -50,12 +51,18 @@ public class Utilities {
         return result;
     }
 
-    public static TextView createTextView(String text, AppCompatActivity ACA) {
+    public static TextView createTextView(String text, AppCompatActivity ACA, int minWidth) {
         TextView textView = new TextView(ACA);
         textView.setText(text);
         textView.setTextColor(defaultTextColor);
         textView.setGravity(defaultGravity);
+        textView.setMinWidth(minWidth);
         return textView;
+    }
+
+    public static TextView createTextView(String text, AppCompatActivity ACA)
+    {
+        return createTextView(text, ACA, 0);
     }
 
     public static void startNewActivity(Class c, AppCompatActivity ACA)

@@ -56,10 +56,12 @@ public class KormerkozesekL {
 
         tv = Utilities.createTextView("", aca);
         tr.addView(tv);
+        tv = Utilities.createTextView("", aca);
+        tr.addView(tv);
 
         for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
-            tv = Utilities.createTextView(" " + (i+1) + " ", aca);
+            tv = Utilities.createTextView(" " + (i+1) + " ", aca, 120);
             tr.addView(tv);
         }
         tabl.addView(tr);
@@ -67,6 +69,8 @@ public class KormerkozesekL {
         for(int i = 0; i< Utilities.csapatok.size(); i++)
         {
             tr = new TableRow(aca);
+            tv = Utilities.createTextView(" " + (i+1) + " ", aca, 30);
+            tr.addView(tv);
             tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", aca);
             tr.addView(tv);
 

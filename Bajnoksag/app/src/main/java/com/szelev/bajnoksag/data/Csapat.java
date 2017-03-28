@@ -8,19 +8,16 @@ public class Csapat {
 
     private int ID;
     private String nev;
-    //private int suly;
 
     public Csapat() {
         ID      = -1;
         nev     = "";
-        //suly    = 0;
     }
 
 
-    public Csapat(int ID, String nev/*, int suly*/) {
+    public Csapat(int ID, String nev) {
         this.ID     = ID;
         this.nev    = nev;
-        //this.suly   = suly;
     }
 
     public void setID(int ID) {
@@ -38,13 +35,5 @@ public class Csapat {
     public String getNev() {
         return nev;
     }
-
-    /*public void setSuly(int suly) {
-        this.suly   = suly;
-    }
-
-    public int getSuly() {
-        return suly;
-    }*/
 
 }

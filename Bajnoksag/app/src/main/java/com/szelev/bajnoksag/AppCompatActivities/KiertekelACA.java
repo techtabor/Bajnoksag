@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.CsapatTul;
@@ -27,8 +28,7 @@ public class KiertekelACA extends AppCompatActivity{
     public  static ArrayList<CsapatTul>   sorrend;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kiertekel);
 
@@ -37,20 +37,21 @@ public class KiertekelACA extends AppCompatActivity{
         init();
     }
 
-    public void init()
-    {
+    public void init() {
         ertekeloTabla   = (TableLayout) (findViewById(R.id.table_main));
 
         kiirErtekeles();
     }
 
-    private void kiirErtekeles()
-    {
+    private void kiirErtekeles() {
         ertekeloTabla.addView(DrawTable.createRowWithTwoCell("     Helyezés     ", "     Csapatnév     ", this));
 
-        for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
+        for(int i = 0; i < sorrend.size(); i++)
         {
-            ertekeloTabla.addView(DrawTable.createRowWithTwoCell(Integer.toString(i+1), DataContainer.getTeam(KiertekelACA.sorrend.get(i).ID).getNev(), this));
+            String teamName = DataContainer.getTeam(sorrend.get(i).ID).getNev();
+            TableRow newRow = DrawTable.createRowWithTwoCell(Integer.toString(i+1), teamName, this);
+
+            ertekeloTabla.addView(newRow);
         }
     }
 

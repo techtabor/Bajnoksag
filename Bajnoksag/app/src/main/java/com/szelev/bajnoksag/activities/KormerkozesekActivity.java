@@ -27,7 +27,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
-    private TextView        er1, er2;
+    private TextView scoreOfTeam1TextView, scoreOfTeam2TextView;
 
     public KormerkozesekActivity() {
         if(!vanLogika)
@@ -51,8 +51,8 @@ public class KormerkozesekActivity extends AppCompatActivity{
         merkozesTabla   = (TableLayout) (findViewById(R.id.table_main));
         csapatok1       = (Spinner)     (findViewById(R.id.spinner1));
         csapatok2       = (Spinner)     (findViewById(R.id.spinner2));
-        er1             = (TextView)    (findViewById(R.id.editText));
-        er2             = (TextView)    (findViewById(R.id.editText2));
+        scoreOfTeam1TextView = (TextView)    (findViewById(R.id.editText));
+        scoreOfTeam2TextView = (TextView)    (findViewById(R.id.editText2));
 
         initTable();
     }
@@ -68,8 +68,8 @@ public class KormerkozesekActivity extends AppCompatActivity{
     {
         refreshTable();
 
-        er1.setText("0");
-        er2.setText("0");
+        scoreOfTeam1TextView.setText("0");
+        scoreOfTeam2TextView.setText("0");
 
         List<String> list = new ArrayList<String>();
         list.add("");
@@ -85,8 +85,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
     }
 
     //onClick action
-    public void actionOnMentesButton(View v)
-    {
+    public void actionOnMentesButton(View v) {
         int i, j;
 
         i = (int) csapatok1.getSelectedItemId()-1;
@@ -95,54 +94,49 @@ public class KormerkozesekActivity extends AppCompatActivity{
         csapatok1.setSelection(0);
         csapatok2.setSelection(0);
 
+        int scoreOfFirstTeam = Integer.parseInt(scoreOfTeam1TextView.getText().toString());
+        int scoreOfSecondTeam = Integer.parseInt(scoreOfTeam2TextView.getText().toString());
 
-
-        if(i!=j && i!=-1 && j!=-1)
-        {
-            kormerkozes.setEredmeny(i, j, Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
-            kormerkozes.setEredmeny(j, i, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
+        if(i!=j && i!=-1 && j!=-1) {
+            kormerkozes.setEredmeny(i, j, scoreOfFirstTeam, scoreOfSecondTeam);
+            kormerkozes.setEredmeny(j, i, scoreOfSecondTeam, scoreOfFirstTeam);
         }
 
         refreshTable();
 
-        er1.setText("0");
-        er2.setText("0");
+        scoreOfTeam1TextView.setText("0");
+        scoreOfTeam2TextView.setText("0");
+    }
+
+    private void setScoresAndSave(String firstScore, String secondScore, View v) {
+        scoreOfTeam1TextView.setText(firstScore);
+        scoreOfTeam2TextView.setText(secondScore);
+
+        actionOnMentesButton(v);
     }
 
     //onClilck action
     public void actionOnEredmeny1Button(View v)
     {
-        er1.setText("1");
-        er2.setText("0");
-
-        actionOnMentesButton(v);
+        setScoresAndSave("1", "0", v);
     }
 
     //onClilck action
     public void actionOnEredmeny2Button(View v)
     {
-        er1.setText("0");
-        er2.setText("1");
-
-        actionOnMentesButton(v);
+        setScoresAndSave("0", "1", v);
     }
 
     //onClilck action
     public void actionOnEredmeny3Button(View v)
     {
-        er1.setText("1");
-        er2.setText("1");
-
-        actionOnMentesButton(v);
+        setScoresAndSave("1", "1", v);
     }
 
     //onClilck action
     public void actionOnEredmeny4Button(View v)
     {
-        er1.setText("2");
-        er2.setText("2");
-
-        actionOnMentesButton(v);
+        setScoresAndSave("2", "2", v);
     }
 
     //onClick action

@@ -3,8 +3,8 @@ package com.szelev.bajnoksag.Logic;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TableRow;
 
-import com.szelev.bajnoksag.Csapat;
-import com.szelev.bajnoksag.Utilities;
+import com.szelev.bajnoksag.data.Csapat;
+import com.szelev.bajnoksag.util.DrawTable;
 
 /**
  * Created by Levente on 2017.01.11..
@@ -22,33 +22,33 @@ public class CsapatHozzaadasL {
     public void addCsapat(int ID, String nev/*, int suly*/)
     {
         Csapat c = new Csapat(ID, nev/*, suly*/);
-        Utilities.csapatok.add(c);
+        DrawTable.csapatok.add(c);
 
         //lastCsapat = c;
     }
 
     public void addCsapat(String nev/*, int suly*/)
     {
-        addCsapat(Utilities.csapatok.size(), nev/*, suly*/);
+        addCsapat(DrawTable.csapatok.size(), nev/*, suly*/);
     }
 
     /*/public TableRow getLastCsapatRow(AppCompatActivity act)
     {
 
-        return Utilities.createRowWithOneCell(" " + lastCsapat.getNev() + " ", act);
-        //return Utilities.createRowWithTwoCell(" " + lastCsapat.getNev() + " ", " " + lastCsapat.getSuly() + " ", act);
+        return DrawTable.createRowWithOneCell(" " + lastCsapat.getNev() + " ", act);
+        //return DrawTable.createRowWithTwoCell(" " + lastCsapat.getNev() + " ", " " + lastCsapat.getSuly() + " ", act);
     }*/
 
     public TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
     {
         String s1, s2, s3;
-        s1 = Utilities.csapatok.get(index*3).getNev();
-        if(Utilities.csapatok.size() > index*3+1)
+        s1 = DrawTable.csapatok.get(index*3).getNev();
+        if(DrawTable.csapatok.size() > index*3+1)
         {
-            s2 = Utilities.csapatok.get(index*3+1).getNev();
-            if(Utilities.csapatok.size() > index*3+2)
+            s2 = DrawTable.csapatok.get(index*3+1).getNev();
+            if(DrawTable.csapatok.size() > index*3+2)
             {
-                s3 = Utilities.csapatok.get(index*3+2).getNev();
+                s3 = DrawTable.csapatok.get(index*3+2).getNev();
             }
             else
             {
@@ -61,9 +61,9 @@ public class CsapatHozzaadasL {
             s3 = "";
         }
 
-        return Utilities.createRowWithThreeCell(" " + s1 + " ", " " + s2 + " ", " " + s3 + " ", act);
-        //return Utilities.createRowWithOneCell(" " + Utilities.csapatok.get(index).getNev() + " ", act);
-        //return Utilities.createRowWithTwoCell(" " + Utilities.csapatok.get(index).getNev() + " ", " " + Utilities.csapatok.get(index).getSuly() + " ", act);
+        return DrawTable.createRowWithThreeCell(" " + s1 + " ", " " + s2 + " ", " " + s3 + " ", act);
+        //return DrawTable.createRowWithOneCell(" " + DrawTable.csapatok.get(index).getNev() + " ", act);
+        //return DrawTable.createRowWithTwoCell(" " + DrawTable.csapatok.get(index).getNev() + " ", " " + DrawTable.csapatok.get(index).getSuly() + " ", act);
     }
 
 }

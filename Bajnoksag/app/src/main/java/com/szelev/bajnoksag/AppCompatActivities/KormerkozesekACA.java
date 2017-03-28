@@ -8,9 +8,9 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.Logic.KormerkozesekL;
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,9 +75,9 @@ public class KormerkozesekACA extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
-            list.add(Utilities.csapatok.get(i).getNev());
+            list.add(DrawTable.csapatok.get(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -149,7 +149,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     //onClick action
     public void actionOnTovabbButton(View v)
     {
-        Utilities.startNewActivity(KiertekelACA.class, this);
+        DrawTable.startNewActivity(KiertekelACA.class, this);
     }
 
 }

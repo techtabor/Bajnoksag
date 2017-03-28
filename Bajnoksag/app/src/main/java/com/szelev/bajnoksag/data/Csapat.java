@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag;
+package com.szelev.bajnoksag.data;
 
 /**
  * Created by Levente on 2016.12.06..

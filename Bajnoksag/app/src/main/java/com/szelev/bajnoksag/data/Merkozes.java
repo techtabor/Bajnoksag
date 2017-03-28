@@ -1,4 +1,6 @@
-package com.szelev.bajnoksag;
+package com.szelev.bajnoksag.data;
+
+import com.szelev.bajnoksag.data.Csapat;
 
 /**
  * Created by Levente on 2017.01.30..

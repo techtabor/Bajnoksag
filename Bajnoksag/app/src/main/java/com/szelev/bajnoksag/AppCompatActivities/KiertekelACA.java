@@ -1,15 +1,13 @@
 package com.szelev.bajnoksag.AppCompatActivities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.media.MediaMetadataCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
 
-import com.szelev.bajnoksag.CsapatTul;
+import com.szelev.bajnoksag.data.CsapatTul;
+import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.Utilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,11 +43,11 @@ public class KiertekelACA extends AppCompatActivity{
 
     private void kiirErtekeles()
     {
-        ertekeloTabla.addView(Utilities.createRowWithTwoCell("     Helyezés     ", "     Csapatnév     ", this));
+        ertekeloTabla.addView(DrawTable.createRowWithTwoCell("     Helyezés     ", "     Csapatnév     ", this));
 
         for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
         {
-            ertekeloTabla.addView(Utilities.createRowWithTwoCell(Integer.toString(i+1), Utilities.csapatok.get(KiertekelACA.sorrend.get(i).ID).getNev(), this));
+            ertekeloTabla.addView(DrawTable.createRowWithTwoCell(Integer.toString(i+1), DrawTable.csapatok.get(KiertekelACA.sorrend.get(i).ID).getNev(), this));
         }
     }
 
@@ -59,17 +57,17 @@ public class KiertekelACA extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
             CsapatTul ct = new CsapatTul();
             ct.ID = i;
             sorrend.add(ct);
         }
-        //sorbarakPontszam(0, Utilities.csapatok.size()-1);
+        //sorbarakPontszam(0, DrawTable.csapatok.size()-1);
 
-        for(int i=0; i<Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
-            for(int j=0; j<Utilities.csapatok.size(); j++)
+            for(int j = 0; j< DrawTable.csapatok.size(); j++)
             {
                 if(i!=j)
                 {
@@ -308,13 +306,13 @@ public class KiertekelACA extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        Utilities.startNewActivity(KormerkozesekACA.class, this);
+        DrawTable.startNewActivity(KormerkozesekACA.class, this);
     }
 
     //onClick event
     public void actionOnTovabbButton(View v)
     {
-        Utilities.startNewActivity(KiertekelesBeallitasokACA.class, this);
+        DrawTable.startNewActivity(KiertekelesBeallitasokACA.class, this);
     }
 
 }

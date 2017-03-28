@@ -7,16 +7,15 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.Logic.CsapatHozzaadasL;
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.Utilities;
 
 public class CsapatHozzaadasACA extends AppCompatActivity{
 
     private CsapatHozzaadasL logika = new CsapatHozzaadasL();;
 
     private EditText            csapatNevText;
-    //private EditText            csapatSulyText;
     private TableLayout         csapatTabla;
 
     @Override
@@ -29,7 +28,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     public void init() {
         csapatNevText   = (EditText)    (findViewById(R.id.editTextCsapatNev));
-        //csapatSulyText  = (EditText)    (findViewById(R.id.editTextCsapatSuly));
         csapatTabla     = (TableLayout) (findViewById(R.id.table_main));
 
         drawTable();
@@ -37,10 +35,9 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     private void drawTable() {
         csapatTabla.removeAllViews();
-        TableRow header = Utilities.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
-        //TableRow header = Utilities.createRowWithTwoCell("     Csapatnév     ", "     Csapatsúly     ", this);
+        TableRow header = DrawTable.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
         csapatTabla.addView(header);
-        for(int i = 0; i < (Utilities.csapatok.size()+2)/3; i++) {
+        for(int i = 0; i < (DrawTable.csapatok.size()+2)/3; i++) {
             csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
     }
@@ -48,7 +45,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
     private void resetInput()
     {
         csapatNevText.setText("");
-        //csapatSulyText.setText("0");
     }
 
     //onClik event
@@ -61,6 +57,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        Utilities.startNewActivity(ModvalasztoACA.class, this);
+        DrawTable.startNewActivity(ModvalasztoACA.class, this);
     }
 }

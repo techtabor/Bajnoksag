@@ -1,6 +1,5 @@
 package com.szelev.bajnoksag.Logic;
 
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Spinner;
@@ -8,9 +7,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.szelev.bajnoksag.MerkozesEredmeny;
+import com.szelev.bajnoksag.data.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.Utilities;
+import com.szelev.bajnoksag.util.DrawTable;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class KormerkozesekL {
     private void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        int N = Utilities.csapatok.size();
+        int N = DrawTable.csapatok.size();
         for(int i=0; i<N; i++)
         {
             ArrayList<MerkozesEredmeny> merkEr = new ArrayList<>();
@@ -54,35 +53,35 @@ public class KormerkozesekL {
 
         TextView tv;
 
-        tv = Utilities.createTextView("", aca);
+        tv = DrawTable.createTextView("", aca);
         tr.addView(tv);
-        tv = Utilities.createTextView("", aca);
+        tv = DrawTable.createTextView("", aca);
         tr.addView(tv);
 
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
-            tv = Utilities.createTextView(" " + (i+1) + " ", aca, 120);
+            tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 120);
             tr.addView(tv);
         }
         tabl.addView(tr);
 
-        for(int i = 0; i< Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
             tr = new TableRow(aca);
-            tv = Utilities.createTextView(" " + (i+1) + " ", aca, 30);
+            tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 30);
             tr.addView(tv);
-            tv = Utilities.createTextView(" " + Utilities.csapatok.get(i).getNev() + " ", aca);
+            tv = DrawTable.createTextView(" " + DrawTable.csapatok.get(i).getNev() + " ", aca);
             tr.addView(tv);
 
-            for(int j = 0; j< Utilities.csapatok.size(); j++)
+            for(int j = 0; j< DrawTable.csapatok.size(); j++)
             {
                 if(eredmenyek.get(i).get(j).voltMeccs())
                 {
-                    tv = Utilities.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", aca);
+                    tv = DrawTable.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", aca);
                 }
                 else
                 {
-                    tv = Utilities.createTextView(" - ", aca);
+                    tv = DrawTable.createTextView(" - ", aca);
                 }
                 final int finalI = i;
                 final int finalJ = j;

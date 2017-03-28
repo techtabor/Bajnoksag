@@ -7,9 +7,9 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.szelev.bajnoksag.Csapat;
-import com.szelev.bajnoksag.Merkozes;
-import com.szelev.bajnoksag.Utilities;
+import com.szelev.bajnoksag.data.Csapat;
+import com.szelev.bajnoksag.util.DrawTable;
+import com.szelev.bajnoksag.data.Merkozes;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,9 +33,9 @@ public class EgyeneskiesesL {
     {
         csapatok    = new ArrayList<>();
         merkozesek  = new ArrayList<>();
-        for(int i=0; i<Utilities.csapatok.size(); i++)
+        for(int i = 0; i< DrawTable.csapatok.size(); i++)
         {
-            csapatok.add(Utilities.csapatok.get(i));
+            csapatok.add(DrawTable.csapatok.get(i));
         }
     }
 
@@ -74,10 +74,10 @@ public class EgyeneskiesesL {
     private void merkozesKirajzol(TableLayout tabl, final AppCompatActivity aca)
     {
         if(merkozesek.size()>0) {
-            tabl.addView(Utilities.createRowWithThreeCell(" ", "Még le nem játszott mérkőzések:", " ", aca));
+            tabl.addView(DrawTable.createRowWithThreeCell(" ", "Még le nem játszott mérkőzések:", " ", aca));
             for (int i = 0; i < merkozesek.size(); i++) {
                 TextView tv1 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs1, aca, merkozesek.get(i).index);
-                TextView tv2 = Utilities.createTextView("", aca);
+                TextView tv2 = DrawTable.createTextView("", aca);
                 TextView tv3 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
 
                 TableRow tr = new TableRow(aca);
@@ -110,7 +110,7 @@ public class EgyeneskiesesL {
         merkTabl.removeAllViews();
         tovabbTabl.removeAllViews();
 
-        tovabbTabl.addView(Utilities.createRowWithOneCell("A győztes csapat: "+csapatok.get(0).getNev(), aca));
+        tovabbTabl.addView(DrawTable.createRowWithOneCell("A győztes csapat: "+csapatok.get(0).getNev(), aca));
     }
 
     private void removeMerkozesByIndex(int merkozesIndex)
@@ -126,7 +126,7 @@ public class EgyeneskiesesL {
 
     private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, final AppCompatActivity aca, final int merkozesIndex)
     {
-        TextView tv = Utilities.createTextView("      " + cs.getNev() + "      ", aca);
+        TextView tv = DrawTable.createTextView("      " + cs.getNev() + "      ", aca);
         tv.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -142,10 +142,10 @@ public class EgyeneskiesesL {
 
     private void tovabbjutokKirajzol(TableLayout tabl, AppCompatActivity aca)
     {
-        tabl.addView(Utilities.createRowWithOneCell("Továbbjutók:", aca));
+        tabl.addView(DrawTable.createRowWithOneCell("Továbbjutók:", aca));
         for(int i=0; i<csapatok.size(); i++)
         {
-            tabl.addView(Utilities.createRowWithOneCell(" "+csapatok.get(i).getNev()+" ", aca));
+            tabl.addView(DrawTable.createRowWithOneCell(" "+csapatok.get(i).getNev()+" ", aca));
         }
     }
 

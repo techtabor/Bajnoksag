@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.Utilities;
 
 /**
  * Created by Levente on 2016.12.21..
@@ -23,13 +23,13 @@ public class ModvalasztoACA extends AppCompatActivity{
     //onClick event
     public void actionOnKorButton(View v)
     {
-        Utilities.startNewActivity(KormerkozesekACA.class, this);
+        DrawTable.startNewActivity(KormerkozesekACA.class, this);
     }
 
     //onClick event
     public void actionOnEgyenesButton(View v)
     {
-        Utilities.startNewActivity(EgyeneskiesesACA.class, this);
+        DrawTable.startNewActivity(EgyeneskiesesACA.class, this);
     }
 
 }

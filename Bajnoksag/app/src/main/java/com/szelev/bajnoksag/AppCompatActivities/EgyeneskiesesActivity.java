@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TableLayout;
 
-import com.szelev.bajnoksag.Logic.EgyeneskiesesL;
+import com.szelev.bajnoksag.logic.Egyeneskieses;
 import com.szelev.bajnoksag.R;
 
 /**
  * Created by Levente on 2016.12.21..
  */
 
-public class EgyeneskiesesACA extends AppCompatActivity{
+public class EgyeneskiesesActivity extends AppCompatActivity{
 
-    private static EgyeneskiesesL   logika;
+    private static Egyeneskieses logika;
     private static boolean          vanLogika = false;
 
     private TableLayout merkozesTabla;
@@ -32,7 +32,7 @@ public class EgyeneskiesesACA extends AppCompatActivity{
     {
         if(!vanLogika)
         {
-            logika = new EgyeneskiesesL();
+            logika = new Egyeneskieses();
             logika.init();
             logika.general();
             vanLogika = true;

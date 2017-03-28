@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.Logic;
+package com.szelev.bajnoksag.logic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TableRow;
@@ -7,9 +7,9 @@ import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.DrawTable;
 
-public class CsapatHozzaadasL {
+public class CsapatHozzaadas {
 
-    public CsapatHozzaadasL()
+    public CsapatHozzaadas()
     {
 
     }

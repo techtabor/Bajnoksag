@@ -10,12 +10,12 @@ import android.widget.TableRow;
 import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
-import com.szelev.bajnoksag.Logic.CsapatHozzaadasL;
+import com.szelev.bajnoksag.logic.CsapatHozzaadas;
 import com.szelev.bajnoksag.R;
 
-public class CsapatHozzaadasACA extends AppCompatActivity{
+public class CsapatHozzaadasActivity extends AppCompatActivity{
 
-    private CsapatHozzaadasL logika = new CsapatHozzaadasL();;
+    private CsapatHozzaadas logika = new CsapatHozzaadas();;
 
     private EditText            csapatNevText;
     private TableLayout         csapatTabla;
@@ -37,8 +37,10 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     private void drawTable() {
         csapatTabla.removeAllViews();
+
         TableRow header = DrawTable.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
         csapatTabla.addView(header);
+
         for(int i = 0; i < (DataContainer.getTeams().size()+2)/3; i++) {
             csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
@@ -51,7 +53,7 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClik event
     public void actionOnUjCsapatButton(View v) {
-        logika.addCsapat(csapatNevText.getText().toString()/*, Integer.parseInt(csapatSulyText.getText().toString())*/);
+        logika.addCsapat(csapatNevText.getText().toString());
         drawTable();
 
         resetInput();
@@ -59,6 +61,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        CreateActivity.start(ModvalasztoACA.class, this);
+        CreateActivity.start(ModvalasztoActivity.class, this);
     }
 }

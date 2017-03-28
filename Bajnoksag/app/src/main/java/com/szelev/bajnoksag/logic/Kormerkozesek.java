@@ -1,6 +1,5 @@
-package com.szelev.bajnoksag.Logic;
+package com.szelev.bajnoksag.logic;
 
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Spinner;
@@ -19,11 +18,11 @@ import java.util.ArrayList;
  * Created by Levente on 2017.01.24..
  */
 
-public class KormerkozesekL {
+public class Kormerkozesek {
 
     public ArrayList<ArrayList<MerkozesEredmeny>> eredmenyek;
 
-    public KormerkozesekL()
+    public Kormerkozesek()
     {
         initEredmenyek();
     }
@@ -49,42 +48,42 @@ public class KormerkozesekL {
         eredmenyek.get(i).get(j).setEredmeny(egyik, masik);
     }
 
-    public void tablaRajzol(TableLayout tabl, final AppCompatActivity aca)
+    public void tablaRajzol(TableLayout tabl, final AppCompatActivity compatActivity)
     {
-        TableRow tr = new TableRow(aca);
+        TableRow tr = new TableRow(compatActivity);
 
         TextView tv;
 
-        tv = DrawTable.createTextView("", aca);
+        tv = DrawTable.createTextView("", compatActivity);
         tr.addView(tv);
-        tv = DrawTable.createTextView("", aca);
+        tv = DrawTable.createTextView("", compatActivity);
         tr.addView(tv);
         int numOfTeams = DataContainer.numOfTeams();
 
         for(int i = 0; i < numOfTeams; i++)
         {
-            tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 120);
+            tv = DrawTable.createTextView(" " + (i+1) + " ", compatActivity, 120);
             tr.addView(tv);
         }
         tabl.addView(tr);
 
         for(int i = 0; i< numOfTeams; i++)
         {
-            tr = new TableRow(aca);
-            tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 30);
+            tr = new TableRow(compatActivity);
+            tv = DrawTable.createTextView(" " + (i+1) + " ", compatActivity, 30);
             tr.addView(tv);
-            tv = DrawTable.createTextView(" " + DataContainer.getTeam(i).getNev() + " ", aca);
+            tv = DrawTable.createTextView(" " + DataContainer.getTeam(i).getNev() + " ", compatActivity);
             tr.addView(tv);
 
             for(int j = 0; j< numOfTeams; j++)
             {
                 if(eredmenyek.get(i).get(j).voltMeccs())
                 {
-                    tv = DrawTable.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", aca);
+                    tv = DrawTable.createTextView(" "+eredmenyek.get(i).get(j).getElso()+":"+eredmenyek.get(i).get(j).getMasodik()+" ", compatActivity);
                 }
                 else
                 {
-                    tv = DrawTable.createTextView(" - ", aca);
+                    tv = DrawTable.createTextView(" - ", compatActivity);
                 }
                 final int finalI = i;
                 final int finalJ = j;
@@ -92,8 +91,8 @@ public class KormerkozesekL {
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Spinner sp1 = (Spinner)     (aca.findViewById(R.id.spinner1));
-                                Spinner sp2 = (Spinner)     (aca.findViewById(R.id.spinner2));
+                                Spinner sp1 = (Spinner)     (compatActivity.findViewById(R.id.spinner1));
+                                Spinner sp2 = (Spinner)     (compatActivity.findViewById(R.id.spinner2));
 
                                 sp1.setSelection(finalI+1);
                                 sp2.setSelection(finalJ+1);

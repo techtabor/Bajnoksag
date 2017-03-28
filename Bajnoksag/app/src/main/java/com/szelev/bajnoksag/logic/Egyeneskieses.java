@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.Logic;
+package com.szelev.bajnoksag.logic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,13 +19,13 @@ import java.util.Random;
  * Created by Levente on 2017.01.30..
  */
 
-public class EgyeneskiesesL {
+public class Egyeneskieses {
 
     private ArrayList<Csapat> csapatok;
     private ArrayList<Merkozes> merkozesek;
     private TableLayout merkTabl, tovabbTabl;
 
-    public EgyeneskiesesL()
+    public Egyeneskieses()
     {
 
     }

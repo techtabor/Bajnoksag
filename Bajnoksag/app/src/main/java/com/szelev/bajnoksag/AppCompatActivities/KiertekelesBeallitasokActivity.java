@@ -8,13 +8,12 @@ import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.util.CreateActivity;
-import com.szelev.bajnoksag.util.DrawTable;
 
 /**
  * Created by Levente on 2016.12.19..
  */
 
-public class KiertekelesBeallitasokACA extends AppCompatActivity{
+public class KiertekelesBeallitasokActivity extends AppCompatActivity{
 
     private EditText    tv1, tv2, tv3, tv4;
 
@@ -39,19 +38,19 @@ public class KiertekelesBeallitasokACA extends AppCompatActivity{
         tv3 = (EditText) (findViewById(R.id.editText5));
         tv4 = (EditText) (findViewById(R.id.editText6));
 
-        tv1.setText(Integer.toString(KiertekelesBeallitasokACA.gyozelemPont));
-        tv2.setText(Integer.toString(KiertekelesBeallitasokACA.dontetlenPont));
-        tv3.setText(Integer.toString(KiertekelesBeallitasokACA.veresegPont));
-        tv4.setText(Integer.toString(KiertekelesBeallitasokACA.nemVoltMegMeccsPont));
+        tv1.setText(Integer.toString(KiertekelesBeallitasokActivity.gyozelemPont));
+        tv2.setText(Integer.toString(KiertekelesBeallitasokActivity.dontetlenPont));
+        tv3.setText(Integer.toString(KiertekelesBeallitasokActivity.veresegPont));
+        tv4.setText(Integer.toString(KiertekelesBeallitasokActivity.nemVoltMegMeccsPont));
     }
 
     //onClick event
     public void actionOnBeallitButton(View v)
     {
-        KiertekelesBeallitasokACA.gyozelemPont         = Integer.parseInt(tv1.getText().toString());
-        KiertekelesBeallitasokACA.dontetlenPont        = Integer.parseInt(tv2.getText().toString());
-        KiertekelesBeallitasokACA.veresegPont          = Integer.parseInt(tv3.getText().toString());
-        KiertekelesBeallitasokACA.nemVoltMegMeccsPont  = Integer.parseInt(tv4.getText().toString());
+        KiertekelesBeallitasokActivity.gyozelemPont         = Integer.parseInt(tv1.getText().toString());
+        KiertekelesBeallitasokActivity.dontetlenPont        = Integer.parseInt(tv2.getText().toString());
+        KiertekelesBeallitasokActivity.veresegPont          = Integer.parseInt(tv3.getText().toString());
+        KiertekelesBeallitasokActivity.nemVoltMegMeccsPont  = Integer.parseInt(tv4.getText().toString());
 
         ((TextView) (findViewById(R.id.textView7))).setText("Módosítások elmentve!");
     }
@@ -59,7 +58,7 @@ public class KiertekelesBeallitasokACA extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        CreateActivity.start(KiertekelACA.class, this);
+        CreateActivity.start(KiertekelActivity.class, this);
         ((TextView) (findViewById(R.id.textView7))).setText("");
     }
 

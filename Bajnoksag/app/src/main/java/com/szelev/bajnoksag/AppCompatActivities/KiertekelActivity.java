@@ -22,7 +22,7 @@ import java.util.Comparator;
  */
 
 
-public class KiertekelACA extends AppCompatActivity{
+public class KiertekelActivity extends AppCompatActivity{
 
     private TableLayout                 ertekeloTabla;
     public  static ArrayList<CsapatTul>   sorrend;
@@ -76,12 +76,12 @@ public class KiertekelACA extends AppCompatActivity{
             {
                 if(i!=j)
                 {
-                    sorrend.get(i).pontszam += getPontszam(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs());
-                    sorrend.get(i).pontkul  += KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()-KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik();
-                    sorrend.get(i).szerzettPont += KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso();
-                    if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).getElso()>KormerkozesekACA.logika.eredmenyek.get(i).get(j).getMasodik())
+                    sorrend.get(i).pontszam += getPontszam(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso(), KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekActivity.logika.eredmenyek.get(i).get(j).voltMeccs());
+                    sorrend.get(i).pontkul  += KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso()- KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik();
+                    sorrend.get(i).szerzettPont += KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso();
+                    if(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso()> KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik())
                         sorrend.get(i).gyozelemszam++;
-                    if(KormerkozesekACA.logika.eredmenyek.get(i).get(j).voltMeccs())
+                    if(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).voltMeccs())
                         sorrend.get(i).jatszottMeccsek++;
                 }
             }
@@ -116,24 +116,24 @@ public class KiertekelACA extends AppCompatActivity{
     private static int getPontszam(int egyik, int masik, boolean voltMeccs)
     {
         if(!voltMeccs)
-            return KiertekelesBeallitasokACA.nemVoltMegMeccsPont;
+            return KiertekelesBeallitasokActivity.nemVoltMegMeccsPont;
         if(egyik > masik)
-            return KiertekelesBeallitasokACA.gyozelemPont;
+            return KiertekelesBeallitasokActivity.gyozelemPont;
         if(egyik < masik)
-            return KiertekelesBeallitasokACA.veresegPont;
-        return KiertekelesBeallitasokACA.dontetlenPont;
+            return KiertekelesBeallitasokActivity.veresegPont;
+        return KiertekelesBeallitasokActivity.dontetlenPont;
     }
 
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        CreateActivity.start(KormerkozesekACA.class, this);
+        CreateActivity.start(KormerkozesekActivity.class, this);
     }
 
     //onClick event
     public void actionOnTovabbButton(View v)
     {
-        CreateActivity.start(KiertekelesBeallitasokACA.class, this);
+        CreateActivity.start(KiertekelesBeallitasokActivity.class, this);
     }
 
 }

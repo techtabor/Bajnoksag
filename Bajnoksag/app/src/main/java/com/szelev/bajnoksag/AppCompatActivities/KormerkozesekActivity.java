@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.CreateActivity;
-import com.szelev.bajnoksag.util.DrawTable;
-import com.szelev.bajnoksag.Logic.KormerkozesekL;
+import com.szelev.bajnoksag.logic.Kormerkozesek;
 import com.szelev.bajnoksag.R;
 
 import java.util.ArrayList;
@@ -21,19 +20,19 @@ import java.util.List;
  * Created by Levente on 2016.12.06..
  */
 
-public class KormerkozesekACA extends AppCompatActivity{
+public class KormerkozesekActivity extends AppCompatActivity{
 
-    public static KormerkozesekL    logika;
+    public static Kormerkozesek logika;
     private static boolean          vanLogika = false;
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView        er1, er2;
 
-    public KormerkozesekACA() {
+    public KormerkozesekActivity() {
         if(!vanLogika)
         {
-            logika = new KormerkozesekL();
+            logika = new Kormerkozesek();
             vanLogika = true;
         }
     }
@@ -151,7 +150,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     //onClick action
     public void actionOnTovabbButton(View v)
     {
-        CreateActivity.start(KiertekelACA.class, this);
+        CreateActivity.start(KiertekelActivity.class, this);
     }
 
 }

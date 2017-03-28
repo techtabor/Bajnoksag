@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class KormerkozesekActivity extends AppCompatActivity{
 
-    public static Kormerkozesek logika;
+    public static Kormerkozesek kormerkozes;
     private static boolean          vanLogika = false;
 
     private TableLayout     merkozesTabla;
@@ -32,7 +32,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
     public KormerkozesekActivity() {
         if(!vanLogika)
         {
-            logika = new Kormerkozesek();
+            kormerkozes = new Kormerkozesek();
             vanLogika = true;
         }
     }
@@ -57,13 +57,11 @@ public class KormerkozesekActivity extends AppCompatActivity{
         initTable();
     }
 
-    //TODO (szgabbor): Mi ez a nagy T?
-    //(szlev): Tabla
     private void refreshTable()
     {
         merkozesTabla.removeAllViews();
 
-        logika.tablaRajzol(merkozesTabla, this);
+        kormerkozes.tablaRajzol(merkozesTabla, this);
     }
 
     private void initTable()
@@ -101,8 +99,8 @@ public class KormerkozesekActivity extends AppCompatActivity{
 
         if(i!=j && i!=-1 && j!=-1)
         {
-            logika.setEredmeny(i, j, Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
-            logika.setEredmeny(j, i, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
+            kormerkozes.setEredmeny(i, j, Integer.parseInt(er1.getText().toString()), Integer.parseInt(er2.getText().toString()));
+            kormerkozes.setEredmeny(j, i, Integer.parseInt(er2.getText().toString()), Integer.parseInt(er1.getText().toString()));
         }
 
         refreshTable();

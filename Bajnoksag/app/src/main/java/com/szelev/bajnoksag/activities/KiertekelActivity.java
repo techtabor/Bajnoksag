@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -76,12 +76,12 @@ public class KiertekelActivity extends AppCompatActivity{
             {
                 if(i!=j)
                 {
-                    sorrend.get(i).pontszam += getPontszam(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso(), KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekActivity.logika.eredmenyek.get(i).get(j).voltMeccs());
-                    sorrend.get(i).pontkul  += KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso()- KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik();
-                    sorrend.get(i).szerzettPont += KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso();
-                    if(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getElso()> KormerkozesekActivity.logika.eredmenyek.get(i).get(j).getMasodik())
+                    sorrend.get(i).pontszam += getPontszam(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso(), KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).voltMeccs());
+                    sorrend.get(i).pontkul  += KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso()- KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik();
+                    sorrend.get(i).szerzettPont += KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso();
+                    if(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso()> KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik())
                         sorrend.get(i).gyozelemszam++;
-                    if(KormerkozesekActivity.logika.eredmenyek.get(i).get(j).voltMeccs())
+                    if(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).voltMeccs())
                         sorrend.get(i).jatszottMeccsek++;
                 }
             }

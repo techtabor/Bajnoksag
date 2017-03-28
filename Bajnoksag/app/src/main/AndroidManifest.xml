@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".AppCompatActivities.CsapatHozzaadasActivity" >
+            android:name=".activities.CsapatHozzaadasActivity" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,23 +20,23 @@
         </activity>
 
         <activity
-            android:name=".AppCompatActivities.ModvalasztoActivity">
+            android:name=".activities.ModvalasztoActivity">
         </activity>
 
         <activity
-            android:name=".AppCompatActivities.EgyeneskiesesActivity">
+            android:name=".activities.EgyeneskiesesActivity">
         </activity>
 
         <activity
-            android:name=".AppCompatActivities.KormerkozesekActivity">
+            android:name=".activities.KormerkozesekActivity">
         </activity>
 
         <activity
-            android:name=".AppCompatActivities.KiertekelActivity">
+            android:name=".activities.KiertekelActivity">
         </activity>
 
         <activity
-            android:name=".AppCompatActivities.KiertekelesBeallitasokActivity">
+            android:name=".activities.KiertekelesBeallitasokActivity">
         </activity>
     </application>
 

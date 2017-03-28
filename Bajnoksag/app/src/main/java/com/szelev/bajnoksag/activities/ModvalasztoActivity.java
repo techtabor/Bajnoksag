@@ -1,4 +1,4 @@
-package com.szelev.bajnoksag.AppCompatActivities;
+package com.szelev.bajnoksag.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

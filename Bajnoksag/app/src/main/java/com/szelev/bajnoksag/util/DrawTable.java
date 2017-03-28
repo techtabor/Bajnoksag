@@ -64,11 +64,11 @@ public class DrawTable {
         return createTextView(text, compatActivity, 0);
     }
 
-    public static void startNewActivity(Class c, AppCompatActivity compatActivity)
+/*    public static void startNewActivity(Class c, AppCompatActivity compatActivity)
     {
         Intent intent = new Intent(compatActivity, c);
 
         compatActivity.startActivity(intent);
-    }
+    }*/
 
 }

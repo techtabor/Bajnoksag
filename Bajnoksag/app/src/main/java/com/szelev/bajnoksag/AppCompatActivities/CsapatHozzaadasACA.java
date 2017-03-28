@@ -8,6 +8,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 
 import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.Logic.CsapatHozzaadasL;
 import com.szelev.bajnoksag.R;
@@ -58,6 +59,6 @@ public class CsapatHozzaadasACA extends AppCompatActivity{
 
     //onClick event
     public void actionOnTovabbButton(View v) {
-        DrawTable.startNewActivity(ModvalasztoACA.class, this);
+        CreateActivity.start(ModvalasztoACA.class, this);
     }
 }

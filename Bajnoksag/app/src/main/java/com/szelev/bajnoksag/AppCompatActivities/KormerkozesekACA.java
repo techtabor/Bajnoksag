@@ -9,6 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.Logic.KormerkozesekL;
 import com.szelev.bajnoksag.R;
@@ -150,7 +151,7 @@ public class KormerkozesekACA extends AppCompatActivity{
     //onClick action
     public void actionOnTovabbButton(View v)
     {
-        DrawTable.startNewActivity(KiertekelACA.class, this);
+        CreateActivity.start(KiertekelACA.class, this);
     }
 
 }

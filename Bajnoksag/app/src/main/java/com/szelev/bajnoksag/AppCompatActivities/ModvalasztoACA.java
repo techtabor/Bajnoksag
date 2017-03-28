@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.R;
 
@@ -23,13 +24,13 @@ public class ModvalasztoACA extends AppCompatActivity{
     //onClick event
     public void actionOnKorButton(View v)
     {
-        DrawTable.startNewActivity(KormerkozesekACA.class, this);
+        CreateActivity.start(KormerkozesekACA.class, this);
     }
 
     //onClick event
     public void actionOnEgyenesButton(View v)
     {
-        DrawTable.startNewActivity(EgyeneskiesesACA.class, this);
+        CreateActivity.start(EgyeneskiesesACA.class, this);
     }
 
 }

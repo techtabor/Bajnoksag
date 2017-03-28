@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 
 /**
@@ -58,7 +59,7 @@ public class KiertekelesBeallitasokACA extends AppCompatActivity{
     //onClick event
     public void actionOnVisszaButton(View v)
     {
-        DrawTable.startNewActivity(KiertekelACA.class, this);
+        CreateActivity.start(KiertekelACA.class, this);
         ((TextView) (findViewById(R.id.textView7))).setText("");
     }
 

@@ -7,10 +7,6 @@ import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.DrawTable;
 
-/**
- * Created by Levente on 2017.01.11..
- */
-
 public class CsapatHozzaadasL {
 
     public CsapatHozzaadasL()
@@ -24,9 +20,9 @@ public class CsapatHozzaadasL {
         DataContainer.getTeams().add(c);
     }
 
-    public void addCsapat(String nev/*, int suly*/)
+    public void addCsapat(String nev)
     {
-        addCsapat(DataContainer.numOfTeams(), nev/*, suly*/);
+        addCsapat(DataContainer.numOfTeams(), nev);
     }
 
     public TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
@@ -53,8 +49,6 @@ public class CsapatHozzaadasL {
         }
 
         return DrawTable.createRowWithThreeCell(" " + s1 + " ", " " + s2 + " ", " " + s3 + " ", act);
-        //return DrawTable.createRowWithOneCell(" " + DrawTable.csapatok.get(index).getNev() + " ", act);
-        //return DrawTable.createRowWithTwoCell(" " + DrawTable.csapatok.get(index).getNev() + " ", " " + DrawTable.csapatok.get(index).getSuly() + " ", act);
     }
 
 }

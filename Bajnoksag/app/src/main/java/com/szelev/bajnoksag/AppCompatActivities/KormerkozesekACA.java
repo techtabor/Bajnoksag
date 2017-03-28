@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.Logic.KormerkozesekL;
 import com.szelev.bajnoksag.R;
@@ -75,9 +76,9 @@ public class KormerkozesekACA extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< DrawTable.csapatok.size(); i++)
+        for(int i = 0; i< DataContainer.numOfTeams(); i++)
         {
-            list.add(DrawTable.csapatok.get(i).getNev());
+            list.add(DataContainer.getTeam(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

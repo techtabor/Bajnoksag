@@ -17,8 +17,6 @@ import java.util.ArrayList;
 
 public class DrawTable {
 
-    public static ArrayList<Csapat> csapatok = new ArrayList<>();
-
     public static int defaultTextColor  = Color.BLACK;
     public static int defaultGravity    = Gravity.CENTER;
 

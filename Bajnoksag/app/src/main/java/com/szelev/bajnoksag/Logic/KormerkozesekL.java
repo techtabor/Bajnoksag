@@ -1,5 +1,6 @@
 package com.szelev.bajnoksag.Logic;
 
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Spinner;
@@ -7,6 +8,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.data.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.util.DrawTable;
@@ -29,11 +31,11 @@ public class KormerkozesekL {
     private void initEredmenyek()
     {
         eredmenyek = new ArrayList<>();
-        int N = DrawTable.csapatok.size();
-        for(int i=0; i<N; i++)
+        int numOfTeams = DataContainer.numOfTeams();
+        for(int i=0; i<numOfTeams; i++)
         {
             ArrayList<MerkozesEredmeny> merkEr = new ArrayList<>();
-            for(int j=0; j<N; j++)
+            for(int j=0; j<numOfTeams; j++)
             {
                 MerkozesEredmeny merk = new MerkozesEredmeny();
                 merkEr.add(merk);
@@ -57,23 +59,24 @@ public class KormerkozesekL {
         tr.addView(tv);
         tv = DrawTable.createTextView("", aca);
         tr.addView(tv);
+        int numOfTeams = DataContainer.numOfTeams();
 
-        for(int i = 0; i< DrawTable.csapatok.size(); i++)
+        for(int i = 0; i < numOfTeams; i++)
         {
             tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 120);
             tr.addView(tv);
         }
         tabl.addView(tr);
 
-        for(int i = 0; i< DrawTable.csapatok.size(); i++)
+        for(int i = 0; i< numOfTeams; i++)
         {
             tr = new TableRow(aca);
             tv = DrawTable.createTextView(" " + (i+1) + " ", aca, 30);
             tr.addView(tv);
-            tv = DrawTable.createTextView(" " + DrawTable.csapatok.get(i).getNev() + " ", aca);
+            tv = DrawTable.createTextView(" " + DataContainer.getTeam(i).getNev() + " ", aca);
             tr.addView(tv);
 
-            for(int j = 0; j< DrawTable.csapatok.size(); j++)
+            for(int j = 0; j< numOfTeams; j++)
             {
                 if(eredmenyek.get(i).get(j).voltMeccs())
                 {

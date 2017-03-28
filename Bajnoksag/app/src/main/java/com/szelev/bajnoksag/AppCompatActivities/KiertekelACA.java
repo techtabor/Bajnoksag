@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
 
+import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.CsapatTul;
+import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.R;
 
@@ -47,7 +49,7 @@ public class KiertekelACA extends AppCompatActivity{
 
         for(int i = 0; i< KiertekelACA.sorrend.size(); i++)
         {
-            ertekeloTabla.addView(DrawTable.createRowWithTwoCell(Integer.toString(i+1), DrawTable.csapatok.get(KiertekelACA.sorrend.get(i).ID).getNev(), this));
+            ertekeloTabla.addView(DrawTable.createRowWithTwoCell(Integer.toString(i+1), DataContainer.getTeam(KiertekelACA.sorrend.get(i).ID).getNev(), this));
         }
     }
 
@@ -57,7 +59,8 @@ public class KiertekelACA extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        for(int i = 0; i< DrawTable.csapatok.size(); i++)
+        ArrayList<Csapat> teams = DataContainer.getTeams();
+        for(int i = 0; i < teams.size(); i++)
         {
             CsapatTul ct = new CsapatTul();
             ct.ID = i;
@@ -65,9 +68,9 @@ public class KiertekelACA extends AppCompatActivity{
         }
         //sorbarakPontszam(0, DrawTable.csapatok.size()-1);
 
-        for(int i = 0; i< DrawTable.csapatok.size(); i++)
+        for(int i = 0; i< teams.size(); i++)
         {
-            for(int j = 0; j< DrawTable.csapatok.size(); j++)
+            for(int j = 0; j< teams.size(); j++)
             {
                 if(i!=j)
                 {

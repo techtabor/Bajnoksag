@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TableRow;
 
 import com.szelev.bajnoksag.data.Csapat;
+import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.util.DrawTable;
 
 /**
@@ -12,43 +13,33 @@ import com.szelev.bajnoksag.util.DrawTable;
 
 public class CsapatHozzaadasL {
 
-    //private Csapat lastCsapat;
-
     public CsapatHozzaadasL()
     {
 
     }
 
-    public void addCsapat(int ID, String nev/*, int suly*/)
+    public void addCsapat(int ID, String nev)
     {
-        Csapat c = new Csapat(ID, nev/*, suly*/);
-        DrawTable.csapatok.add(c);
-
-        //lastCsapat = c;
+        Csapat c = new Csapat(ID, nev);
+        DataContainer.getTeams().add(c);
     }
 
     public void addCsapat(String nev/*, int suly*/)
     {
-        addCsapat(DrawTable.csapatok.size(), nev/*, suly*/);
+        addCsapat(DataContainer.numOfTeams(), nev/*, suly*/);
     }
-
-    /*/public TableRow getLastCsapatRow(AppCompatActivity act)
-    {
-
-        return DrawTable.createRowWithOneCell(" " + lastCsapat.getNev() + " ", act);
-        //return DrawTable.createRowWithTwoCell(" " + lastCsapat.getNev() + " ", " " + lastCsapat.getSuly() + " ", act);
-    }*/
 
     public TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
     {
         String s1, s2, s3;
-        s1 = DrawTable.csapatok.get(index*3).getNev();
-        if(DrawTable.csapatok.size() > index*3+1)
+        int numOfTeams = DataContainer.numOfTeams();
+        s1 = DataContainer.getTeam(index*3).getNev();
+        if(numOfTeams > index*3+1)
         {
-            s2 = DrawTable.csapatok.get(index*3+1).getNev();
-            if(DrawTable.csapatok.size() > index*3+2)
+            s2 = DataContainer.getTeam(index*3+1).getNev();
+            if(numOfTeams > index*3+2)
             {
-                s3 = DrawTable.csapatok.get(index*3+2).getNev();
+                s3 = DataContainer.getTeam(index*3+2).getNev();
             }
             else
             {

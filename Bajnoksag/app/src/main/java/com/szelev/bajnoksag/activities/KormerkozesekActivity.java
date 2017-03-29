@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Scores;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.logic.Kormerkozesek;
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.util.DrawTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +64,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
     {
         merkozesTabla.removeAllViews();
 
-        kormerkozes.tablaRajzol(merkozesTabla, this);
+        tablaRajzol(merkozesTabla, this);
     }
 
     private void initTable()
@@ -143,6 +146,66 @@ public class KormerkozesekActivity extends AppCompatActivity{
     public void actionOnTovabbButton(View v)
     {
         CreateActivity.start(KiertekelActivity.class, this);
+    }
+
+
+    public void tablaRajzol(TableLayout tabl, final AppCompatActivity compatActivity)
+    {
+        TableRow tr = new TableRow(compatActivity);
+
+        TextView tv;
+
+        tv = DrawTable.createTextView("", compatActivity);
+        tr.addView(tv);
+        tv = DrawTable.createTextView("", compatActivity);
+        tr.addView(tv);
+        int numOfTeams = DataContainer.numOfTeams();
+
+        for(int i = 0; i < numOfTeams; i++)
+        {
+            tv = DrawTable.createTextView(" " + (i+1) + " ", compatActivity, 120);
+            tr.addView(tv);
+        }
+        tabl.addView(tr);
+
+        for(int i = 0; i< numOfTeams; i++)
+        {
+            tr = new TableRow(compatActivity);
+            tv = DrawTable.createTextView(" " + (i+1) + " ", compatActivity, 30);
+            tr.addView(tv);
+            tv = DrawTable.createTextView(" " + DataContainer.getTeam(i).getNev() + " ", compatActivity);
+            tr.addView(tv);
+
+            for(int j = 0; j< numOfTeams; j++)
+            {
+                if(Scores.getResult(i, j).voltMeccs()) {
+                    String scoresString = " " + Scores.getScoreFirstTeam(i, j) +
+                            ":" + Scores.getScoreSecondTeam(i, j) + " ";
+                    tv = DrawTable.createTextView(scoresString, compatActivity);
+                }
+                else
+                {
+                    tv = DrawTable.createTextView(" - ", compatActivity);
+                }
+                final int finalI = i;
+                final int finalJ = j;
+                tv.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Spinner sp1 = (Spinner)     (compatActivity.findViewById(R.id.spinner1));
+                                Spinner sp2 = (Spinner)     (compatActivity.findViewById(R.id.spinner2));
+
+                                sp1.setSelection(finalI+1);
+                                sp2.setSelection(finalJ+1);
+                            }
+                        }
+                );
+                tr.addView(tv);
+            }
+
+            tabl.addView(tr);
+        }
     }
 
 }

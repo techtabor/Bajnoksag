@@ -9,6 +9,7 @@ import android.widget.TableRow;
 import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.CsapatTul;
 import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Scores;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.R;
@@ -76,13 +77,20 @@ public class KiertekelActivity extends AppCompatActivity{
             {
                 if(i!=j)
                 {
-                    sorrend.get(i).pontszam += getPontszam(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso(), KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik(), KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).voltMeccs());
-                    sorrend.get(i).pontkul  += KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso()- KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik();
-                    sorrend.get(i).szerzettPont += KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso();
-                    if(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getElso()> KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).getMasodik())
-                        sorrend.get(i).gyozelemszam++;
-                    if(KormerkozesekActivity.kormerkozes.eredmenyek.get(i).get(j).voltMeccs())
-                        sorrend.get(i).jatszottMeccsek++;
+                    // TODO (szgabbor) Logikátlan, hogy a nem lejátszott meccsnál is van pontszámítás, ezt  át kellene írni.
+                    boolean alreadyPlayedTheMatch = Scores.getResult(i, j).voltMeccs();
+                    int firstTeamScore = Scores.getScoreFirstTeam(i, j);
+                    int secondTeamScore = Scores.getScoreSecondTeam(i, j);
+
+                    CsapatTul currentTeam = sorrend.get(i);
+
+                    currentTeam.pontszam += getPontszam(firstTeamScore, secondTeamScore, alreadyPlayedTheMatch);
+                    currentTeam.pontkul  += firstTeamScore - secondTeamScore;
+                    currentTeam.szerzettPont += firstTeamScore;
+                    if(firstTeamScore > secondTeamScore)
+                        currentTeam.gyozelemszam++;
+                    if(alreadyPlayedTheMatch)
+                        currentTeam.jatszottMeccsek++;
                 }
             }
         }

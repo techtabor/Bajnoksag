@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.szelev.bajnoksag.data.DataContainer;
 import com.szelev.bajnoksag.data.MerkozesEredmeny;
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.data.Scores;
 import com.szelev.bajnoksag.util.DrawTable;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class Kormerkozesek {
             }
             eredmenyek.add(merkEr);
         }
+        Scores.eredmenyek = eredmenyek;
     }
 
     public void setEredmeny(int i, int j, int egyik, int masik)

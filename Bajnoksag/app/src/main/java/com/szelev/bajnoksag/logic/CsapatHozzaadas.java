@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TableRow;
 
 import com.szelev.bajnoksag.data.Csapat;
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.util.DrawTable;
 
 public class CsapatHozzaadas {
@@ -17,25 +17,25 @@ public class CsapatHozzaadas {
     public void addCsapat(int ID, String nev)
     {
         Csapat c = new Csapat(ID, nev);
-        DataContainer.getTeams().add(c);
+        Teams.getTeams().add(c);
     }
 
     public void addCsapat(String nev)
     {
-        addCsapat(DataContainer.numOfTeams(), nev);
+        addCsapat(Teams.numOfTeams(), nev);
     }
 
     public TableRow getCsapatRowByIndex(int index, AppCompatActivity act)
     {
         String s1, s2, s3;
-        int numOfTeams = DataContainer.numOfTeams();
-        s1 = DataContainer.getTeam(index*3).getNev();
+        int numOfTeams = Teams.numOfTeams();
+        s1 = Teams.getTeam(index*3).getNev();
         if(numOfTeams > index*3+1)
         {
-            s2 = DataContainer.getTeam(index*3+1).getNev();
+            s2 = Teams.getTeam(index*3+1).getNev();
             if(numOfTeams > index*3+2)
             {
-                s3 = DataContainer.getTeam(index*3+2).getNev();
+                s3 = Teams.getTeam(index*3+2).getNev();
             }
             else
             {

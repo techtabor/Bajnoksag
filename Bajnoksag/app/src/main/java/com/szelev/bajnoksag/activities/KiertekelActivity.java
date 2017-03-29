@@ -8,7 +8,7 @@ import android.widget.TableRow;
 
 import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.CsapatTul;
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.data.Scores;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
@@ -49,7 +49,7 @@ public class KiertekelActivity extends AppCompatActivity{
 
         for(int i = 0; i < sorrend.size(); i++)
         {
-            String teamName = DataContainer.getTeam(sorrend.get(i).ID).getNev();
+            String teamName = Teams.getTeam(sorrend.get(i).ID).getNev();
             TableRow newRow = DrawTable.createRowWithTwoCell(Integer.toString(i+1), teamName, this);
 
             ertekeloTabla.addView(newRow);
@@ -62,7 +62,7 @@ public class KiertekelActivity extends AppCompatActivity{
 
         // kezdetben a csapatok index szerint vannak sorbarendezve
 
-        ArrayList<Csapat> teams = DataContainer.getTeams();
+        ArrayList<Csapat> teams = Teams.getTeams();
         for(int i = 0; i < teams.size(); i++)
         {
             CsapatTul ct = new CsapatTul();

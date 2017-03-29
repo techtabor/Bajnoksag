@@ -1,17 +1,8 @@
 package com.szelev.bajnoksag.logic;
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
-
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.data.MerkozesEredmeny;
-import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.data.Scores;
-import com.szelev.bajnoksag.util.DrawTable;
 
 import java.util.ArrayList;
 
@@ -27,7 +18,7 @@ public class Kormerkozesek {
 
     private void initEredmenyek() {
         ArrayList<ArrayList<MerkozesEredmeny>> eredmenyek = new ArrayList<>();
-        int numOfTeams = DataContainer.numOfTeams();
+        int numOfTeams = Teams.numOfTeams();
 
         for(int i=0; i<numOfTeams; i++)
         {

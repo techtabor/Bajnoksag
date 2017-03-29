@@ -8,7 +8,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.data.Csapat;
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.data.Merkozes;
 
@@ -34,9 +34,9 @@ public class Egyeneskieses {
     {
         csapatok    = new ArrayList<>();
         merkozesek  = new ArrayList<>();
-        for(int i = 0; i< DataContainer.numOfTeams(); i++)
+        for(int i = 0; i< Teams.numOfTeams(); i++)
         {
-            csapatok.add(DataContainer.getTeam(i));
+            csapatok.add(Teams.getTeam(i));
         }
     }
 

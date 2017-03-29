@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.logic.CsapatHozzaadas;
@@ -41,7 +41,7 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
         TableRow header = DrawTable.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
         csapatTabla.addView(header);
 
-        for(int i = 0; i < (DataContainer.getTeams().size()+2)/3; i++) {
+        for(int i = 0; i < (Teams.getTeams().size()+2)/3; i++) {
             csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
     }

@@ -9,7 +9,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.szelev.bajnoksag.data.DataContainer;
+import com.szelev.bajnoksag.data.Teams;
 import com.szelev.bajnoksag.data.Scores;
 import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.logic.Kormerkozesek;
@@ -77,9 +77,9 @@ public class KormerkozesekActivity extends AppCompatActivity{
         List<String> list = new ArrayList<String>();
         list.add("");
 
-        for(int i = 0; i< DataContainer.numOfTeams(); i++)
+        for(int i = 0; i< Teams.numOfTeams(); i++)
         {
-            list.add(DataContainer.getTeam(i).getNev());
+            list.add(Teams.getTeam(i).getNev());
         }
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -159,7 +159,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
         tr.addView(tv);
         tv = DrawTable.createTextView("", compatActivity);
         tr.addView(tv);
-        int numOfTeams = DataContainer.numOfTeams();
+        int numOfTeams = Teams.numOfTeams();
 
         for(int i = 0; i < numOfTeams; i++)
         {
@@ -173,7 +173,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
             tr = new TableRow(compatActivity);
             tv = DrawTable.createTextView(" " + (i+1) + " ", compatActivity, 30);
             tr.addView(tv);
-            tv = DrawTable.createTextView(" " + DataContainer.getTeam(i).getNev() + " ", compatActivity);
+            tv = DrawTable.createTextView(" " + Teams.getTeam(i).getNev() + " ", compatActivity);
             tr.addView(tv);
 
             for(int j = 0; j< numOfTeams; j++)

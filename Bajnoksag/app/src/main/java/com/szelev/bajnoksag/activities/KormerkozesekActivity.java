@@ -24,20 +24,14 @@ import java.util.List;
  */
 
 public class KormerkozesekActivity extends AppCompatActivity{
-
     public static Kormerkozesek kormerkozes;
-    private static boolean          vanLogika = false;
 
     private TableLayout     merkozesTabla;
     private Spinner         csapatok1, csapatok2;
     private TextView scoreOfTeam1TextView, scoreOfTeam2TextView;
 
     public KormerkozesekActivity() {
-        if(!vanLogika)
-        {
-            kormerkozes = new Kormerkozesek();
-            vanLogika = true;
-        }
+        kormerkozes = new Kormerkozesek();
     }
 
     @Override
@@ -60,8 +54,7 @@ public class KormerkozesekActivity extends AppCompatActivity{
         initTable();
     }
 
-    private void refreshTable()
-    {
+    private void refreshTable() {
         merkozesTabla.removeAllViews();
 
         tablaRajzol(merkozesTabla, this);
@@ -97,13 +90,10 @@ public class KormerkozesekActivity extends AppCompatActivity{
         csapatok1.setSelection(0);
         csapatok2.setSelection(0);
 
-        int scoreOfFirstTeam = Integer.parseInt(scoreOfTeam1TextView.getText().toString());
-        int scoreOfSecondTeam = Integer.parseInt(scoreOfTeam2TextView.getText().toString());
+        String scoreOfTeam1 = scoreOfTeam1TextView.getText().toString();
+        String scoreOfTeam2 = scoreOfTeam2TextView.getText().toString();
 
-        if(i!=j && i!=-1 && j!=-1) {
-            Scores.setScore(i, j, scoreOfFirstTeam, scoreOfSecondTeam);
-            Scores.setScore(j, i, scoreOfSecondTeam, scoreOfFirstTeam);
-        }
+        kormerkozes.saveScores(i, j, scoreOfTeam1, scoreOfTeam2);
 
         refreshTable();
 
@@ -147,7 +137,6 @@ public class KormerkozesekActivity extends AppCompatActivity{
     {
         CreateActivity.start(KiertekelActivity.class, this);
     }
-
 
     public void tablaRajzol(TableLayout tabl, final AppCompatActivity compatActivity)
     {

@@ -56,6 +56,7 @@ public class KiertekelActivity extends AppCompatActivity{
         }
     }
 
+    //TODO (szgabbor): Ez itt mind logika, ennek nem itt van a helye.
     public static void sorrendKiszamol()
     {
         sorrend = new ArrayList<>();
@@ -77,7 +78,7 @@ public class KiertekelActivity extends AppCompatActivity{
             {
                 if(i!=j)
                 {
-                    // TODO (szgabbor) Logikátlan, hogy a nem lejátszott meccsnál is van pontszámítás, ezt  át kellene írni.
+                    // TODO (szgabbor): Logikátlan, hogy a nem lejátszott meccsnál is van pontszámítás, ezt  át kellene írni.
                     boolean alreadyPlayedTheMatch = Scores.getResult(i, j).voltMeccs();
                     int firstTeamScore = Scores.getScoreFirstTeam(i, j);
                     int secondTeamScore = Scores.getScoreSecondTeam(i, j);

@@ -30,7 +30,17 @@ public class Kormerkozesek {
             }
             eredmenyek.add(merkEr);
         }
-        Scores.eredmenyek = eredmenyek;
+        Scores.setScore(eredmenyek);
+    }
+
+    public void saveScores(int team1ID, int team2ID, String scoreOfTeam1, String scoreOfTeam2) {
+        int scoreOfFirstTeam = Integer.parseInt(scoreOfTeam1);
+        int scoreOfSecondTeam = Integer.parseInt(scoreOfTeam2);
+
+        if(team1ID != team2ID && team1ID !=-1 && team2ID != -1) {
+            Scores.setScore(team1ID, team2ID, scoreOfFirstTeam, scoreOfSecondTeam);
+            Scores.setScore(team2ID, team1ID, scoreOfSecondTeam, scoreOfFirstTeam);
+        }
     }
 
 }

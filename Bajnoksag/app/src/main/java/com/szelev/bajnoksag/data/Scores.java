@@ -7,10 +7,16 @@ import java.util.ArrayList;
  */
 
 public class Scores {
-    public static ArrayList<ArrayList<MerkozesEredmeny>> eredmenyek = null;
+    public static ArrayList<ArrayList<MerkozesEredmeny>> scores = null;
+    
+    public static void setScores(ArrayList<ArrayList<MerkozesEredmeny>> newScores) {
+       if (scores == null) {
+           scores = newScores;
+       }
+    }
 
     public static MerkozesEredmeny getResult(int firstTeamID, int secondTeamID) {
-        return eredmenyek.get(firstTeamID).get(secondTeamID);
+        return scores.get(firstTeamID).get(secondTeamID);
     }
 
     public static int getScoreFirstTeam(int firstTeamID, int secondTeamID) {

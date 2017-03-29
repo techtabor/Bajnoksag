@@ -72,6 +72,7 @@ public class Egyeneskieses {
         merkozesKirajzol(tl1, aca);
     }
 
+    // TODO (szgabbor): ez itt nem logika.
     private void merkozesKirajzol(TableLayout tabl, final AppCompatActivity aca)
     {
         if(merkozesek.size()>0) {

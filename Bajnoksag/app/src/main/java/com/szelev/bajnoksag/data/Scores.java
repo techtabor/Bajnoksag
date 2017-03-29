@@ -21,5 +21,9 @@ public class Scores {
         return getResult(firstTeamID, secondTeamID).getMasodik();
     }
 
+    public static void setScore(int firstTeamID, int secondTeamID, int firstScore, int secondScore) {
+        getResult(firstTeamID, secondTeamID).setEredmeny(firstScore, secondScore);
+    }
+
 }
 

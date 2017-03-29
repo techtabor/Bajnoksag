@@ -101,8 +101,8 @@ public class KormerkozesekActivity extends AppCompatActivity{
         int scoreOfSecondTeam = Integer.parseInt(scoreOfTeam2TextView.getText().toString());
 
         if(i!=j && i!=-1 && j!=-1) {
-            kormerkozes.setEredmeny(i, j, scoreOfFirstTeam, scoreOfSecondTeam);
-            kormerkozes.setEredmeny(j, i, scoreOfSecondTeam, scoreOfFirstTeam);
+            Scores.setScore(i, j, scoreOfFirstTeam, scoreOfSecondTeam);
+            Scores.setScore(j, i, scoreOfSecondTeam, scoreOfFirstTeam);
         }
 
         refreshTable();

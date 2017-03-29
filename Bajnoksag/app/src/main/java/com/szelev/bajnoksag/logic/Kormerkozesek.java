@@ -42,9 +42,4 @@ public class Kormerkozesek {
         Scores.eredmenyek = eredmenyek;
     }
 
-    public void setEredmeny(int i, int j, int egyik, int masik)
-    {
-        Scores.eredmenyek.get(i).get(j).setEredmeny(egyik, masik);
-    }
-    
 }

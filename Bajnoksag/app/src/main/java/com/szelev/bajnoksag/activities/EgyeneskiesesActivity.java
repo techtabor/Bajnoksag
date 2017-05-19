@@ -46,7 +46,7 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
 
     private void bajnoksagAllapotKiir()
     {
-        logika.refreshKiiras(merkozesTabla, tovabbjutokTabla, this);
+        logika.refreshKiiras(merkozesTabla, tovabbjutokTabla, logika.getAktualisSzint(), this);
     }
 
 }

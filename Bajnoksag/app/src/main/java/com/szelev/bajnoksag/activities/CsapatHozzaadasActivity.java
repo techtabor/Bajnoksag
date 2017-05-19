@@ -24,7 +24,7 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csapathozzaadas);
-
+        System.err.println(1);
         init();
     }
 

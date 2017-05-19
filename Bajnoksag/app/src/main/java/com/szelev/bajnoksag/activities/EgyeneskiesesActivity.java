@@ -33,7 +33,7 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
         if(!vanLogika)
         {
             logika = new Egyeneskieses();
-            logika.init();
+            logika.init(merkozesTabla, tovabbjutokTabla);
             logika.general();
             vanLogika = true;
         }
@@ -46,7 +46,7 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
 
     private void bajnoksagAllapotKiir()
     {
-        logika.refreshKiiras(merkozesTabla, tovabbjutokTabla, logika.getAktualisSzint(), this);
+        logika.refreshKiiras(logika.getAktualisSzint(), this);
     }
 
 }

@@ -1,8 +1,11 @@
 package com.szelev.bajnoksag.logic;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -21,8 +24,9 @@ import java.util.Random;
 
 public class Egyeneskieses {
 
-    private ArrayList<Csapat> csapatok;
-    private ArrayList<Merkozes> merkozesek;
+    private ArrayList<EgyeneskiesesSzint> szintek;
+    private int aktualisSzint;
+
     private TableLayout merkTabl, tovabbTabl;
 
     public Egyeneskieses()
@@ -30,124 +34,126 @@ public class Egyeneskieses {
 
     }
 
-    public void init()
+    public void init(TableLayout merkT, TableLayout tovabbT)
     {
-        csapatok    = new ArrayList<>();
-        merkozesek  = new ArrayList<>();
-        for(int i = 0; i< Teams.numOfTeams(); i++)
-        {
-            csapatok.add(Teams.getTeam(i));
-        }
+        szintek = new ArrayList<>();
+        aktualisSzint = 0;
+
+        merkTabl = merkT;
+        tovabbT = tovabbT;
+
+        initTovabbjutok();
     }
 
-    private Csapat getRandomCsapatAndRemove()
+    private void initTovabbjutok()
     {
-        Random ran = new Random();
-        int index = ran.nextInt(csapatok.size());
-        Csapat c = csapatok.get(index);
-        csapatok.remove(index);
-        return c;
+        Teams.getTovabbjutok().clear();
+        for(int i=0; i<Teams.numOfTeams(); i++)
+        {
+            Teams.getTovabbjutok().add(Teams.getTeam(i));
+        }
     }
 
     public void general()
     {
-        int meret = csapatok.size();
-        for(int i=0; i<meret/2; i++)
+        EgyeneskiesesSzint esz = new EgyeneskiesesSzint();
+        esz.init();
+        esz.general();
+        szintek.add(esz);
+        aktualisSzint++;
+    }
+
+    public int getAktualisSzint() {
+        return aktualisSzint;
+    }
+
+    public void refreshKiiras(int szint, AppCompatActivity aca)
+    {
+        if(szint < szintek.size())
         {
-            Csapat cs1 = getRandomCsapatAndRemove();
-            Csapat cs2 = getRandomCsapatAndRemove();
-            merkozesek.add(new Merkozes(cs1, cs2, i));
+            merkTabl.removeAllViews();
+            tovabbTabl.removeAllViews();
+
+            tovabbjutokKirajzol(merkTabl, aca);
+            merkozesekKirajzol(tovabbTabl, aca);
+
+            aktualisSzint = szint;
         }
     }
 
-    public void refreshKiiras(TableLayout tl1, TableLayout tl2, AppCompatActivity aca)
+    private void merkozesekKirajzol(TableLayout tabl, final AppCompatActivity aca)
     {
-        merkTabl = tl1;
-        tovabbTabl = tl2;
-
-        tl1.removeAllViews();
-        tl2.removeAllViews();
-
-        tovabbjutokKirajzol(tl2, aca);
-        merkozesKirajzol(tl1, aca);
+        for(int i=0; i<szintek.get(aktualisSzint).getNumOfMerkozes(); i++)
+        {
+            merkozesKirajzol(szintek.get(aktualisSzint).getMerkozes(i), tabl, aca);
+        }
     }
 
     // TODO (szgabbor): ez itt nem logika.
-    private void merkozesKirajzol(TableLayout tabl, final AppCompatActivity aca)
+    private void merkozesKirajzol(Merkozes m, TableLayout tabl, AppCompatActivity aca)
     {
-        if(merkozesek.size()>0) {
-            tabl.addView(DrawTable.createRowWithThreeCell(" ", "Még le nem játszott mérkőzések:", " ", aca));
-            for (int i = 0; i < merkozesek.size(); i++) {
-                TextView tv1 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs1, aca, merkozesek.get(i).index);
-                TextView tv2 = DrawTable.createTextView("", aca);
-                TextView tv3 = createTextViewWithSpecificOnClickListener(merkozesek.get(i).cs2, aca, merkozesek.get(i).index);
+        TableRow tr1 = DrawTable.createRowWithThreeCell(" " + m.getCs1().getNev() + " ", "  -  ", " " + m.getCs2().getNev() + " ", aca);
+        TableRow tr2;
 
-                TableRow tr = new TableRow(aca);
-                tr.addView(tv1);
-                tr.addView(tv2);
-                tr.addView(tv3);
-
-                tabl.addView(tr);
-            }
-        } else if(csapatok.size() > 1){
-            Button b = new Button(aca);
-            b.setText("Következő forduló kisorsolása");
-            b.setOnClickListener(
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            general();
-                            refreshKiiras(merkTabl, tovabbTabl, aca);
-                        }
-                    }
-            );
-            tabl.addView(b);
-        } else {
-            kiirGyoztes(aca);
-        }
-    }
-
-    private void kiirGyoztes(AppCompatActivity aca)
-    {
-        merkTabl.removeAllViews();
-        tovabbTabl.removeAllViews();
-
-        tovabbTabl.addView(DrawTable.createRowWithOneCell("A győztes csapat: "+csapatok.get(0).getNev(), aca));
-    }
-
-    private void removeMerkozesByIndex(int merkozesIndex)
-    {
-        int index = -1;
-        for(int i=0; i<merkozesek.size() && index == -1; i++)
+        if(m.isLejatszott())
         {
-            if(merkozesek.get(i).index == merkozesIndex)
-                index = i;
+            tr2 = DrawTable.createRowWithThreeCell(" " + m.getEredmeny1() + " ", "  :  ", " " + m.getEredmeny2() + " ", aca);
+        } else {
+            EditText et1 = createNumEditText(10, aca);
+            EditText et2 = createNumEditText(10, aca);
+            m.setInputId1(et1.getId());
+            m.setInputId2(et2.getId());
+            TextView tv = DrawTable.createTextView("  :  ", aca);
+            Button b = createSetterButton(m.getIndex(), aca);
+            tr2 = new TableRow(aca);
+            tr2.addView(et1);
+            tr2.addView(tv);
+            tr2.addView(et2);
+            tr2.addView(b);
         }
-        merkozesek.remove(index);
+
+        tabl.addView(tr1);
+        tabl.addView(tr2);
     }
 
-    private TextView createTextViewWithSpecificOnClickListener(final Csapat cs, final AppCompatActivity aca, final int merkozesIndex)
+    private EditText createNumEditText(final int minWidth, final AppCompatActivity aca)
     {
-        TextView tv = DrawTable.createTextView("      " + cs.getNev() + "      ", aca);
-        tv.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        removeMerkozesByIndex(merkozesIndex);
-                        csapatok.add(cs);
-                        refreshKiiras(merkTabl, tovabbTabl, aca);
-                    }
-                }
-        );
-        return tv;
+        EditText et = new EditText(aca);
+        et.setMinWidth(minWidth);
+        et.setInputType(InputType.TYPE_CLASS_NUMBER);
+        return et;
+    }
+
+    private Button createSetterButton(final int index, final AppCompatActivity aca)
+    {
+        Button b = new Button(aca);
+        b.setText("MENT");
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meccsLejatsz(index, aca);
+                refreshKiiras(aktualisSzint, aca);
+            }
+        });
+        return b;
+    }
+
+    private void meccsLejatsz(int index, AppCompatActivity aca)
+    {
+        String s1 = String.valueOf(((EditText)(aca.findViewById(szintek.get(aktualisSzint).getMerkozes(index).getInputId1()))).getText());
+        String s2 = String.valueOf(((EditText)(aca.findViewById(szintek.get(aktualisSzint).getMerkozes(index).getInputId2()))).getText());
+        if(!s1.equals("") && !s2.equals(""))
+        {
+            szintek.get(aktualisSzint).getMerkozes(index).lejatszas(Integer.parseInt(s1), Integer.parseInt(s1));
+        }
     }
 
     private void tovabbjutokKirajzol(TableLayout tabl, AppCompatActivity aca)
     {
         tabl.addView(DrawTable.createRowWithOneCell("Továbbjutók:", aca));
-        for(int i=0; i<csapatok.size(); i++)
+        for(int i=0; i<szintek.get(aktualisSzint).getTovabbjutok().size(); i++)
         {
-            tabl.addView(DrawTable.createRowWithOneCell(" "+csapatok.get(i).getNev()+" ", aca));
+            tabl.addView(DrawTable.createRowWithOneCell(" "+szintek.get(aktualisSzint).getTovabbjutok().get(i).getNev()+" ", aca));
         }
     }
 

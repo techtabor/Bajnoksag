@@ -7,7 +7,21 @@ import java.util.ArrayList;
  */
 
 public class Teams {
-    public static ArrayList<Csapat> csapatok = new ArrayList<>();
+
+    private static ArrayList<Csapat> csapatok = new ArrayList<>();
+    private static ArrayList<Csapat> tovabbjutok = new ArrayList<>();
+
+    public static ArrayList<Csapat> getTovabbjutok() {
+        return tovabbjutok;
+    }
+
+    public static Csapat getTovabbjuto(int index) {
+        return tovabbjutok.get(index);
+    }
+
+    public static int numOfTovabbjuto() {
+        return tovabbjutok.size();
+    }
 
     public static ArrayList<Csapat> getTeams() {
         return csapatok;

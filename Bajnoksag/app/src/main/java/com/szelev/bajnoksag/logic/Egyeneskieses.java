@@ -30,19 +30,21 @@ public class Egyeneskieses {
     private AppCompatActivity appCompAct;
 
     private TableLayout merkTabl, tovabbTabl;
+    private TableRow    szintValasztoTablR;
 
     public Egyeneskieses()
     {
 
     }
 
-    public void init(TableLayout merkT, TableLayout tovabbT, AppCompatActivity aca)
+    public void init(TableLayout merkT, TableLayout tovabbT, TableRow szintValasztoTR, AppCompatActivity aca)
     {
         szintek = new ArrayList<>();
         aktualisSzint = -1;
 
         merkTabl = merkT;
         tovabbTabl = tovabbT;
+        szintValasztoTablR = szintValasztoTR;
 
         appCompAct = aca;
 
@@ -72,6 +74,21 @@ public class Egyeneskieses {
         szintek.add(esz);
         aktualisSzint++;
         refreshKiiras(getAktualisSzint(), appCompAct);
+        szintValasztoTablR.addView(createSzintButton(aktualisSzint));
+    }
+
+    private Button createSzintButton(final int  szint)
+    {
+        Button b = new Button(appCompAct);
+        b.setText((szint+1) + ". kör");
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshKiiras(szint, appCompAct);
+            }
+        });
+
+        return b;
     }
 
     public int getAktualisSzint() {

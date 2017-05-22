@@ -1,0 +1,8 @@
+Kisebb házi bajnokságok esetén a verseny megszervezése, és az eredmények követése legtöbbször papíron történik, mely nehezíti a
+ feldolgozást. Ezért készítettem egy alkalmazást, mellyel mobileszközünket használva tudjuk a mérkõzések eredményeit rögzíteni 
+és a szoftver segítségével azonnal megtudhatjuk a bajnokság aktuális állását.
+
+Az alkalmazás azért készült mobileszközre, mivel egy ilyen bajnokság helyszínén nem biztos, hogy van WiFi (pl. tengerparton), 
+valamint okostelefonja majdnem mindenkinek van.
+
+A két mód bemutatása /tableten/, elõre telepíteni kell, kell screenshot.

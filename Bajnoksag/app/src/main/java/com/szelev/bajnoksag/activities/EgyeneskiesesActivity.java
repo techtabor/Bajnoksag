@@ -37,7 +37,7 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
         if(!vanLogika)
         {
             logika = new Egyeneskieses();
-            logika.init(merkozesTabla, tovabbjutokTabla);
+            logika.init(merkozesTabla, tovabbjutokTabla, this);
             logika.general();
             vanLogika = true;
         }

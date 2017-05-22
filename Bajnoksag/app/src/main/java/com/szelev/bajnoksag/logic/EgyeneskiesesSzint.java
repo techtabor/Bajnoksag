@@ -59,6 +59,11 @@ public class EgyeneskiesesSzint {
         return c;
     }
 
+    public  void decreaseLeNemJatszott()
+    {
+        leNemJatszott--;
+    }
+
     public int getLeNemJatszott() {
         return leNemJatszott;
     }

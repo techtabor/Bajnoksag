@@ -2,6 +2,7 @@ package com.szelev.bajnoksag.logic;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class Egyeneskieses {
 
     private ArrayList<EgyeneskiesesSzint> szintek;
     private int aktualisSzint;
+    private AppCompatActivity appCompAct;
 
     private TableLayout merkTabl, tovabbTabl;
 
@@ -34,13 +36,15 @@ public class Egyeneskieses {
 
     }
 
-    public void init(TableLayout merkT, TableLayout tovabbT)
+    public void init(TableLayout merkT, TableLayout tovabbT, AppCompatActivity aca)
     {
         szintek = new ArrayList<>();
-        aktualisSzint = 0;
+        aktualisSzint = -1;
 
         merkTabl = merkT;
-        tovabbT = tovabbT;
+        tovabbTabl = tovabbT;
+
+        appCompAct = aca;
 
         initTovabbjutok();
     }
@@ -57,10 +61,17 @@ public class Egyeneskieses {
     public void general()
     {
         EgyeneskiesesSzint esz = new EgyeneskiesesSzint();
+        if(szintek.size()>0)
+        {
+            Teams.getTovabbjutok().clear();
+            for(int i=0; i<szintek.get(szintek.size()-1).getTovabbjutok().size(); i++)
+                Teams.getTovabbjutok().add(szintek.get(szintek.size()-1).getTovabbjutok().get(i));
+        }
         esz.init();
         esz.general();
         szintek.add(esz);
         aktualisSzint++;
+        refreshKiiras(getAktualisSzint(), appCompAct);
     }
 
     public int getAktualisSzint() {
@@ -78,7 +89,28 @@ public class Egyeneskieses {
             merkozesekKirajzol(tovabbTabl, aca);
 
             aktualisSzint = szint;
+
+            if(mindLejatszott(szint) && szint == szintek.size()-1)
+            {
+                Button tovabb = new Button(aca);
+                tovabb.setText("Sorsol");
+                tovabb.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        general();
+                    }
+                });
+
+                tovabbTabl.addView(tovabb);
+            }
         }
+    }
+
+    private boolean mindLejatszott(int szint)
+    {
+        if(szintek.get(szint).getLeNemJatszott() > 0)
+            return false;
+        return true;
     }
 
     private void merkozesekKirajzol(TableLayout tabl, final AppCompatActivity aca)
@@ -104,7 +136,7 @@ public class Egyeneskieses {
             m.setInputId1(et1.getId());
             m.setInputId2(et2.getId());
             TextView tv = DrawTable.createTextView("  :  ", aca);
-            Button b = createSetterButton(m.getIndex(), aca);
+            Button b = createSetterButton(et1, et2, m.getIndex(), aca);
             tr2 = new TableRow(aca);
             tr2.addView(et1);
             tr2.addView(tv);
@@ -124,27 +156,31 @@ public class Egyeneskieses {
         return et;
     }
 
-    private Button createSetterButton(final int index, final AppCompatActivity aca)
+    private Button createSetterButton(final EditText et1, final EditText et2, final int index, final AppCompatActivity aca)
     {
         Button b = new Button(aca);
         b.setText("MENT");
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                meccsLejatsz(index, aca);
+                meccsLejatsz(index, et1, et2, aca);
                 refreshKiiras(aktualisSzint, aca);
             }
         });
         return b;
     }
 
-    private void meccsLejatsz(int index, AppCompatActivity aca)
+    private void meccsLejatsz(int index, EditText et1, EditText et2, AppCompatActivity aca)
     {
-        String s1 = String.valueOf(((EditText)(aca.findViewById(szintek.get(aktualisSzint).getMerkozes(index).getInputId1()))).getText());
-        String s2 = String.valueOf(((EditText)(aca.findViewById(szintek.get(aktualisSzint).getMerkozes(index).getInputId2()))).getText());
+
+        String s1 = et1.getText().toString();
+        String s2 = et2.getText().toString();
+
         if(!s1.equals("") && !s2.equals(""))
         {
-            szintek.get(aktualisSzint).getMerkozes(index).lejatszas(Integer.parseInt(s1), Integer.parseInt(s1));
+            szintek.get(aktualisSzint).getMerkozes(index).lejatszas(Integer.parseInt(s1), Integer.parseInt(s2));
+            szintek.get(aktualisSzint).getTovabbjutok().add(szintek.get(aktualisSzint).getMerkozes(index).getGyoztes());
+            szintek.get(aktualisSzint).decreaseLeNemJatszott();
         }
     }
 

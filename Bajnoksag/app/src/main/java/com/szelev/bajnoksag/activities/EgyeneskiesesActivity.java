@@ -30,6 +30,10 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
 
     public void init()
     {
+        merkozesTabla       = (TableLayout) (findViewById(R.id.table_main));
+        tovabbjutokTabla    = (TableLayout) (findViewById(R.id.table_main2));
+
+
         if(!vanLogika)
         {
             logika = new Egyeneskieses();
@@ -37,9 +41,6 @@ public class EgyeneskiesesActivity extends AppCompatActivity{
             logika.general();
             vanLogika = true;
         }
-
-        merkozesTabla       = (TableLayout) (findViewById(R.id.table_main));
-        tovabbjutokTabla    = (TableLayout) (findViewById(R.id.table_main2));
 
         bajnoksagAllapotKiir();
     }

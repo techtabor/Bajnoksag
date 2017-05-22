@@ -24,7 +24,6 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csapathozzaadas);
-        System.err.println(1);
         init();
     }
 
@@ -36,6 +35,7 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
     }
 
     private void drawTable() {
+        System.out.println(0);
         csapatTabla.removeAllViews();
 
         TableRow header = DrawTable.createRowWithThreeCell(" ", "     Csapatok     ", " ", this);
@@ -44,6 +44,7 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
         for(int i = 0; i < (Teams.getTeams().size()+2)/3; i++) {
             csapatTabla.addView(logika.getCsapatRowByIndex(i, this));
         }
+        System.out.println(1);
     }
 
     private void resetInput()

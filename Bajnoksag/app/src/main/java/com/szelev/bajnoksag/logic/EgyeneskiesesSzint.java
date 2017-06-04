@@ -32,7 +32,7 @@ public class EgyeneskiesesSzint {
 
     public void general()
     {
-        int meret = Teams.numOfTovabbjuto();                     // korrigálás kell majd: lehet, hogy a méret páratlan!
+        int meret = Teams.numOfTovabbjuto();
 
         for(int i=0; i<meret/2; i++)
         {

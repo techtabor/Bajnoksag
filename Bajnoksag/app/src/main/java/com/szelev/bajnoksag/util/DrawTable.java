@@ -1,15 +1,10 @@
 package com.szelev.bajnoksag.util;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.szelev.bajnoksag.data.Csapat;
-
-import java.util.ArrayList;
 
 /**
  * Created by Levente on 2016.12.28..

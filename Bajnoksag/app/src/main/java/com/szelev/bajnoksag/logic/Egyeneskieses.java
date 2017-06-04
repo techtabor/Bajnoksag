@@ -1,8 +1,6 @@
 package com.szelev.bajnoksag.logic;
 
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +15,6 @@ import com.szelev.bajnoksag.util.DrawTable;
 import com.szelev.bajnoksag.data.Merkozes;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by Levente on 2017.01.30..
@@ -102,23 +99,30 @@ public class Egyeneskieses {
             merkTabl.removeAllViews();
             tovabbTabl.removeAllViews();
 
-            tovabbjutokKirajzol(merkTabl, aca);
-            merkozesekKirajzol(tovabbTabl, aca);
-
             aktualisSzint = szint;
 
-            if(mindLejatszott(szint) && szint == szintek.size()-1)
-            {
-                Button tovabb = new Button(aca);
-                tovabb.setText("Sorsol");
-                tovabb.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        general();
-                    }
-                });
+            if(2*(szintek.get(aktualisSzint).getLeNemJatszott()) + szintek.get(aktualisSzint).getTovabbjutok().size()> 1) {
+                tovabbjutokKirajzol(merkTabl, aca);
+                merkozesekKirajzol(tovabbTabl, aca);
 
-                tovabbTabl.addView(tovabb);
+
+                if (mindLejatszott(szint) && szint == szintek.size() - 1) {
+                    Button tovabb = new Button(aca);
+                    tovabb.setText("Sorsol");
+                    tovabb.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            general();
+                        }
+                    });
+
+                    tovabbTabl.addView(tovabb);
+                }
+            }
+            else
+            {
+                TableRow tr = DrawTable.createRowWithTwoCell("A győztes: ", " " + szintek.get(aktualisSzint).getTovabbjutok().get(0).getNev() + " ", aca);
+                tovabbTabl.addView(tr);
             }
         }
     }
@@ -206,8 +210,13 @@ public class Egyeneskieses {
         tabl.addView(DrawTable.createRowWithOneCell("Továbbjutók:", aca));
         for(int i=0; i<szintek.get(aktualisSzint).getTovabbjutok().size(); i++)
         {
-            tabl.addView(DrawTable.createRowWithOneCell(" "+szintek.get(aktualisSzint).getTovabbjutok().get(i).getNev()+" ", aca));
+            tabl.addView(DrawTable.createRowWithOneCell(" "+getTovabbjutoFromSzint(aktualisSzint, i).getNev()+" ", aca));
         }
+    }
+
+    public Csapat getTovabbjutoFromSzint(int szint, int index)
+    {
+        return szintek.get(szint).getTovabbjutok().get(index);
     }
 
 }

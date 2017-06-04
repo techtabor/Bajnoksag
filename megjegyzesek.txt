@@ -1,3 +1,8 @@
+körmérkõzés -> beosztás (gráfszínezés)
+
+
+
+
 ne legyen kódismétlés
 konstruktosban ne legyen semmi
 külön onClick

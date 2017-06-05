@@ -101,7 +101,7 @@ public class Egyeneskieses {
 
             aktualisSzint = szint;
 
-            if(2*(szintek.get(aktualisSzint).getLeNemJatszott()) + szintek.get(aktualisSzint).getTovabbjutok().size()> 1) {
+            if(2*(szintek.get(aktualisSzint).getNumOfMerkozes()) + szintek.get(aktualisSzint).getTovabbjutok().size()> 1) {
                 tovabbjutokKirajzol(merkTabl, aca);
                 merkozesekKirajzol(tovabbTabl, aca);
 

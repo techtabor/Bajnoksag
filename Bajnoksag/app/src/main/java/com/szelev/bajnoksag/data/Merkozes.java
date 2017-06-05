@@ -1,12 +1,11 @@
 package com.szelev.bajnoksag.data;
 
-import com.szelev.bajnoksag.saveable;
 
 /**
  * Created by Levente on 2017.01.30..
  */
 
-public class Merkozes implements saveable{
+public class Merkozes{
 
     private Csapat cs1, cs2, gyoztes = null;
     private int eredmeny1, eredmeny2;

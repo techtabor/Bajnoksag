@@ -1,12 +1,10 @@
 package com.szelev.bajnoksag.data;
 
-import com.szelev.bajnoksag.saveable;
-
 /**
  * Created by Levente on 2016.12.06..
  */
 
-public class Csapat implements saveable{
+public class Csapat {
 
     private int ID;
     private String nev;

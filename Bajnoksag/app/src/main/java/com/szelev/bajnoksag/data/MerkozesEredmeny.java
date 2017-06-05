@@ -1,12 +1,11 @@
 package com.szelev.bajnoksag.data;
 
-import com.szelev.bajnoksag.saveable;
 
 /**
  * Created by Levente on 2016.12.16..
  */
 
-public class MerkozesEredmeny implements saveable{
+public class MerkozesEredmeny{
 
     private int     elso, masodik;
     private boolean voltMeccs;
@@ -45,7 +44,7 @@ public class MerkozesEredmeny implements saveable{
         {
             voltMeccs = true;
             int n;
-            for(n=0; n*(n+1)/2<num; n++)
+            for(n=0; n*(n+1)/2<=num; n++)
             {
 
             }

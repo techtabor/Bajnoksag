@@ -7,14 +7,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
-import com.szelev.bajnoksag.saveable;
 import com.szelev.bajnoksag.util.CreateActivity;
 
 /**
  * Created by Levente on 2016.12.19..
  */
 
-public class KiertekelesBeallitasokActivity extends AppCompatActivity implements saveable {
+public class KiertekelesBeallitasokActivity extends AppCompatActivity {
 
     private EditText    tv1, tv2, tv3, tv4;
 

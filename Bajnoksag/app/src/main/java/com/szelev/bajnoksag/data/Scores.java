@@ -1,44 +1,45 @@
 package com.szelev.bajnoksag.data;
 
-import com.szelev.bajnoksag.saveable;
-
 import java.util.ArrayList;
 
 /**
  * Created by szucs on 2017.03.29..
  */
 
-public class Scores implements saveable{
+public class Scores{
 
     public static ArrayList<ArrayList<MerkozesEredmeny>> scores = null;
 
-    public String toString()
+    public static String tooString()
     {
         String s = "";
 
-        s += scores.size() + "\t";
-        s += scores.get(0).size() + "\t";
+        s += scores.size() + " ";
+        s += scores.get(0).size() + " ";
         for(int i=0; i<scores.size(); i++)
         {
             for(int j=0; j<scores.get(0).size(); j++)
             {
-                s += getResult(i, j).toString() + "\t";
+                s += getResult(i, j).toString() + " ";
             }
         }
-        return null;
+        return s;
     }
 
-    public void loadFromString(String s)
+    public static void loadFromString(String s)
     {
-        String[] splitted = s.trim().split("\\t+");
+        String[] splitted = s.trim().split("\\s+");
         int a, b;
+
         a = Integer.parseInt(splitted[0]);
         b = Integer.parseInt(splitted[1]);
 
-        ArrayList<ArrayList<MerkozesEredmeny>> ns = new ArrayList<>(a);
+        ArrayList<ArrayList<MerkozesEredmeny>> ns = new ArrayList<>();
 
         for(int i=0; i<a; i++)
         {
+            ArrayList<MerkozesEredmeny> al = new ArrayList<>();
+            ns.add(al);
             for(int j=0; j<b; j++)
             {
                 MerkozesEredmeny me = new MerkozesEredmeny();

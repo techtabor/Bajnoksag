@@ -3,7 +3,6 @@ package com.szelev.bajnoksag.logic;
 import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.Merkozes;
 import com.szelev.bajnoksag.data.Teams;
-import com.szelev.bajnoksag.saveable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +11,7 @@ import java.util.Random;
  * Created by Levente on 2017.05.19..
  */
 
-public class EgyeneskiesesSzint implements saveable{
+public class EgyeneskiesesSzint{
 
     private ArrayList<Csapat> tovabbjutok;
     private ArrayList<Merkozes> merkozesek;

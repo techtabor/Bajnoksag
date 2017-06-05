@@ -15,6 +15,7 @@ import com.szelev.bajnoksag.util.CreateActivity;
 import com.szelev.bajnoksag.logic.Kormerkozesek;
 import com.szelev.bajnoksag.R;
 import com.szelev.bajnoksag.util.DrawTable;
+import com.szelev.bajnoksag.util.SaveLoad;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +107,19 @@ public class KormerkozesekActivity extends AppCompatActivity{
         scoreOfTeam2TextView.setText(secondScore);
 
         actionOnMentesButton(v);
+    }
+
+    //onClilck action
+    public void actionOnSaveButton(View v)
+    {
+        SaveLoad.saveKorm("korm.bnk", getApplicationContext());
+    }
+
+    //onClilck action
+    public void actionOnLoadButton(View v)
+    {
+        SaveLoad.loadKorm("korm.bnk", getApplicationContext());
+        init();
     }
 
     //onClilck action

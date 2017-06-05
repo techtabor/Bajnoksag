@@ -7,13 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.szelev.bajnoksag.R;
+import com.szelev.bajnoksag.saveable;
 import com.szelev.bajnoksag.util.CreateActivity;
 
 /**
  * Created by Levente on 2016.12.19..
  */
 
-public class KiertekelesBeallitasokActivity extends AppCompatActivity{
+public class KiertekelesBeallitasokActivity extends AppCompatActivity implements saveable {
 
     private EditText    tv1, tv2, tv3, tv4;
 
@@ -29,6 +30,23 @@ public class KiertekelesBeallitasokActivity extends AppCompatActivity{
         setContentView(R.layout.activity_kiertekelesbeallitasok);
 
         init();
+    }
+
+    public void loadFromString(String s)
+    {
+        String[] split = s.trim().split("\\s+");
+        gyozelemPont = Integer.parseInt(split[0]);
+        dontetlenPont = Integer.parseInt(split[1]);
+        veresegPont = Integer.parseInt(split[2]);
+        nemVoltMegMeccsPont = Integer.parseInt(split[3]);
+    }
+
+    public String toString()
+    {
+        String s;
+        s = "";
+        s += Integer.toString(gyozelemPont) + " " + Integer.toString(dontetlenPont) + " " + Integer.toString(veresegPont) + " " + Integer.toString(nemVoltMegMeccsPont) + "\n";
+        return s;
     }
 
     private void init()

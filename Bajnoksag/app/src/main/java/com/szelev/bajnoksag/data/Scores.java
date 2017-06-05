@@ -10,9 +10,9 @@ public class Scores {
     public static ArrayList<ArrayList<MerkozesEredmeny>> scores = null;
     
     public static void setScores(ArrayList<ArrayList<MerkozesEredmeny>> newScores) {
-       if (scores == null) {
-           scores = newScores;
-       }
+        if (scores == null) {
+            scores = newScores;
+        }
     }
 
     public static MerkozesEredmeny getResult(int firstTeamID, int secondTeamID) {

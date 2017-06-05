@@ -3,6 +3,7 @@ package com.szelev.bajnoksag.logic;
 import com.szelev.bajnoksag.data.Csapat;
 import com.szelev.bajnoksag.data.Merkozes;
 import com.szelev.bajnoksag.data.Teams;
+import com.szelev.bajnoksag.saveable;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,7 +12,7 @@ import java.util.Random;
  * Created by Levente on 2017.05.19..
  */
 
-public class EgyeneskiesesSzint {
+public class EgyeneskiesesSzint implements saveable{
 
     private ArrayList<Csapat> tovabbjutok;
     private ArrayList<Merkozes> merkozesek;
@@ -21,6 +22,50 @@ public class EgyeneskiesesSzint {
     public EgyeneskiesesSzint()
     {
 
+    }
+
+    public String toString()
+    {
+        String s = "";
+
+        s += tovabbjutok.size() + "\t";
+        s += merkozesek.size() + "\t";
+        s += leNemJatszott + "\t";
+
+        for(int i=0; i<tovabbjutok.size(); i++)
+        {
+            s += tovabbjutok.get(i).toString() + "\t";
+        }
+
+        for(int i=0; i<merkozesek.size(); i++)
+        {
+            s += merkozesek.get(i).toString() + "\t";
+        }
+
+        return s;
+    }
+
+    public void loadFromString(String s)
+    {
+        System.err.println("EgyeneskiesesSzint.loadFromString(String s): Not supported yet.");
+        /*String[] splitted = s.trim().split("\\t+");
+        int a, b;
+        a = Integer.parseInt(splitted[0]);
+        b = Integer.parseInt(splitted[1]);
+        leNemJatszott = Integer.parseInt(splitted[2]);
+        tovabbjutok.clear();
+        merkozesek.clear();
+        for(int i=3; i<a+3; i++)
+        {
+            Csapat c;
+            c.loadFromString(splitted[i]);
+            tovabbjutok.add(c);
+        }
+        for(int i=a+3; i<a+b+3; i++)
+        {
+            Merkozes m;
+
+        }*/
     }
 
     public void init()

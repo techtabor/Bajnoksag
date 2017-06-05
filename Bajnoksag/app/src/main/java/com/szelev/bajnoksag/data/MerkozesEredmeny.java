@@ -26,16 +26,33 @@ public class MerkozesEredmeny implements saveable{
     public String toString()
     {
         String s;
-        s = Integer.toString(elso) + " " + Integer.toString(masodik) + " " + Boolean.toString(voltMeccs) + "\n";
+        if(!voltMeccs)
+            s = "-1";
+        else
+            s = Integer.toString((elso+masodik)*(elso+masodik+1)/2+elso);
         return s;
     }
 
     public void loadFromString(String s)
     {
-        String[] splitted = s.trim().split("\\s+");
-        elso = Integer.parseInt(splitted[0]);
-        masodik = Integer.parseInt(splitted[1]);
-        voltMeccs = Boolean.parseBoolean(splitted[2]);
+        int num = Integer.parseInt(s);
+
+        if(num == -1)
+        {
+            voltMeccs = false;
+        }
+        else
+        {
+            voltMeccs = true;
+            int n;
+            for(n=0; n*(n+1)/2<num; n++)
+            {
+
+            }
+            n--;
+            elso = num-n*(n+1)/2;
+            masodik = n-elso;
+        }
     }
 
     public void setEredmeny(int elso, int masodik)

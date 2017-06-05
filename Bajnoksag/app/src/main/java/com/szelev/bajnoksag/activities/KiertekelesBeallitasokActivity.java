@@ -45,7 +45,8 @@ public class KiertekelesBeallitasokActivity extends AppCompatActivity implements
     {
         String s;
         s = "";
-        s += Integer.toString(gyozelemPont) + " " + Integer.toString(dontetlenPont) + " " + Integer.toString(veresegPont) + " " + Integer.toString(nemVoltMegMeccsPont) + "\n";
+        s += Integer.toString(gyozelemPont) + " " + Integer.toString(dontetlenPont) + " "
+                + Integer.toString(veresegPont) + " " + Integer.toString(nemVoltMegMeccsPont);
         return s;
     }
 

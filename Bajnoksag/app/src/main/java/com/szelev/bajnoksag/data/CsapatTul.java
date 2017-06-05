@@ -20,7 +20,7 @@ public class CsapatTul implements saveable
         String s;
         s = Integer.toString(ID) + " " + Integer.toString(pontszam) + " " + Integer.toString(pontkul)
                 + " " + Integer.toString(szerzettPont) + " " + Integer.toString(gyozelemszam) + " "
-                + Integer.toString(jatszottMeccsek) + "\n";
+                + Integer.toString(jatszottMeccsek);
         return s;
     }
 

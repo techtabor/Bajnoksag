@@ -19,7 +19,7 @@ public class Csapat implements saveable{
     public String toString()
     {
         String s;
-        s = ID + " " + nev + "\n";
+        s = ID + " " + nev;
         return s;
     }
 

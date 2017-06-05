@@ -16,13 +16,13 @@ public class Scores implements saveable{
     {
         String s = "";
 
-        s += scores.size() + "\n";
-        s += scores.get(0).size() + "\n";
+        s += scores.size() + "\t";
+        s += scores.get(0).size() + "\t";
         for(int i=0; i<scores.size(); i++)
         {
             for(int j=0; j<scores.get(0).size(); j++)
             {
-                s += getResult(i, j).toString();
+                s += getResult(i, j).toString() + "\t";
             }
         }
         return null;
@@ -30,7 +30,7 @@ public class Scores implements saveable{
 
     public void loadFromString(String s)
     {
-        String[] splitted = s.trim().split("\\n+");
+        String[] splitted = s.trim().split("\\t+");
         int a, b;
         a = Integer.parseInt(splitted[0]);
         b = Integer.parseInt(splitted[1]);
@@ -46,6 +46,7 @@ public class Scores implements saveable{
                 ns.get(i).add(me);
             }
         }
+        scores = ns;
     }
 
     public static void setScores(ArrayList<ArrayList<MerkozesEredmeny>> newScores) {

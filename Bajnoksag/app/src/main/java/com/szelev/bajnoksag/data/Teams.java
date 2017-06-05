@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by szucs on 2017.03.28..
  */
 
-public class Teams {
+public class Teams{
 
     private static ArrayList<Csapat> csapatok = new ArrayList<>();
     private static ArrayList<Csapat> tovabbjutok = new ArrayList<>();

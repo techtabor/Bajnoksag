@@ -45,12 +45,13 @@ public class KiertekelActivity extends AppCompatActivity{
     }
 
     private void kiirErtekeles() {
-        ertekeloTabla.addView(DrawTable.createRowWithTwoCell("     Helyezés     ", "     Csapatnév     ", this));
+        ertekeloTabla.addView(DrawTable.createRowWithThreeCell("     Helyezés     ", "     Csapatnév     ","     Pontszám     ", this));
 
         for(int i = 0; i < sorrend.size(); i++)
         {
             String teamName = Teams.getTeam(sorrend.get(i).ID).getNev();
-            TableRow newRow = DrawTable.createRowWithTwoCell(Integer.toString(i+1), teamName, this);
+            int pont = sorrend.get(i).pontszam;
+            TableRow newRow = DrawTable.createRowWithThreeCell(Integer.toString(i+1), teamName, Integer.toString(pont), this);
 
             ertekeloTabla.addView(newRow);
         }

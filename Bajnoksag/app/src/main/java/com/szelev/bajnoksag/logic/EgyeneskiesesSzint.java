@@ -47,7 +47,7 @@ public class EgyeneskiesesSzint{
     public void loadFromString(String s)
     {
         System.err.println("EgyeneskiesesSzint.loadFromString(String s): Not supported yet.");
-        /*String[] splitted = s.trim().split("\\t+");
+        String[] splitted = s.trim().split("\\t+");
         int a, b;
         a = Integer.parseInt(splitted[0]);
         b = Integer.parseInt(splitted[1]);
@@ -56,15 +56,16 @@ public class EgyeneskiesesSzint{
         merkozesek.clear();
         for(int i=3; i<a+3; i++)
         {
-            Csapat c;
+            Csapat c = new Csapat();
             c.loadFromString(splitted[i]);
             tovabbjutok.add(c);
         }
         for(int i=a+3; i<a+b+3; i++)
         {
-            Merkozes m;
-
-        }*/
+            Merkozes m = new Merkozes();
+            m.loadFromString(splitted[i]);
+            merkozesek.add(m);
+        }
     }
 
     public void init()

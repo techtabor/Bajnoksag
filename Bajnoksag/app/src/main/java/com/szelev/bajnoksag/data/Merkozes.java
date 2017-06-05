@@ -13,6 +13,13 @@ public class Merkozes{
     private boolean lejatszott = false;
     private int inputId1, inputId2;
 
+    public Merkozes()
+    {
+        setCs1(null);
+        setCs1(null);
+        setIndex(0);
+    }
+
     public Merkozes(Csapat c1, Csapat c2, int ind)
     {
         setCs1(c1);

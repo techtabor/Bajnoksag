@@ -10,27 +10,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.szelev.bajnoksag.activities.CsapatHozzaadasActivity">
 
-    <Spinner
-        android:id="@+id/spinner1"
+    <LinearLayout
+        android:id="@+id/linearS"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_marginRight="0dp"
-        android:layout_marginEnd="0dp">
-    </Spinner>
+        android:layout_height="wrap_content">
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_toEndOf="@+id/spinner1"
-        android:layout_toRightOf="@+id/spinner1">
-    </Spinner>
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:spinnerMode="dropdown"></Spinner>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:spinnerMode="dropdown"></Spinner>
+
+    </LinearLayout>
+
+
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -56,31 +58,72 @@
 
     </ScrollView>
 
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:layout_below="@+id/spinner1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editText"
-        android:layout_toStartOf="@+id/button3"
-        android:layout_marginRight="85dp"
-        android:layout_marginEnd="85dp"
-        android:layout_toLeftOf="@+id/button3" />
+        android:id="@+id/linearE"
+        android:layout_below="@+id/linearS">
 
 
-    <EditText
-        android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".50"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/editText"/>
+
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight=".50"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/editText2"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:id="@+id/editText2"
-        android:layout_alignBaseline="@+id/editText"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/spinner1"
-        android:layout_toEndOf="@+id/spinner1" />
+        android:id="@+id/linearB"
+        android:layout_below="@+id/linearE" >
+
+
+        <Button
+            android:text="1:0"
+            android:onClick="actionOnEredmeny1Button"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:id="@+id/button13" />
+
+        <Button
+            android:id="@+id/button14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".25"
+            android:onClick="actionOnEredmeny2Button"
+            android:text="0:1" />
+
+        <Button
+            android:text="1:1"
+            android:onClick="actionOnEredmeny3Button"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:id="@+id/button15" />
+
+        <Button
+            android:text="2:2"
+            android:onClick="actionOnEredmeny4Button"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:id="@+id/button16" />
+
+
+    </LinearLayout>
 
     <Button
         android:text="MENT"
@@ -88,10 +131,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:onClick="actionOnMentesButton"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/linearB"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="KIÉRTÉKEL"
@@ -104,67 +146,25 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/button" />
 
-    <Button
-        android:text="1:0"
-        android:onClick="actionOnEredmeny1Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button13" />
-
-    <Button
-        android:text="0:1"
-        android:onClick="actionOnEredmeny2Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button13"
-        android:id="@+id/button14"
-        android:layout_toLeftOf="@+id/editText2"
-        android:layout_toRightOf="@+id/button13"
-        android:layout_toEndOf="@+id/button13" />
-
-    <Button
-        android:text="1:1"
-        android:onClick="actionOnEredmeny3Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_toRightOf="@+id/button14"
-        android:layout_toEndOf="@+id/button14"
-        android:id="@+id/button15" />
-
-    <Button
-        android:text="2:2"
-        android:onClick="actionOnEredmeny4Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/button16"
-        android:layout_toRightOf="@+id/button15"
-        android:layout_toEndOf="@+id/button15" />
 
     <Button
         android:id="@+id/button10"
         android:onClick="actionOnSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
+        android:text="Save"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editText2"
-        android:text="Save" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/button11"
         android:onClick="actionOnLoadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Load"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/button15"
-        android:layout_toRightOf="@+id/button15"
-        android:text="Load" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

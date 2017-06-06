@@ -1,0 +1,10 @@
+körm. -> kiértékelési szempontok
+      -> tabellában mi legyen
+      -> oda-vissza vágó checkbox
+      -> sorsolás
+      -> meccsek, tabella egy lapra
+egyki -> fa
+
+több mód
+szerver
+adatok mentése -> .json

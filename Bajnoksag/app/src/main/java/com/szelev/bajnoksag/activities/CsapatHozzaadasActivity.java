@@ -25,6 +25,22 @@ public class CsapatHozzaadasActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csapathozzaadas);
         init();
+
+        //begin teszt
+        csapatNevText.setText("András");
+        actionOnUjCsapatButton(null);
+
+        csapatNevText.setText("Béla");
+        actionOnUjCsapatButton(null);
+
+        csapatNevText.setText("Dezső");
+        actionOnUjCsapatButton(null);
+
+        csapatNevText.setText("Endre");
+        actionOnUjCsapatButton(null);
+
+        csapatNevText.setText("Gábor");
+        //end teszt
     }
 
     public void init() {
